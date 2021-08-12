@@ -1,7 +1,37 @@
 snp-compression
 ==============================
 
-This project seeks to compress snp's using deep neural networks
+This project seeks to compress snp's using deep neural networks. It tests the following models:
+
+- Convolutional Neural Network
+- ...
+
+
+
+
+The input will be SNPs which will be input as either
+- [x] raw (0, 1, 2 and NA as zero) 
+- [x] one-hot (0001 = 0, 0010=1, 0100=2, 1000 = NA)
+- [ ] embeddings
+- [ ] embeddings with location
+
+
+## To do:
+- [ ] simple denoising autoencoder
+    - [ ] Build CNN
+    - [ ] Simple backward pass (1 epoch)
+    - 
+
+# Remember to run a interactive window
+
+
+```
+srun -p normal --pty -c 4 --mem=16g bash
+```
+
+## Questions:
+Visalization of SNPs
+
 
 Project Organization
 ------------
