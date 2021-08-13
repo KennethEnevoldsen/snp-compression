@@ -29,6 +29,17 @@ The input will be SNPs which will be input as either
 srun -p normal --pty -c 4 --mem=16g bash
 ```
 
+# Running a batch
+
+```
+#!/bin/bash
+#SBATCH --partition gpu
+#SBATCH --mem 64g
+#SBATCH -c 8
+#SBATCH --gres=gpu:1
+```
+
+
 ## Questions:
 Visalization of SNPs
 

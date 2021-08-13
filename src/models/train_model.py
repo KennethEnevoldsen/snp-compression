@@ -33,10 +33,10 @@ x = torch.unsqueeze(x, 1)
 x = x.permute(0,1,3,2)
 
 x = x.type(torch.FloatTensor)  # as it needs to be a float
-train = TensorDataset(x[:7000], target)
-val = TensorDataset(x[7000:], target)
-train_loader = DataLoader(train, batch_size=32, shuffle=True, num_workers=4)
-val_loader = DataLoader(val, batch_size=32, shuffle=True, num_workers=4)
+train = TensorDataset(x[:7000], target[:7000])
+val = TensorDataset(x[7000:], target[7000:])
+train_loader = DataLoader(train, batch_size=16, shuffle=True, num_workers=4)
+val_loader = DataLoader(val, batch_size=16, shuffle=False, num_workers=4)
 
 # Build model
 encoder = Encoder(
@@ -64,5 +64,5 @@ model = PlOnehotWrapper(model=dae)
 
 # train model
 wandb_logger = WandbLogger()
-trainer = Trainer(logger=wandb_logger, log_every_n_steps=100)
+trainer = Trainer(logger=wandb_logger, log_every_n_steps=10, val_check_interval=1)
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
