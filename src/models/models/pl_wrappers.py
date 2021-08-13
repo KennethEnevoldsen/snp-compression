@@ -4,16 +4,17 @@ import torch.nn as nn
 
 
 class PlOnehotWrapper(pl.LightningModule):
-    def __init__(self, model: nn.Module):
+    def __init__(self, model: nn.Module, learning_rate=1e-3):
         super().__init__()
         self.model = model
         self.loss = nn.CrossEntropyLoss()
+        self.lr = learning_rate
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.model(x)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
