@@ -12,7 +12,6 @@ import pathlib
 
 
 import torch
-from torch import nn
 from torch.utils.data import TensorDataset, DataLoader
 
 from src.models.models.cnn import Encoder, Decoder
@@ -27,15 +26,17 @@ from src.models.models.pl_wrappers import PlOnehotWrapper
 # Build dataset
 p = pathlib.Path(__file__).parent.parent.parent.resolve()
 x = torch.load(os.path.join(p, "data", "processed", "tensors", "x_mhcuvps.pt"))
-target = x.T[:32].type(torch.LongTensor)
+target = x.T.type(torch.LongTensor)
 x = snps_to_one_hot(target)
 
 x = torch.unsqueeze(x, 1)
 x = x.permute(0,1,3,2)
 
 x = x.type(torch.FloatTensor)  # as it needs to be a float
-ds_ae = TensorDataset(x, target)
-train_loader = DataLoader(ds_ae, batch_size=3, shuffle=True, num_workers=4)
+train = TensorDataset(x[:7000], target)
+val = TensorDataset(x[7000:], target)
+train_loader = DataLoader(train, batch_size=32, shuffle=True, num_workers=4)
+val_loader = DataLoader(val, batch_size=32, shuffle=True, num_workers=4)
 
 # Build model
 encoder = Encoder(
@@ -63,5 +64,5 @@ model = PlOnehotWrapper(model=dae)
 
 # train model
 wandb_logger = WandbLogger()
-trainer = Trainer(logger=wandb_logger, log_every_n_steps=10)
-trainer.fit(model, train_loader)
+trainer = Trainer(logger=wandb_logger, log_every_n_steps=100)
+trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)

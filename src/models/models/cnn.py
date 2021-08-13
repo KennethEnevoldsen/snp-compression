@@ -51,7 +51,6 @@ class Encoder(nn.Module):
         self.fc = nn.Linear(input_size, encode_size)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """ """
         for conv, pad, maxpool in zip(self.convolutions, self.padding, self.maxpools):
             x = self.activation(maxpool(conv(pad(x))))
         x = torch.reshape(x, (x.shape[0], -1))  # keep batch size, flatten the rest
