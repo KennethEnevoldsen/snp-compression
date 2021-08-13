@@ -1,10 +1,10 @@
-from typing import Callable, List, Tuple, Union
-from torch._C import Value
+from functools import partial
+from typing import Callable, List, Tuple
+
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch
-from functools import partial
-from wasabi import msg
+
 
 class Encoder(nn.Module):
     """
@@ -96,7 +96,6 @@ class Decoder(nn.Module):
 
         # using a NN to rescale input to match decoder
         dim = output // upsampling_factor
-        msg.info("dim:", dim)
         if dim < input_size:
             raise ValueError(
                 "The proposed decoder leads to a output matrix which is bigger than the output"
@@ -106,18 +105,14 @@ class Decoder(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """ """
-        msg.info("in:", x.shape)
         x = self.fc(x)
-        msg.info(x.shape)
         x = x.view(x.shape[0], 1, 1, -1)  # batch, channels, h, w
-        msg.info("reshaped to:", x.shape)
         for conv, pad, upsample in zip(
             self.convolutions, self.padding, self.upsampling
         ):
             x = self.activation(conv(pad(upsample(x))))
-            msg.info(x.shape)
-        msg.info(x.shape)
-        return x
+
+        return torch.squeeze(x, 1)
 
 
 def calc_same_padding(kernel: Tuple[int, int], stride: int = 1):
@@ -135,8 +130,9 @@ def calc_same_padding(kernel: Tuple[int, int], stride: int = 1):
 
 
 if __name__ == "__main__":
-    from src.data.dataloader import read_plink_as_tensor, reshape_to_cnn
     import os
+
+    from src.data.dataloader import read_plink_as_tensor, reshape_to_cnn
 
     file = os.path.join("data", "raw", "mhcuvps")
     x, y = read_plink_as_tensor(file)

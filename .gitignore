@@ -87,3 +87,10 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# Training checkpoints and logs
+wandb/*
+checkpoints/*
+lightning_logs/*
+checkpoints/*
+snp-compression-src_models/*

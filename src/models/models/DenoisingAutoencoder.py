@@ -15,7 +15,7 @@ class DenoisingAutoencoder(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.dropout(x)
         x = self.encoder(x)
-        x = self.decoder(x)
+        return self.decoder(x)
 
 
 # if __name__ == "__main__":

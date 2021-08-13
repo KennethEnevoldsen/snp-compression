@@ -5,9 +5,9 @@ import torch.nn as nn
 
 class PlOnehotWrapper(pl.LightningModule):
     def __init__(self, model: nn.Module):
-        super().__init__(self)
-        model = model
-        loss = nn.CrossEntropyLoss()
+        super().__init__()
+        self.model = model
+        self.loss = nn.CrossEntropyLoss()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.model(x)
@@ -21,9 +21,8 @@ class PlOnehotWrapper(pl.LightningModule):
         # y shape should be (batch, sequence length)
         # x should be the one hot encoded version of y 
 
-        x_ = torch.squeeze(x, 1) 
         # in shape should be (batch, channels=1, genotype/snp=4, sequence length) 
-        x_hat = self.model(x_)
+        x_hat = self.model(x)
         # out shape should be (batch, genotype/snp=4, sequence length) 
         loss = self.loss(x_hat, y)
 
@@ -34,8 +33,7 @@ class PlOnehotWrapper(pl.LightningModule):
     def validation_step(self, val_batch, batch_idx):
         x, y = val_batch
 
-        x_ = torch.squeeze(x, 1) 
-        x_hat = self.model(x_)
+        x_hat = self.model(x)
         loss = self.loss(x_hat, y)
 
         self.log('val_loss', loss)
