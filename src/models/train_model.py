@@ -28,7 +28,7 @@ from src.models.models.pl_wrappers import PlOnehotWrapper
 import wandb
 
 args = {"learning_rate": 1e-3, 
-        "batch": 8,
+        "batch_size": 4,
         "num_workers": 4,
         "train_samples" : 7000, 
         "architecture": "CNN",
@@ -52,8 +52,8 @@ x = x.permute(0,1,3,2)
 x = x.type(torch.FloatTensor)  # as it needs to be a float
 train = TensorDataset(x[:config.train_samples], target[:config.train_samples])
 val = TensorDataset(x[config.train_samples:], target[config.train_samples:])
-train_loader = DataLoader(train, batch_size=config.batch, shuffle=True, num_workers=config.num_workers)
-val_loader = DataLoader(val, batch_size=config.batch, shuffle=False, num_workers=config.num_workers)
+train_loader = DataLoader(train, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers)
+val_loader = DataLoader(val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers)
 
 # Build model
 encoder = Encoder(
