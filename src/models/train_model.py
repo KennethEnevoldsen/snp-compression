@@ -12,8 +12,6 @@ import pathlib
 
 
 import torch
-from torch.nn.functional import cross_entropy
-from torch.nn.modules.conv import Conv2d
 from torch.utils.data import TensorDataset, DataLoader
 
 from src.models.models.cnn import Encoder, Decoder
@@ -30,7 +28,7 @@ x = torch.unsqueeze(x, 1)
 x = x.permute(0,1,3,2)
 
 x = x.type(torch.FloatTensor)  # as it needs to be a float
-ds_ae = TensorDataset(x, x)
+ds_ae = TensorDataset(x, target)
 loader = DataLoader(ds_ae, batch_size=4, shuffle=True)
 
 encoder = Encoder(
@@ -52,23 +50,91 @@ decoder = Decoder(
     strides=[1, 1, 1],
 )
 
-# y_1 = decoder.fc(y_)
-# y_1v = y_1.view((32, 1, 1, -1))
-# y_2 = decoder.upsampling[0](y_1v)
-# up = nn.Upsample(scale_factor = (1, 3))
-# up(y_1v).shape
-# y_2.shape
-
 x_ = decoder(y_)
 
 x_ = torch.squeeze(x_, 1)
 x = torch.squeeze(x, 1)
 
+from torch import nn
+
+x = x[0:1, :, :]
+x_ = x_[0:1, :, :]
+target = target[0:1, :]
+
+print("x.shape", x.shape)
+print("x_.shape", x_.shape)
+print("target.shape", target.shape)
+
+loss = nn.NLLLoss()
+m = nn.LogSoftmax(dim=1)
+out = torch.exp(m(x))
+
+print("x", x[0,:,0])
+print("logsoftmax(x)", m(x)[0,:,0])
+print("softmax(x)", out[0,:,0])
+
+print(loss(input = m(x), target = target))
+print("?", loss(input = x, target = target))
+
+
+print("zero?:", loss(input = m(x), target = target))
+x2 = x
+print(x2[0,:,0])
+for i in range(1000):
+    if target[0, i] == 2:
+        x2[0,:,i] = torch.Tensor([0, 0, 40, 0]) # introduce error
+    if target[0, i] == 2:
+        x2[0,:,i] = torch.Tensor([0, 0, 40, 0]) # introduce error
+    x2[0,:,i] = x2[0,:,i]*10
+
+print(x2[0,:,0])
+print("zero??:", loss(input = m(x2), target = target))
+print("not zero:", loss(input = m(x_), target = target))
+
+
+print("limited:", loss(input = m(x)[:, :, :10], target = target[:, :10]))
+print(m(x)[:, :, :10])
+print(x[:, :, :10])
+print(target[:, :10])
+print(loss(input = m(x)[:, :, :10], target = target[:, :10]).dtype)
+print(target.dtype)
+print(x.dtype)
+print("zero-limited?:", loss(input = m(x)[:, :, :1000], target = target[:, :1000]))
+
+raise Exception("!")
+
 loss = torch.nn.CrossEntropyLoss()
 
 
+
+print("x.shape", x.shape)
+print("x_.shape", x_.shape)
+print("target.shape", target.shape)
+
+x = x[0:1, :, :]
+x_ = x_[0:1, :, :]
+target = target[0:1, :]
+
+print("x.shape", x.shape)
+print("x_.shape", x_.shape)
+
 print("zero?:", loss(x, target))
+x2 = x
+print(x2[0,:,0])
+x2[0,:,0] = torch.Tensor([0, 1, 0, 0])
+print(x2[0,:,0])
+print("zero??:", loss(x2, target))
 print("not zero:", loss(x_, target))
+
+
+n=0
+for i in range(x.shape[-1]):
+    if x[0,:,i].argmax() != target[0, i]:
+        n+=1 
+        print("x[0,:,i]", x[0,:,i])
+        print("target[0, i]", target[0, i])
+
+print("n", n)
 
 # x[0,:, 0]
 # x_[0,:, 0]
