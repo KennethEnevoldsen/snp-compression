@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH -t 1-0:0:0
 #SBATCH --mem 64g
 #SBATCH -c 8
 

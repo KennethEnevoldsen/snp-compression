@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "src/models/train_model.py", line 14, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
