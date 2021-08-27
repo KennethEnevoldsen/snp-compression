@@ -20,7 +20,11 @@ The input will be SNPs which will be input as either
 - [x] simple denoising autoencoder
     - [x] Build CNN
     - [x] Simple backward pass (1 epoch)
-    - 
+- [x] calculate Accuracy, F1, confusion matrix
+- [ ] Actually train a model
+- [ ] setup sweep
+- [ ] measure time taken to convert files
+
 
 # Remember to run a interactive window
 

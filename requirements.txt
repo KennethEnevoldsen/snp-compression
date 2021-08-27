@@ -22,6 +22,7 @@ plinkio==0.9.8
 torch==1.8.1
 pytorch-lightning==1.3.3
 wandb==0.12.0
+torchmetrics
 
 # utility
 wasabi==0.8.2
