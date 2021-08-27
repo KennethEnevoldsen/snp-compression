@@ -17,3 +17,4 @@ gnodes
 
 # Commands
 sbatch slurm/train_cnn_cpu.sh -A NLPPred
+sbatch slurm/train_cnn.sh -A NLPPred
