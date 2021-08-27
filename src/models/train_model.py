@@ -5,6 +5,7 @@ python src/models/train_model.py
 """
 
 import sys
+
 sys.path.append(".")
 sys.path.append("../../.")
 import os
@@ -21,20 +22,22 @@ from src.data.dataloader import snps_to_one_hot
 from src.models.models.pl_wrappers import PlOnehotWrapper
 
 from pytorch_lightning.loggers import WandbLogger
-from pytorch_lightning import Trainer, callbacks
+from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import EarlyStopping
 
-# wandb + config
 import wandb
 
-args = {"learning_rate": 1e-3, 
-        "batch_size": 4,
-        "num_workers": 4,
-        "train_samples" : 7000, 
-        "architecture": "CNN",
-        "encode_size": 128,
-        "log_step": 50,
-        "check_val_every_n_epoch": 1}
+# wandb + config
+args = {
+    "learning_rate": 1e-3,
+    "batch_size": 4,
+    "num_workers": 4,
+    "train_samples": 7000,
+    "architecture": "CNN",
+    "encode_size": 128,
+    "log_step": 50,
+    "check_val_every_n_epoch": 1,
+}
 
 wandb.init(config=args)
 config = wandb.config
@@ -47,13 +50,17 @@ target = x.T.type(torch.LongTensor)
 x = snps_to_one_hot(target)
 
 x = torch.unsqueeze(x, 1)
-x = x.permute(0,1,3,2)
+x = x.permute(0, 1, 3, 2)
 
 x = x.type(torch.FloatTensor)  # as it needs to be a float
-train = TensorDataset(x[:config.train_samples], target[:config.train_samples])
-val = TensorDataset(x[config.train_samples:], target[config.train_samples:])
-train_loader = DataLoader(train, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers)
-val_loader = DataLoader(val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers)
+train = TensorDataset(x[: config.train_samples], target[: config.train_samples])
+val = TensorDataset(x[config.train_samples :], target[config.train_samples :])
+train_loader = DataLoader(
+    train, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers
+)
+val_loader = DataLoader(
+    val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
+)
 
 # Build model
 encoder = Encoder(
@@ -86,11 +93,13 @@ wandb.watch(model, log_freq=config.log_step)
 # train model
 wandb_logger = WandbLogger()
 
-early_stopping = EarlyStopping('val_loss')
+early_stopping = EarlyStopping("val_loss")
 
-trainer = Trainer(logger=wandb_logger,
-                  log_every_n_steps=config.log_step, 
-                  check_val_every_n_epoch=config.check_val_every_n_epoch,
-                  callbacks=[early_stopping])
+trainer = Trainer(
+    logger=wandb_logger,
+    log_every_n_steps=config.log_step,
+    check_val_every_n_epoch=config.check_val_every_n_epoch,
+    callbacks=[early_stopping],
+)
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
