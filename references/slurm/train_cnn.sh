@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 4:0:0
+#SBATCH -t 1-12
 #SBATCH --partition gpu
 #SBATCH --mem 64g
 #SBATCH -c 8
