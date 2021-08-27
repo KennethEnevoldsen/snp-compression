@@ -17,9 +17,9 @@ The input will be SNPs which will be input as either
 
 
 ## To do:
-- [ ] simple denoising autoencoder
-    - [ ] Build CNN
-    - [ ] Simple backward pass (1 epoch)
+- [x] simple denoising autoencoder
+    - [x] Build CNN
+    - [x] Simple backward pass (1 epoch)
     - 
 
 # Remember to run a interactive window
