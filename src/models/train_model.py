@@ -18,11 +18,11 @@ from torch.utils.data import TensorDataset, DataLoader
 from src.models.models.cnn import Encoder, Decoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
 from src.data.dataloader import snps_to_one_hot
-
-from pytorch_lightning.loggers import WandbLogger
-from pytorch_lightning import Trainer
 from src.models.models.pl_wrappers import PlOnehotWrapper
 
+from pytorch_lightning.loggers import WandbLogger
+from pytorch_lightning import Trainer, callbacks
+from pytorch_lightning.callbacks import EarlyStopping
 
 # wandb + config
 import wandb
@@ -85,7 +85,12 @@ wandb.watch(model, log_freq=config.log_step)
 
 # train model
 wandb_logger = WandbLogger()
+
+early_stopping = EarlyStopping('val_loss')
+
 trainer = Trainer(logger=wandb_logger,
                   log_every_n_steps=config.log_step, 
-                  check_val_every_n_epoch=config.check_val_every_n_epoch)
+                  check_val_every_n_epoch=config.check_val_every_n_epoch,
+                  callbacks=[early_stopping])
+
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
