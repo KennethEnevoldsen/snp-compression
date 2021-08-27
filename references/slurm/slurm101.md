@@ -26,5 +26,6 @@ gnodes
 
 squeue -u kce
 
+
 sbatch slurm/train_cnn_cpu.sh -A NLPPred
-sbatch slurm/train_cnn.sh -A NLPPred
+sbatch references/slurm/train_cnn.sh -A NLPPred
