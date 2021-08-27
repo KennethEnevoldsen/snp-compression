@@ -2,6 +2,13 @@
 # 101 on Slurm
 
 
+# Remember to run a interactive window
+
+
+```
+srun -p normal --pty -c 4 --mem=16g bash
+```
+
 ## Run a job
 
 sbatch {filename}.sh -A NLPPred

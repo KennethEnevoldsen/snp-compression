@@ -1,0 +1,9 @@
+wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.12.1
+wandb: Syncing run gallant-morning-33
+wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
+wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/2u3uddib
+wandb: Run data is saved locally in /home/kce/github/snp-compression/wandb/run-20210827_134154-2u3uddib
+wandb: Run `wandb offline` to turn off syncing.
+/var/spool/slurmd/job53350849/slurm_script: line 5: 15948 Killed                  python src/models/train_model.py
+slurmstepd: error: Detected 3 oom-kill event(s) in StepId=53350849.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

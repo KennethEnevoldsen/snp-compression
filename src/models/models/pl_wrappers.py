@@ -2,7 +2,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torchmetrics
-
+import wandb
 
 class PlOnehotWrapper(pl.LightningModule):
     def __init__(
@@ -13,7 +13,6 @@ class PlOnehotWrapper(pl.LightningModule):
         self.loss = nn.CrossEntropyLoss()
         self.lr = learning_rate
         self.accuracy = torchmetrics.Accuracy()
-        self.conf_mat = torchmetrics.ConfusionMatrix(num_classes=num_classes)
         self.f1 = torchmetrics.F1(num_classes=num_classes, mdmc_average="global")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -38,7 +37,7 @@ class PlOnehotWrapper(pl.LightningModule):
         preds = probs.argmax(dim=1)
         self.log("train_acc", self.accuracy(probs, y))
         self.log("train_f1", self.f1(preds, y))
-        self.log("train_conf_mat", self.conf_mat(preds, y))
+        # self.log("train_conf_mat", self.conf_mat(preds, y))
 
         return loss
 
@@ -54,10 +53,10 @@ class PlOnehotWrapper(pl.LightningModule):
 
         self.log("val_acc", self.accuracy(probs, y))
         self.log("val_f1", self.f1(preds, y))
-        self.log("val_conf_mat", self.conf_mat(preds, y))
-
-
-
-# pl_model = PlOnehotWrapper(model)
-# trainer = pl.Trainer(gpus=1, precision=16, limit_train_batches=0.5)
-# trainer.fit(model, train_loader, val_loader)
+        self.logger.experiment.log(
+            {
+                "conf": wandb.plot.confusion_matrix(
+                    preds=preds.view((-1)).numpy(), y_true=y.view((-1)).numpy()
+                )
+            }
+        )
