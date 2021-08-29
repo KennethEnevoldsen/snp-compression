@@ -56,7 +56,7 @@ class PlOnehotWrapper(pl.LightningModule):
         self.logger.experiment.log(
             {
                 "conf": wandb.plot.confusion_matrix(
-                    preds=preds.view((-1)).numpy(), y_true=y.view((-1)).numpy()
+                    preds=preds.view((-1)), y_true=y.view((-1))
                 )
             }
         )
