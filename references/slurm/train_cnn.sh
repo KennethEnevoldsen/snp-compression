@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -t 1-12
+#SBATCH --time=12:00:00
 #SBATCH --partition gpu
 #SBATCH --mem 64g
 #SBATCH -c 8
