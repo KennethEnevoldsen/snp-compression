@@ -34,8 +34,8 @@ args = {
     "num_workers": 4,
     "train_samples": 7000,
     "architecture": "CNN",
-    "encode_size": 128,
-    "log_step": 50,
+    "encode_size": 512,
+    "log_step": 1000,
     "check_val_every_n_epoch": 1,
 }
 
@@ -93,7 +93,7 @@ wandb.watch(model, log_freq=config.log_step)
 # train model
 wandb_logger = WandbLogger()
 
-early_stopping = EarlyStopping("val_loss")
+early_stopping = EarlyStopping("val_loss", patience=10)
 
 trainer = Trainer(
     logger=wandb_logger,
@@ -104,3 +104,23 @@ trainer = Trainer(
 )
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
+
+def log_conf_matrix(model, dataloader):
+    preds = []
+    y = []
+    for x, y_ in dataloader:
+        x_hat = model(x)
+        probs_ = x_hat.softmax(dim=1)
+        y.append(y_)
+        preds.append(probs_.argmax(dim=1))
+
+    preds =torch.cat(preds, dim=0)
+    y =torch.cat(y, dim=0)
+    wandb.log(
+            {
+                "conf": wandb.plot.confusion_matrix(
+                    preds=preds.view((-1)).cpu().numpy(), y_true=y.view((-1)).cpu().numpy()
+                )
+            }
+        )
+log_conf_matrix(model, val_loader)

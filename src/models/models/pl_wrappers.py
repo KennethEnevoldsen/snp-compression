@@ -37,7 +37,6 @@ class PlOnehotWrapper(pl.LightningModule):
         preds = probs.argmax(dim=1)
         self.log("train_acc", self.accuracy(probs, y))
         self.log("train_f1", self.f1(preds, y))
-        # self.log("train_conf_mat", self.conf_mat(preds, y))
 
         return loss
 
@@ -53,10 +52,4 @@ class PlOnehotWrapper(pl.LightningModule):
 
         self.log("val_acc", self.accuracy(probs, y))
         self.log("val_f1", self.f1(preds, y))
-        self.logger.experiment.log(
-            {
-                "conf": wandb.plot.confusion_matrix(
-                    preds=preds.view((-1)), y_true=y.view((-1))
-                )
-            }
-        )
+

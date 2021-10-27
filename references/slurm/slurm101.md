@@ -28,3 +28,4 @@ squeue -u kce
 
 <!-- sbatch -A NLPPred slurm/train_cnn_cpu.sh  -->
 sbatch -A NLPPred references/slurm/train_cnn.sh
+sbatch -A NLPPred references/slurm/convert_data_to_tensor.sh
