@@ -17,6 +17,7 @@ black
 
 # data handling plink bfile format
 plinkio==0.9.8
+pandas_plink
 
 # ml
 torch==1.8.1
@@ -26,3 +27,6 @@ torchmetrics
 
 # utility
 wasabi==0.8.2
+
+# data
+datasets

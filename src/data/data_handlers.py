@@ -88,22 +88,22 @@ def write_plink_to_pt_batched(
     def batch_plink_to_tensor(
         interval: Tuple[int, int], n_loci: int = n_loci
     ) -> torch.Tensor:
-        s = time.time()
-        stop = False
         s, e = interval
         batch_size = e - s
+        start = time.time()
         X = torch.zeros(batch_size, n_loci, dtype=torch.int8)
-        for r, row in enumerate(plink):
+        for r, row in enumerate(plink): # looping over SNP
             # and write file
-            for c, geno in enumerate(row):
+            for c, geno in enumerate(row): # looping over samples
                 if c < (interval[0] - 1):
                     continue
-                if c == interval[1]:
-                    stop = True
-                    continue
-                X[r][c] = geno
-            if stop is True:
-                break
+                if c >= interval[1]:
+                    break
+                X[c][r] = geno
+
+            if r % 1000 == 0:
+                e = time.time()-start
+                print(f"\tCurrently at {r}/{n_loci}. Time {e}")
         y = torch.tensor([s.phenotype for s in samples[s:e]], dtype=torch.int8)
         return X, y
 
@@ -121,9 +121,9 @@ def write_plink_to_pt_batched(
     plink_name = os.path.split(plink_path)[-1]
     Path(save_path).mkdir(parents=True, exist_ok=True)
 
-    ss = time.time()
-    for interval in intervals[-1:]:  # change this assuming it works
-        s = time.time()
+    start_overall = time.time()
+    for interval in intervals:
+        start = time.time()
         X, y = batch_plink_to_tensor(interval, n_loci)
 
         x_path = os.path.join(
@@ -137,10 +137,10 @@ def write_plink_to_pt_batched(
         torch.save(X, x_path)
         msg.info(f"Writing phenotype (Y) to {y_path}")
         torch.save(y, y_path)
-        e = time.time() - s
+        e = time.time() - start
         print("\t Time: ", e)
 
-    e = time.time() - ss
+    e = time.time() - start_overall
     msg.good("Finished. \n\tTotal Time: ", e)
     plink.close()
 

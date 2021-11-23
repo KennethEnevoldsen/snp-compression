@@ -1,0 +1,13 @@
+[38;5;4mℹ Writing SNPs/genotype (X) to
+data/processed/tensors/dsmwpred/x_0-10000_geno.pt[0m
+[38;5;4mℹ Writing phenotype (Y) to
+data/processed/tensors/dsmwpred/y_0-10000_geno.pt[0m
+	 Time:  33679.69444870949
+Traceback (most recent call last):
+  File "src/data/main.py", line 11, in <module>
+    write_plink_to_pt_batched(
+  File "/home/kce/github/snp-compression/src/data/data_handlers.py", line 122, in write_plink_to_pt_batched
+    Path(save_path).mkdir(parents=True, exist_ok=True)
+  File "/home/kce/github/snp-compression/src/data/data_handlers.py", line 101, in batch_plink_to_tensor
+    break
+IndexError: index 10000 is out of bounds for dimension 0 with size 10000

@@ -16,7 +16,18 @@ The file test.bim is the extended map file, which also includes the names of the
 The file test.fam is simply the first six columns of test.ped
 ```
      1 1 0 0 1 0
-     1 2 0 0 1 0
+     1 2 0 0 1 0z
+     1 3 1 2 1 2
+     2 1 0 0 1 0
+     2 2 0 0 1 2
+     2 3 1 2 1 2
+```
+
+## bed
+The file test.bedd is simply the first six columns of test.ped
+```
+     1 1 0 0 1 0
+     1 2 0 0 1 0z
      1 3 1 2 1 2
      2 1 0 0 1 0
      2 2 0 0 1 2
