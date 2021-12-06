@@ -17,7 +17,7 @@ black
 
 # data handling plink bfile format
 plinkio==0.9.8
-pandas_plink
+pandas_plink==1.15.0
 
 # ml
 torch==1.8.1
