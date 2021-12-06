@@ -2,7 +2,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torchmetrics
-import wandb
+
 
 class PlOnehotWrapper(pl.LightningModule):
     def __init__(
@@ -52,4 +52,3 @@ class PlOnehotWrapper(pl.LightningModule):
 
         self.log("val_acc", self.accuracy(probs, y))
         self.log("val_f1", self.f1(preds, y))
-

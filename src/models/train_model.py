@@ -33,10 +33,16 @@ args = {
     "batch_size": 4,
     "num_workers": 4,
     "train_samples": 7000,
-    "architecture": "CNN",
     "encode_size": 512,
     "log_step": 1000,
     "check_val_every_n_epoch": 1,
+    "optimizer": "Adam",
+    "architecture": "CNN",
+    "snp_encoding": "one-hot",
+    "snp-location-feature": "None",
+    "chromosome": 6,
+    # filters
+    # layers
 }
 
 wandb.init(config=args)
