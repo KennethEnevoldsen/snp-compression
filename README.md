@@ -3,6 +3,16 @@ snp-compression
 
 This project seeks to compress snp's using deep neural networks.
 
+## Plan of actual
+- [ ] **RUNNING** Tranpose and save chromosome 1-22 to the processed datafolder
+    - Take the time for each of these to show to Doug
+- [ ] Benchmark the best way to sample from the matrix (shuffle buffer simply sampling)
+    - Try sampling first split the list into batches shuffles
+    - **WAITING FOR TEST**: Just run though an entire CHROM and record the start time and how long it took. 
+- [ ] Train a model to compress chromosome 22 (shortest chromosome)
+- [ ] Train a model to compress chromosome 6 (include the highly correlated region MHC)
+
+
 
 Project Organization
 ------------
@@ -16,7 +26,7 @@ Project Organization
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── *_models             <- Trained and serialized models, model predictions, or model summaries
+    ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
