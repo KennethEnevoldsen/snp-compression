@@ -1,8 +1,5 @@
 import torch.nn as nn
-import torch.nn.functional as F
 import torch
-
-import pytorch_lightning as pl
 
 
 class DenoisingAutoencoder(nn.Module):
@@ -15,9 +12,4 @@ class DenoisingAutoencoder(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.dropout(x)
         x = self.encoder(x)
-        return self.decoder(x)
-
-
-# if __name__ == "__main__":
-#     from .cnn import encoder, decoder
-#     dae = DenoisingAutoencoder(encoder, decoder)
+        return self.decoder(x, self.encoder.forward_shapes)

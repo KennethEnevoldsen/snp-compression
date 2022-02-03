@@ -1,9 +1,12 @@
-from typing import Iterable
-import torch
-from torch.utils.data import Dataset, IterableDataset, DataLoader
-
-import dask.array as da
+import os
 import random
+from typing import Iterator, Tuple
+
+import numpy as np
+import dask.array as da
+
+import torch
+from torch.utils.data import DataLoader, Dataset, IterableDataset
 
 
 class DaskMapDataset(Dataset):
@@ -33,7 +36,7 @@ class DaskIterableDataset(IterableDataset):
         self.array = array
         self.buffer_size = buffer_size
 
-    def __iter__(self) -> Iterable:
+    def __iter__(self) -> Iterator:
         n, _ = self.array.shape
 
         starts = range(0, n, self.buffer_size)
@@ -84,17 +87,37 @@ class ShuffleDataset(IterableDataset):
             pass
 
 
-def load_dataset(chromosome: int, buffer_size: int = 1024) -> ShuffleDataset:
+def load_dataset(
+    chromosome: int,
+    buffer_size: int = 1024,
+    p_val: float = 0.1,
+    p_test: float = 0.1,
+) -> Tuple[ShuffleDataset, ShuffleDataset, ShuffleDataset]:
     """Load the specific chromosome required"""
-    f_path = (os.path.dirname(os.path.abspath(__file__)),)
+    f_path = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(f_path, "..", "..", "data", "interim", f"chrom_{chromosome}")
     arr = da.from_zarr(path)
-    dataset = DaskIterableDataset(array=arr, buffer_size=buffer_size)
-    return ShuffleDataset(dataset, buffer_size=buffer_size)
+
+    n_val = int(arr.shape[0] // (1 / p_val))
+    n_test = int(arr.shape[0] // (1 / p_test))
+
+    splits = np.zeros((arr.shape[0],))
+    splits[:n_val] = 1
+    splits[n_val:n_val + n_test] = 2
+    np.random.seed(1234) # ensures consistent splits
+    np.random.shuffle(splits)
+    
+    train = arr[splits == 0].rechunk()
+    val = arr[splits == 1].rechunk()
+    test = arr[splits == 2].rechunk()
+
+    ds_train = DaskIterableDataset(array=train, buffer_size=buffer_size)
+    ds_val = DaskIterableDataset(array=val, buffer_size=buffer_size)
+    ds_test = DaskIterableDataset(array=test, buffer_size=buffer_size)
+    return (ds_train, ds_val, ds_test)
 
 
 if __name__ == "__main__":
-    import os
     import time
 
     path = os.path.join("data", "interim", "chrom_1")
@@ -103,24 +126,54 @@ if __name__ == "__main__":
     # testing the speeds of the different datasets:
 
     # Iterable dataset
-    dataset = DaskIterableDataset(array=arr)
-    dl = DataLoader(dataset, batch_size=64, shuffle=False)
-    s = time.time()
-    iter_dl = iter(dl)
-    n = 0
-    for i, d in enumerate(iter(dl)):
-        n += d.shape[0]
-        assert isinstance(d, torch.Tensor)
-        assert n > 0
-        if i % 100 == 0 and i != 0:
-            print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-        if i > 200:
-            break
-    print(f"iterable took {time.time() - s}")
+    # dataset = DaskIterableDataset(array=arr)
+    # dl = DataLoader(dataset, batch_size=64, shuffle=False)
+    # s = time.time()
+    # iter_dl = iter(dl)
+    # n = 0
+    # for i, d in enumerate(iter(dl)):
+    #     n += d.shape[0]
+    #     assert isinstance(d, torch.Tensor)
+    #     assert n > 0
+    #     if i % 100 == 0 and i != 0:
+    #         print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
+    #     if i > 200:
+    #         break
+    # print(f"iterable took {time.time() - s}")
 
     # .. with buffer
-    dataset = DaskIterableDataset(array=arr)
-    dataset = ShuffleDataset(dataset, 1024)
+    # dataset = DaskIterableDataset(array=arr)
+    # dataset = ShuffleDataset(dataset, 1024)
+    # dl = DataLoader(dataset, batch_size=64, shuffle=False)
+    # s = time.time()
+    # iter_dl = iter(dl)
+    # n = 0
+    # for i, d in enumerate(iter(dl)):
+    #     n += d.shape[0]
+    #     assert isinstance(d, torch.Tensor)
+    #     assert n > 0
+    #     if i % 100 == 0 and i != 0:
+    #         print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
+    #     if i > 200:
+    #         break
+    # print(f"iterable w. shuffle took {time.time() - s}")
+
+    # map style dataset (allows for a 'true' shuffle but is MUCH slower)
+    # dataset = DaskMapDataset(array=arr)
+    # dl = DataLoader(dataset, batch_size=64, shuffle=True)
+    # s = time.time()
+    # iter_dl = iter(dl)
+    # n = 0
+    # for i, d in enumerate(iter(dl)):
+    #     n += d.shape[0]
+    #     assert isinstance(d, torch.Tensor)
+    #     assert n > 0
+    #     print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
+    #     if i > 200:
+    #         break
+    # print(f"map took {time.time() - s}")
+
+    dataset, val, test = load_dataset(22, 1024)
     dl = DataLoader(dataset, batch_size=64, shuffle=False)
     s = time.time()
     iter_dl = iter(dl)
@@ -128,24 +181,3 @@ if __name__ == "__main__":
     for i, d in enumerate(iter(dl)):
         n += d.shape[0]
         assert isinstance(d, torch.Tensor)
-        assert n > 0
-        if i % 100 == 0 and i != 0:
-            print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-        if i > 200:
-            break
-    print(f"iterable w. shuffle took {time.time() - s}")
-
-    # map style dataset (allows for a 'true' shuffle but is MUCH slower)
-    dataset = DaskMapDataset(array=arr)
-    dl = DataLoader(dataset, batch_size=64, shuffle=True)
-    s = time.time()
-    iter_dl = iter(dl)
-    n = 0
-    for i, d in enumerate(iter(dl)):
-        n += d.shape[0]
-        assert isinstance(d, torch.Tensor)
-        assert n > 0
-        print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-        if i > 200:
-            break
-    print(f"map took {time.time() - s}")

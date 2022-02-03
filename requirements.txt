@@ -1,23 +1,11 @@
-# local package
--e .
-
-# external requirements
-click
-Sphinx
-coverage
-awscli
-python-dotenv>=0.5.1
-jupyter
-
-#style
+# Style
 flake8
 black
 
-
-
 # data handling plink bfile format
-plinkio==0.9.8
+# plinkio==0.9.8
 pandas_plink==1.15.0
+dask_ml==2022.1.22
 
 # ml
 torch==1.8.1
@@ -27,6 +15,3 @@ torchmetrics
 
 # utility
 wasabi==0.8.2
-
-# data
-datasets
