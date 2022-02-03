@@ -84,7 +84,7 @@ class OneHotOutput(nn.Module):
 
         # cut shape to output
         if x.shape[-2] > out_size:
-            diff = x.shape[-2] - out_size - x.shape[-2]
+            diff = x.shape[-2] - out_size
             diff_start = diff // 2
             diff_end = diff - diff_start
             x = x[:, :, diff_start:-diff_end, :]
@@ -487,6 +487,7 @@ class SNPDecoder(nn.Module):
             # assert x.shape[-2] == encoder_shapes[-(i+2)]
         x = self.conv1(x, encoder_shapes[0])
         print(f"\Output Layer - x.shape={x.shape}")
+        x = x.permute(0, 2, 1)
         return x
 
 

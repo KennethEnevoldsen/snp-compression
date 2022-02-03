@@ -23,12 +23,14 @@ class PlOnehotWrapper(pl.LightningModule):
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
-        x, y = train_batch
+        x = train_batch
+        x = torch.nan_to_num(x, nan=3)
+        y = x.type(torch.LongTensor)
         # y shape should be (batch, sequence length)
         # x should be the one hot encoded version of y
 
         # in shape should be (batch, channels=1, genotype/snp=4, sequence length)
-        x_hat = self.model(x)
+        x_hat = self.forward(x)
         # out shape should be (batch, genotype/snp=4, sequence length)
         loss = self.loss(x_hat, y)
         self.log("train_loss", loss)
@@ -41,9 +43,13 @@ class PlOnehotWrapper(pl.LightningModule):
         return loss
 
     def validation_step(self, val_batch, batch_idx):
-        x, y = val_batch
+        x = val_batch
+        x = torch.nan_to_num(x, nan=3)
+        y = x.type(torch.LongTensor)
+        # y shape should be (batch, sequence length)
 
-        x_hat = self.model(x)
+        # in shape should be (batch, channels=1, genotype/snp=4, sequence length)
+        x_hat = self.forward(x)
         loss = self.loss(x_hat, y)
 
         self.log("val_loss", loss)

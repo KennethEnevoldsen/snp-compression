@@ -18,6 +18,7 @@ from pytorch_lightning.callbacks import EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 
 from src.data.dataloaders import load_dataset
+from src.data.data_handlers import snps_to_one_hot
 
 from src.models.models.SNPNet import SNPEncoder, SNPDecoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
@@ -28,7 +29,6 @@ args = {
     "learning_rate": 1e-3,
     "batch_size": 4,
     "num_workers": 4,
-    "train_samples": 7000,
     "encode_size": 512,
     "log_step": 1000,
     "check_val_every_n_epoch": 1,
@@ -36,6 +36,8 @@ args = {
     "architecture": "SNPNet",
     "snp_encoding": "one-hot",
     "snp-location-feature": "None",
+    "p_val": 0.01,
+    "p_test": 0.01,
     "chromosome": 6,
     # filters
     # layers
@@ -45,7 +47,9 @@ wandb.init(config=args)
 config = wandb.config
 
 # Build dataset
-train, val, test = load_dataset(chromosome=config.chromosome)
+train, val, test = load_dataset(
+    chromosome=config.chromosome, p_val=config.p_val, p_test=config.p_val
+)
 train_loader = DataLoader(
     train, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
 )
@@ -72,7 +76,7 @@ trainer = Trainer(
     log_every_n_steps=config.log_step,
     check_val_every_n_epoch=config.check_val_every_n_epoch,
     callbacks=[early_stopping],
-    gpus=-1,
+    # gpus=-1,
 )
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)

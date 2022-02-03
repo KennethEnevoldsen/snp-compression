@@ -29,10 +29,12 @@ def read_plink_as_tensor(file: str) -> Tuple[torch.Tensor, torch.Tensor]:
     return x, y
 
 
-def snps_to_one_hot(x: torch.Tensor) -> torch.Tensor:
+def snps_to_one_hot(x: torch.Tensor, convert_nan_to_cat: bool = False) -> torch.Tensor:
     """
     transform tensor of snps to one hot vectors
     """
+    if convert_nan_to_cat:
+        x = torch.nan_to_num(x, nan=3)
     one_hot = F.one_hot(x.to(torch.int64), num_classes=4)
     return one_hot
 
