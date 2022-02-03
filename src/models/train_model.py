@@ -49,8 +49,6 @@ wandb.init(config=args)
 config = wandb.config
 
 
-
-
 # Build dataset
 p = pathlib.Path(__file__).parent.parent.parent.resolve()
 x = torch.load(os.path.join(p, "data", "processed", "tensors", "x_mhcuvps.pt"))
@@ -69,7 +67,6 @@ train_loader = DataLoader(
 val_loader = DataLoader(
     val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
 )
-
 
 
 # Build model
@@ -115,6 +112,7 @@ trainer = Trainer(
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
+
 def log_conf_matrix(model, dataloader):
     preds = []
     y = []
@@ -124,13 +122,15 @@ def log_conf_matrix(model, dataloader):
         y.append(y_)
         preds.append(probs_.argmax(dim=1))
 
-    preds =torch.cat(preds, dim=0)
-    y =torch.cat(y, dim=0)
+    preds = torch.cat(preds, dim=0)
+    y = torch.cat(y, dim=0)
     wandb.log(
-            {
-                "conf": wandb.plot.confusion_matrix(
-                    preds=preds.view((-1)).cpu().numpy(), y_true=y.view((-1)).cpu().numpy()
-                )
-            }
-        )
+        {
+            "conf": wandb.plot.confusion_matrix(
+                preds=preds.view((-1)).cpu().numpy(), y_true=y.view((-1)).cpu().numpy()
+            )
+        }
+    )
+
+
 log_conf_matrix(model, val_loader)

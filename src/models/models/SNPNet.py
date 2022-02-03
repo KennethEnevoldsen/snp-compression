@@ -295,7 +295,7 @@ class SNPEncoder(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         self.forward_shapes = []
         self.forward_shapes.append(x.shape[-2])
-        
+
         print(f"input - x.shape={x.shape}")
         x = self.conv1(x)
         self.forward_shapes.append(x.shape[-2])
@@ -475,7 +475,7 @@ class SNPDecoder(nn.Module):
     def forward(self, x: torch.Tensor, encoder_shapes: List[int]) -> torch.Tensor:
         print(f"decoder input - x.shape={x.shape}")
         for i, l in enumerate(self.layers):
-            x = l(x=x, enc_size=encoder_shapes[-(i+2)])
+            x = l(x=x, enc_size=encoder_shapes[-(i + 2)])
             print(f"\tlayer {i} - x.shape={x.shape}")
             # assert x.shape[-2] == encoder_shapes[-(i+2)]
         x = self.conv1(x, encoder_shapes[0])

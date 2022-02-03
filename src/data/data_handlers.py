@@ -56,7 +56,7 @@ def write_plink_to_pt(
     plink_path: str = os.path.join("data", "raw", "mhcuvps"),
     save_path: str = os.path.join("data", "processed", "tensors"),
 ) -> None:
-    
+
     plink_name = os.path.split(plink_path)[-1]
     x, y = read_plink_as_tensor(plink_path)
 
@@ -75,7 +75,7 @@ def write_plink_to_pt_batched(
     plink_path: str, save_path: str, batch_size: int = 10_000
 ) -> None:
     """
-    Convert a plink file to pytorch tensor and write them to .pt in chunk of size (number of loci) x (batch size). 
+    Convert a plink file to pytorch tensor and write them to .pt in chunk of size (number of loci) x (batch size).
     """
     plink = plinkfile.open(plink_path)
 
@@ -92,9 +92,9 @@ def write_plink_to_pt_batched(
         batch_size = e - s
         start = time.time()
         X = torch.zeros(batch_size, n_loci, dtype=torch.int8)
-        for r, row in enumerate(plink): # looping over SNP
+        for r, row in enumerate(plink):  # looping over SNP
             # and write file
-            for c, geno in enumerate(row): # looping over samples
+            for c, geno in enumerate(row):  # looping over samples
                 if c < (interval[0] - 1):
                     continue
                 if c >= interval[1]:
@@ -102,7 +102,7 @@ def write_plink_to_pt_batched(
                 X[c][r] = geno
 
             if r % 1000 == 0:
-                e = time.time()-start
+                e = time.time() - start
                 print(f"\tCurrently at {r}/{n_loci}. Time {e}")
         y = torch.tensor([s.phenotype for s in samples[s:e]], dtype=torch.int8)
         return X, y
@@ -143,5 +143,3 @@ def write_plink_to_pt_batched(
     e = time.time() - start_overall
     msg.good("Finished. \n\tTotal Time: ", e)
     plink.close()
-
-

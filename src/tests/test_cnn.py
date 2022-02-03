@@ -1,5 +1,5 @@
-
 import sys
+
 sys.path.append(".")
 sys.path.append("../../.")
 import os
@@ -15,6 +15,7 @@ from src.models.models.cnn import Encoder, Decoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
 from src.data.dataloader import snps_to_one_hot
 
+
 def test_forward():
     p = pathlib.Path(__file__).parent.parent.parent.resolve()
     x = torch.load(os.path.join(p, "data", "processed", "tensors", "x_mhcuvps.pt"))
@@ -22,7 +23,7 @@ def test_forward():
     x = snps_to_one_hot(target)
 
     x = torch.unsqueeze(x, 1)
-    x = x.permute(0,1,3,2)
+    x = x.permute(0, 1, 3, 2)
 
     x = x.type(torch.FloatTensor)  # as it needs to be a float
     ds_ae = TensorDataset(x, target)
