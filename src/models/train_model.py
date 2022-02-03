@@ -18,7 +18,7 @@ from torch.utils.data import TensorDataset, DataLoader
 
 from src.models.models.cnn import Encoder, Decoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
-from src.data.dataloader import snps_to_one_hot
+from src.data.data_handlers import snps_to_one_hot
 from src.models.models.pl_wrappers import PlOnehotWrapper
 
 from pytorch_lightning.loggers import WandbLogger
@@ -49,6 +49,8 @@ wandb.init(config=args)
 config = wandb.config
 
 
+
+
 # Build dataset
 p = pathlib.Path(__file__).parent.parent.parent.resolve()
 x = torch.load(os.path.join(p, "data", "processed", "tensors", "x_mhcuvps.pt"))
@@ -67,6 +69,8 @@ train_loader = DataLoader(
 val_loader = DataLoader(
     val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
 )
+
+
 
 # Build model
 encoder = Encoder(

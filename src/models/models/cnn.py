@@ -33,9 +33,14 @@ class Encoder(nn.Module):
 
         self.fc_input = list(input_size)
         for kernel, filters, stride in zip(conv_kernels, n_filters, strides):
-            self.padding.append(calc_same_padding(kernel, stride=stride))
             self.convolutions.append(
-                nn.Conv2d(self.fc_input[0], filters, kernel_size=kernel, stride=stride)
+                nn.Conv2d(
+                    self.fc_input[0],
+                    filters,
+                    kernel_size=kernel,
+                    stride=stride,
+                    padding="valid",
+                )
             )
             self.fc_input[0] = filters
             self.fc_input[1:] = [self.fc_input[1] // stride, self.fc_input[2] // stride]
@@ -82,9 +87,14 @@ class Decoder(nn.Module):
 
         in_channels = 1
         for kernel, filters, stride in zip(conv_kernels, n_filters, strides):
-            self.padding.append(calc_same_padding(kernel, stride=stride))
             self.convolutions.append(
-                nn.Conv2d(in_channels, filters, kernel_size=kernel, stride=stride)
+                nn.Conv2d(
+                    in_channels,
+                    filters,
+                    kernel_size=kernel,
+                    stride=stride,
+                    padding="valid",
+                )
             )
             in_channels = filters
 
@@ -112,50 +122,3 @@ class Decoder(nn.Module):
             x = self.activation(conv(pad(upsample(x))))
 
         return torch.squeeze(x, 1)
-
-
-def calc_same_padding(kernel: Tuple[int, int], stride: int = 1):
-    """
-    calculate padding function equivalent to the tensorflows "same"
-    """
-    padding = []
-
-    for k in kernel[::-1]:
-        if (k - stride) != 0 and (k - stride) % 2 != 0:
-            padding += [(k - stride) // 2, (k - stride) // 2 + 1]
-        else:
-            padding += [(k - stride) // 2] * 2
-    return partial(F.pad, pad=padding)
-
-
-if __name__ == "__main__":
-    import os
-
-    from src.data.dataloader import read_plink_as_tensor, reshape_to_cnn
-
-    file = os.path.join("data", "raw", "mhcuvps")
-    x, y = read_plink_as_tensor(file)
-    x = reshape_to_cnn(x)[0:2]
-    x.shape  # batch, n channels, height, width
-
-    encoder = Encoder(
-        input_size=(x.shape[-2], x.shape[-1]),
-        encode_size=128,
-        conv_kernels=[(1, 9), (1, 9), (1, 9)],
-        n_filters=[60, 60, 1],
-        strides=[1, 1, 1],
-        maxpool_kernels=[(1, 4), (1, 4), (1, 3)],
-    )
-    x_ = encoder(x)
-    encoder.padding
-
-    decoder = Decoder(
-        input_size=(1, 128),
-        output=x.shape[-1],
-        conv_kernels=[(1, 9), (1, 9), (1, 9)],
-        upsampling_kernels=[(1, 3), (1, 4), (1, 4)],
-        n_filters=[60, 60, 1],
-        strides=[1, 1, 1],
-    )
-    y = decoder(x_)
-    y.unique()
