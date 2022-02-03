@@ -10,8 +10,10 @@ import torch
 from torch.nn import functional as F
 from functools import partial
 
+from src.data.data_handlers import snps_to_one_hot
 
-class OneHotInputCompress(nn.Module):
+
+class OneHotInput(nn.Module):
     def __init__(
         self,
         filters=64,
@@ -36,6 +38,10 @@ class OneHotInputCompress(nn.Module):
         self.norm1 = norm_layer(filters)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = snps_to_one_hot(x)
+        x = torch.unsqueeze(x, 1)
+        x = x.type(torch.float)
+
         x = self.conv(x)
         if x.shape[2] % 2 != 0:
             x = F.pad(x, pad=(0, 0, 1, 0))  # to ensure not invalid neurons
@@ -67,7 +73,7 @@ class OneHotOutput(nn.Module):
         self.norm1 = norm_layer(filters)
         self.conv1 = nn.Conv2d(
             filters,
-            4,
+            1,
             kernel_size=self.kernel,
             bias=False,
             padding="same",
@@ -78,7 +84,7 @@ class OneHotOutput(nn.Module):
 
         # cut shape to output
         if x.shape[-2] > out_size:
-            diff = x.shape[-2] - out_size
+            diff = x.shape[-2] - out_size - x.shape[-2]
             diff_start = diff // 2
             diff_end = diff - diff_start
             x = x[:, :, diff_start:-diff_end, :]
@@ -86,6 +92,7 @@ class OneHotOutput(nn.Module):
         x = self.norm1(x)
         x = self.activation(x)
         x = self.conv1(x)
+        x = torch.squeeze(x, 1)
         return x
 
 
@@ -205,7 +212,7 @@ class SNPEncoder(nn.Module):
         self,
         block: nn.Module = Bottleneck,
         layers: List[int] = [1, 3, 4, 6],
-        input_module: nn.Module = OneHotInputCompress,
+        input_module: nn.Module = OneHotInput,
         filters: List[int] = [64, 128, 256],
         activation: str = "relu",
         norm_layer: nn.Module = nn.BatchNorm2d,
@@ -294,7 +301,7 @@ class SNPEncoder(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         self.forward_shapes = []
-        self.forward_shapes.append(x.shape[-2])
+        self.forward_shapes.append(x.shape[-1])
 
         print(f"input - x.shape={x.shape}")
         x = self.conv1(x)
@@ -342,7 +349,7 @@ class ReverseBottleneck(nn.Module):
         self.norm3 = norm_layer(filters * self.expansion)
         self.upsample = upsample
 
-    def forward(self, x: torch.Tensor, enc_size: int) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, enc_size: Optional[int] = None) -> torch.Tensor:
         """
         Args:
             x (torch.Tensor): Input tensor
@@ -363,7 +370,7 @@ class ReverseBottleneck(nn.Module):
         assert x.shape[-2] == identity.shape[-2]
 
         # cut shape to match encoder
-        if x.shape[-2] > enc_size:
+        if enc_size and x.shape[-2] > enc_size:
             diff = x.shape[-2] - enc_size
             diff_start = diff // 2
             diff_end = diff - diff_start
@@ -475,7 +482,7 @@ class SNPDecoder(nn.Module):
     def forward(self, x: torch.Tensor, encoder_shapes: List[int]) -> torch.Tensor:
         print(f"decoder input - x.shape={x.shape}")
         for i, l in enumerate(self.layers):
-            x = l(x=x, enc_size=encoder_shapes[-(i + 2)])
+            x = l(x=x)
             print(f"\tlayer {i} - x.shape={x.shape}")
             # assert x.shape[-2] == encoder_shapes[-(i+2)]
         x = self.conv1(x, encoder_shapes[0])
