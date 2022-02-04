@@ -303,13 +303,13 @@ class SNPEncoder(nn.Module):
         self.forward_shapes = []
         self.forward_shapes.append(x.shape[-1])
 
-        print(f"input - x.shape={x.shape}")
+        # print(f"input - x.shape={x.shape}")
         x = self.conv1(x)
         self.forward_shapes.append(x.shape[-2])
-        print(f"first conv - x.shape={x.shape}")
+        # print(f"first conv - x.shape={x.shape}")
         for i, l in enumerate(self.layers):
             x = l(x)
-            print(f"\tlayer {i} - x.shape={x.shape}")
+            # print(f"\tlayer {i} - x.shape={x.shape}")
             self.forward_shapes.append(x.shape[-2])
 
         # pool across filters (as apposed to adaptivepool2d)
@@ -480,13 +480,13 @@ class SNPDecoder(nn.Module):
         return SequentialWithArgs(layers)
 
     def forward(self, x: torch.Tensor, encoder_shapes: List[int]) -> torch.Tensor:
-        print(f"decoder input - x.shape={x.shape}")
+        # print(f"decoder input - x.shape={x.shape}")
         for i, l in enumerate(self.layers):
             x = l(x=x)
-            print(f"\tlayer {i} - x.shape={x.shape}")
+            # print(f"\tlayer {i} - x.shape={x.shape}")
             # assert x.shape[-2] == encoder_shapes[-(i+2)]
         x = self.conv1(x, encoder_shapes[0])
-        print(f"\Output Layer - x.shape={x.shape}")
+        # print(f"\Output Layer - x.shape={x.shape}")
         x = x.permute(0, 2, 1)
         return x
 
