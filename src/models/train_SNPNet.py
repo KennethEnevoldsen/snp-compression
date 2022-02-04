@@ -38,8 +38,8 @@ args = {
     "p_test": 0.01,
     "chromosome": 6,
     "filter_factor": 0.5,
-    "width": 32,
-    # layers
+    "width": 64,
+    "layers_factor": 0.5,
 }
 
 wandb.init(config=args)
@@ -60,8 +60,10 @@ val_loader = DataLoader(
 # Build model
 enc_filters = [int(f * config.filter_factor) for f in [64, 128, 256]]
 dec_filters = [int(f * config.filter_factor) for f in [128, 128, 64, 32]]
-enc = SNPEncoder(width=config.width, filters=enc_filters)
-dec = SNPDecoder(width=config.width, filters=dec_filters)
+enc_layers = [int(n * config.layers_factor) for n in [1, 3, 4, 6]]
+dec_layers = [int(n * config.layers_factor) for n in [6, 4, 3, 3]]
+enc = SNPEncoder(width=config.width, filters=enc_filters, layers=enc_layers)
+dec = SNPDecoder(width=config.width, filters=dec_filters, layers=dec_layers)
 dae = DenoisingAutoencoder(enc, dec)
 model = PlOnehotWrapper(model=dae, learning_rate=config.learning_rate)
 wandb.watch(model, log_freq=config.log_step)
