@@ -103,10 +103,10 @@ def load_dataset(
 
     splits = np.zeros((arr.shape[0],))
     splits[:n_val] = 1
-    splits[n_val:n_val + n_test] = 2
-    np.random.seed(1234) # ensures consistent splits
+    splits[n_val : n_val + n_test] = 2
+    np.random.seed(1234)  # ensures consistent splits
     np.random.shuffle(splits)
-    
+
     train = arr[splits == 0].rechunk()
     val = arr[splits == 1].rechunk()
     test = arr[splits == 2].rechunk()
