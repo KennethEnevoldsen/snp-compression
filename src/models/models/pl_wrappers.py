@@ -2,6 +2,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torchmetrics
+import time
 
 
 class PlOnehotWrapper(pl.LightningModule):
@@ -23,38 +24,42 @@ class PlOnehotWrapper(pl.LightningModule):
         return optimizer
 
     def training_step(self, train_batch, batch_idx):
+        s = time.time()
         x = train_batch
         x = torch.nan_to_num(x, nan=3)
-        y = x.type(torch.LongTensor)
+
         # y shape should be (batch, sequence length)
         # x should be the one hot encoded version of y
 
         # in shape should be (batch, channels=1, genotype/snp=4, sequence length)
         x_hat = self.forward(x)
+        x = x.type(torch.LongTensor).to(self.device)
         # out shape should be (batch, genotype/snp=4, sequence length)
-        loss = self.loss(x_hat, y)
+        loss = self.loss(x_hat, x)
         self.log("train_loss", loss)
 
         probs = x_hat.softmax(dim=1)
         preds = probs.argmax(dim=1)
-        self.log("train_acc", self.accuracy(probs, y))
-        self.log("train_f1", self.f1(preds, y))
+        self.log("train_acc", self.accuracy(probs, x))
+        self.log("train_f1", self.f1(preds, x))
+        self.log("train_step/sec", time.time() - s)
 
         return loss
 
     def validation_step(self, val_batch, batch_idx):
         x = val_batch
         x = torch.nan_to_num(x, nan=3)
-        y = x.type(torch.LongTensor)
+
         # y shape should be (batch, sequence length)
 
         # in shape should be (batch, channels=1, genotype/snp=4, sequence length)
         x_hat = self.forward(x)
-        loss = self.loss(x_hat, y)
+        x = x.type(torch.LongTensor).to(self.device)
+        loss = self.loss(x_hat, x)
 
         self.log("val_loss", loss)
         probs = x_hat.softmax(dim=1)
         preds = probs.argmax(dim=1)
 
-        self.log("val_acc", self.accuracy(probs, y))
-        self.log("val_f1", self.f1(preds, y))
+        self.log("val_acc", self.accuracy(probs, x))
+        self.log("val_f1", self.f1(preds, x))
