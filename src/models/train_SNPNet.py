@@ -18,7 +18,6 @@ from pytorch_lightning.callbacks import EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 
 from src.data.dataloaders import load_dataset
-from src.data.data_handlers import snps_to_one_hot
 
 from src.models.models.SNPNet import SNPEncoder, SNPDecoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
@@ -29,9 +28,8 @@ args = {
     "learning_rate": 1e-3,
     "batch_size": 4,
     "num_workers": 4,
-    "encode_size": 512,
     "log_step": 1000,
-    "check_val_every_n_epoch": 1,
+    "val_check_interval": 5000,
     "optimizer": "Adam",
     "architecture": "SNPNet",
     "snp_encoding": "one-hot",
@@ -39,7 +37,8 @@ args = {
     "p_val": 0.01,
     "p_test": 0.01,
     "chromosome": 6,
-    # filters
+    "filter_factor": 0.5,
+    "width": 32,
     # layers
 }
 
@@ -59,8 +58,10 @@ val_loader = DataLoader(
 
 
 # Build model
-enc = SNPEncoder()
-dec = SNPDecoder()
+enc_filters = [int(f * config.filter_factor) for f in [64, 128, 256]]
+dec_filters = [int(f * config.filter_factor) for f in [128, 128, 64, 32]]
+enc = SNPEncoder(width=config.width, filters=enc_filters)
+dec = SNPDecoder(width=config.width, filters=dec_filters)
 dae = DenoisingAutoencoder(enc, dec)
 model = PlOnehotWrapper(model=dae, learning_rate=config.learning_rate)
 wandb.watch(model, log_freq=config.log_step)
@@ -74,9 +75,10 @@ early_stopping = EarlyStopping("val_loss", patience=10)
 trainer = Trainer(
     logger=wandb_logger,
     log_every_n_steps=config.log_step,
-    check_val_every_n_epoch=config.check_val_every_n_epoch,
+    val_check_interval=config.val_check_interval,
     callbacks=[early_stopping],
-    # gpus=-1,
+    gpus=-1,
+    profiler="simple",
 )
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
