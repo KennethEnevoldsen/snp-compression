@@ -1,6 +1,6 @@
 import os
 import random
-from typing import Iterator, Tuple
+from typing import Iterator, Optional, Tuple, Union
 
 import numpy as np
 import dask.array as da
@@ -43,12 +43,12 @@ class DaskIterableDataset(IterableDataset):
         ends = range(self.buffer_size, n, self.buffer_size)
 
         for start, end in zip(starts, ends):
-            X = torch.Tensor(self.array[start:end].compute())
+            X = torch.from_numpy(self.array[start:end].compute())
             assert X.shape[0] == self.buffer_size
             for x in X:
                 yield x
         if n > end:
-            X = torch.Tensor(self.array[end, n].compute())
+            X = torch.from_numpy(self.array[end:n].compute())
             for x in X:
                 yield x
 
@@ -90,16 +90,26 @@ class ShuffleDataset(IterableDataset):
 def load_dataset(
     chromosome: int,
     buffer_size: int = 1024,
-    p_val: float = 0.1,
-    p_test: float = 0.1,
+    p_val: Union[float, int] = 10_000,
+    p_test: Union[float, int] = 10_000,
+    limit_train: Optional[int] = None,
 ) -> Tuple[ShuffleDataset, ShuffleDataset, ShuffleDataset]:
-    """Load the specific chromosome required"""
+    """Load the specific chromosome required
+
+    Args:
+        p_test (Union[float, int], optional): The proportion (float) or number (int) of
+            the dataset which should be the test set.
+        limit_train (Optional[int], optional): The limit of the number of training
+            samples. Defaults to None indicating no limit.
+    """
     f_path = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(f_path, "..", "..", "data", "interim", f"chrom_{chromosome}")
     arr = da.from_zarr(path)
+    if limit_train:
+        arr = arr[:limit_train, :]
 
-    n_val = int(arr.shape[0] // (1 / p_val))
-    n_test = int(arr.shape[0] // (1 / p_test))
+    n_val = int(arr.shape[0] // (1 / p_val)) if isinstance(p_val, float) else p_val
+    n_test = int(arr.shape[0] // (1 / p_test)) if isinstance(p_test, float) else p_val
 
     splits = np.zeros((arr.shape[0],))
     splits[:n_val] = 1
