@@ -56,7 +56,7 @@ class OneHotOutput(nn.Module):
         filters=64,
         kernel: int = 7,
         stride=2,
-        categories: int = 4,
+        categories: int = 3,
         activation: nn.Module = nn.ReLU,
         norm_layer: nn.Module = nn.BatchNorm2d,
     ) -> None:
@@ -423,7 +423,7 @@ class SNPDecoder(nn.Module):
             filters=filters[0],
             kernel=7,
             stride=2,
-            categories=4,
+            categories=3,
             activation=self._activation,
         )
         self.pad = partial(F.pad, pad=(0, 0, 1, 1))
