@@ -34,21 +34,26 @@ args = {
     "architecture": "SNPNet",
     "snp_encoding": "one-hot",
     "snp-location-feature": "None",
-    "p_val": 0.01,
-    "p_test": 0.01,
     "chromosome": 6,
     "filter_factor": 0.5,
     "width": 32,
     "layers_factor": 0.5,
-    "middle_dense": False,
+    "fc_layer_size": 1000,
+    "dropout_p": 0.1,  # has prev. been 0.2
+    "p_val": 1_000,  # TODO: change to 10_000
+    "p_test": 1_000,  # TODO: change to 10_000
+    "limit_train": 10_000,  # TODO: change to None
 }
 
-wandb.init(config=args)
+wandb.init(config=args, project="snp-compression-src_models")
 config = wandb.config
 
 # Build dataset
 train, val, test = load_dataset(
-    chromosome=config.chromosome, p_val=config.p_val, p_test=config.p_val
+    chromosome=config.chromosome,
+    p_val=config.p_val,
+    p_test=config.p_val,
+    limit_train=config.limit_train,
 )
 train_loader = DataLoader(
     train, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
@@ -65,11 +70,15 @@ enc_layers = [int(n * config.layers_factor) for n in [1, 3, 4, 6]]
 dec_layers = [int(n * config.layers_factor) for n in [6, 4, 3, 3]]
 enc = SNPEncoder(width=config.width, filters=enc_filters, layers=enc_layers)
 dec = SNPDecoder(width=config.width, filters=dec_filters, layers=dec_layers)
-if config.middle_dense:
-    dae = DenoisingAutoencoder(enc, dec)
-else:
-    raise NotImplementedError("Middle dense True not implemented")
+dae = DenoisingAutoencoder(
+    enc, dec, dropout_p=config.dropout_p, fc_layer_size=config.fc_layer_size
+)
 model = PlOnehotWrapper(model=dae, learning_rate=config.learning_rate)
+
+config.n_of_parameters = sum(p.numel() for p in model.parameters())
+config.n_trainable_parameters = sum(
+    p.numel() for p in model.parameters() if p.requires_grad
+)
 wandb.watch(model, log_freq=config.log_step)
 
 
@@ -84,7 +93,8 @@ trainer = Trainer(
     val_check_interval=config.val_check_interval,
     callbacks=[early_stopping],
     gpus=-1,
-    profiler="simple",
+    profiler="simple",  # TODO: remove
+    max_epochs=1,  # TODO: remove
 )
 
 trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
