@@ -1,9 +1,12 @@
+import time
 from typing import Tuple
+
 import pytorch_lightning as pl
+
 import torch
 import torch.nn as nn
 import torchmetrics
-import time
+from torchmetrics import PearsonCorrCoef
 
 
 class PlOnehotWrapper(pl.LightningModule):
@@ -16,7 +19,7 @@ class PlOnehotWrapper(pl.LightningModule):
         self.lr = learning_rate
         self.accuracy = torchmetrics.Accuracy()
         self.f1 = torchmetrics.F1(num_classes=num_classes, mdmc_average="global")
-        self.pearson = torchmetrics.PearsonCorrCoef()
+        self.pearson = PearsonCorrCoef()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = torch.nan_to_num(x, nan=3)

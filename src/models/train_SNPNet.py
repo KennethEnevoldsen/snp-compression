@@ -43,6 +43,7 @@ args = {
     "p_val": 1_000,  # TODO: change to 10_000
     "p_test": 1_000,  # TODO: change to 10_000
     "limit_train": 10_000,  # TODO: change to None
+    "gpus": -1,
 }
 
 wandb.init(config=args, project="snp-compression-src_models")
@@ -92,7 +93,7 @@ trainer = Trainer(
     log_every_n_steps=config.log_step,
     val_check_interval=config.val_check_interval,
     callbacks=[early_stopping],
-    gpus=-1,
+    gpus=config.gpus,
     profiler="simple",  # TODO: remove
     max_epochs=1,  # TODO: remove
 )
