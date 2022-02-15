@@ -1,15 +1,15 @@
-# Style
+# linting and formatting
 flake8
 black
 
 # data handling plink bfile format
-# plinkio==0.9.8
-pandas_plink==1.15.0
-dask_ml==2022.1.22
+plinkio==0.9.8
+pandas_plink==2.2.9
+zarr==2.11.0
 
 # ml
-torch==1.8.1
-pytorch-lightning==1.3.3
+torch==1.10.2
+pytorch-lightning==1.5.10
 wandb==0.12.1
 torchmetrics==0.7.2
 

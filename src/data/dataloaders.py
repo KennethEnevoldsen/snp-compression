@@ -42,6 +42,7 @@ class DaskIterableDataset(IterableDataset):
         starts = range(0, n, self.buffer_size)
         ends = range(self.buffer_size, n, self.buffer_size)
 
+        end = 0  # if buffer_size > array.shape[1]
         for start, end in zip(starts, ends):
             X = torch.from_numpy(self.array[start:end].compute())
             assert X.shape[0] == self.buffer_size

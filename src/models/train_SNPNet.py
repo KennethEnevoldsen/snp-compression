@@ -29,7 +29,7 @@ args = {
     "batch_size": 4,
     "num_workers": 4,
     "log_step": 1000,
-    "val_check_interval": 5000,
+    "val_check_interval": 5000,  # TODO: set this higher
     "optimizer": "Adam",
     "architecture": "SNPNet",
     "snp_encoding": "one-hot",
@@ -43,7 +43,7 @@ args = {
     "p_val": 1_000,  # TODO: change to 10_000
     "p_test": 1_000,  # TODO: change to 10_000
     "limit_train": 10_000,  # TODO: change to None
-    "gpus": -1,
+    "gpus": None,  # TODO: change to -1
 }
 
 wandb.init(config=args, project="snp-compression-src_models")
