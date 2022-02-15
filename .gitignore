@@ -94,3 +94,9 @@ checkpoints/*
 lightning_logs/*
 checkpoints/*
 snp-compression-src_models/*
+
+# other
+SNPNet/bin/*
+SNPNet/share/*
+SNPNet/pyvenv.cfg
+SNPNet/lib64
