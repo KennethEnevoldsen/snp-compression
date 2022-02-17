@@ -6,4 +6,4 @@
 #SBATCH --gres=gpu:1
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 
-python src/models/train_model.py
+python src/train/train.py --config src/configs/test_SNPNet.yaml

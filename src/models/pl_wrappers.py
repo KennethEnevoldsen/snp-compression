@@ -1,5 +1,5 @@
 import time
-from typing import Tuple
+
 
 import pytorch_lightning as pl
 
@@ -8,13 +8,12 @@ import torch.nn as nn
 import torchmetrics
 from torchmetrics import PearsonCorrCoef
 
-from functools import partial
-
 
 class PlOnehotWrapper(pl.LightningModule):
     def __init__(
         self,
         model: nn.Module,
+        optimizer="adam",
         learning_rate: float = 1e-3,
         num_classes: int = 4,
         ignore_index=3,
@@ -28,17 +27,21 @@ class PlOnehotWrapper(pl.LightningModule):
         self.loss = nn.CrossEntropyLoss(ignore_index=ignore_index)
         self.lr = learning_rate
         self.accuracy = torchmetrics.Accuracy(ignore_index=ignore_index)
-        self.f1 = torchmetrics.F1(
+        self.f1 = torchmetrics.F1Score(
             num_classes=num_classes, mdmc_average="global", ignore_index=ignore_index
         )
         self.pearson = PearsonCorrCoef
+        self.optimizer_name = optimizer
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x.shape should be (batch, channels=1, genotype/snp=4, sequence length)
         return self.model(x)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
+        if self.optimizer_name:
+            optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
+        else:
+            raise NotImplementedError(f"{self.optimizer_name}")
         return optimizer
 
     def training_step(self, train_batch, batch_idx):

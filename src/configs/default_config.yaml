@@ -1,0 +1,64 @@
+# Training Arguments
+learning_rate: 
+  default: 0.001
+optimizer: 
+  default: "Adam"
+batch_size: 
+  default: 4
+num_workers: 
+  default: 4
+val_check_interval:
+  default: 5000
+gpus: 
+  default: -1
+  help: The number of GPUs to use, null indicate no GPUs
+profiler: 
+  default: null
+  help: Should a profiler such as "simple" be set.
+patience: 
+  default: 10
+max_epochs: 
+  default: null 
+log_step:
+  default: 1000
+  help: the log step of the model watch
+watch:
+  default: False
+  help: Should wandb watch be activated?
+default_root_dir:
+  default: /home/kce/NLPPred/snp-compression/models
+config:
+  default: null
+  help: Additional config which overwrites the default configs
+
+# model specific
+architecture: 
+  default: "SNPNet"
+snp_encoding: 
+  default: "one-hot"
+snp_location_feature: 
+  default: null
+filter_factor: 
+  default: 0.5
+width: 
+  default: 32
+layers_factor: 
+  default: 0.5
+fc_layer_size: 
+  default: null
+dropout_p: 
+  default: 0.1
+  help: The percentage dropout. Has previously been 0.2 (before it was logged)
+
+# Data arguments
+chromosome: 
+  default: 6
+p_val: 
+  default: 10_000 
+  help: percentage or number of validation samples
+p_test: 
+  default: 10_000
+  help: percentage or number of test samples
+limit_train: 
+  default: null
+  help: limits the train size, null indicate no limit.

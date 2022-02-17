@@ -90,10 +90,12 @@ target/
 
 # Training checkpoints and logs
 wandb/*
+*/wandb/*
 checkpoints/*
 lightning_logs/*
 checkpoints/*
-snp-compression-src_models/*
+*/snp-compression-src_models/*
+*/snp-compression/*
 
 # other
 SNPNet/bin/*

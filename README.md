@@ -5,9 +5,12 @@ This project seeks to compress snp's using deep neural networks.
 
 
 ## Plan of action
-- [x] Tranpose and save chromosome 1-22 to the processed datafolder
-- [ ] Train a model to compress chromosome 22 (shortest chromosome)
-- [ ] Train a model to compress chromosome 6 (include the highly correlated region MHC)
+- Run model to test speed
+    - check profiler
+- run w/o profiler
+- set up sweep
+- run sweep
+- select best model 
 
 
 

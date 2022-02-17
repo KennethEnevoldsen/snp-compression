@@ -1,5 +1,5 @@
 """
-This script move the data to the right folder 
+This script move the data to the right folder
 """
 
 

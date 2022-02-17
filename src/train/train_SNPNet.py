@@ -1,7 +1,7 @@
 """
 Trains the model and logs to wandb.
 
-python src/models/train_model.py
+python src/models/train_SNPNet.py
 """
 
 import sys
@@ -23,8 +23,15 @@ from src.models.models.SNPNet import SNPEncoder, SNPDecoder
 from src.models.models.DenoisingAutoencoder import DenoisingAutoencoder
 from src.models.models.pl_wrappers import PlOnehotWrapper
 
-# wandb + config
-args = {
+
+# hyperparameter_defaults = dict(
+#     dropout=0.5,
+#     batch_size=100,
+#     learning_rate=0.001,
+#     )
+
+
+hyperparameter_defaults = {
     "learning_rate": 1e-3,
     "batch_size": 4,
     "num_workers": 4,
@@ -38,16 +45,26 @@ args = {
     "filter_factor": 0.5,
     "width": 32,
     "layers_factor": 0.5,
-    "fc_layer_size": 1000,
+    "fc_layer_size": None,
     "dropout_p": 0.1,  # has prev. been 0.2
     "p_val": 1_000,  # TODO: change to 10_000
     "p_test": 1_000,  # TODO: change to 10_000
     "limit_train": 10_000,  # TODO: change to None
-    "gpus": None,  # TODO: change to -1
+    "gpus": None,  # TODO: change
 }
+config_dictionary = dict(
+    yaml=my_yaml_file,
+    params=hyperparameter_defaults,
+)
 
-wandb.init(config=args, project="snp-compression-src_models")
+import args
+
+wandb.init(config=hyperparameter_defaults, project="snp-compression-src_models")
+wandb.update
 config = wandb.config
+
+print(f"GPUS: {config.gpus}")
+raise ValueError("!")
 
 # Build dataset
 train, val, test = load_dataset(

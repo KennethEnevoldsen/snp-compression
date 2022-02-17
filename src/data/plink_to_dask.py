@@ -1,5 +1,6 @@
 """
-A script for reading in PLINK file and converting them into Dask arrays saved as .zarr files
+A script for reading in PLINK file transpose them and convert them into Dask arrays 
+saved as .zarr files
 """
 
 import os

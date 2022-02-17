@@ -1,0 +1,35 @@
+# Training Arguments
+profiler: 
+  default: "simple" # TODO change to Non
+max_epochs: 
+  default: 1
+val_check_interval:
+  default: 5000
+
+# model specific
+architecture: 
+  default: "SNPNet"
+snp_encoding: 
+  default: "one-hot"
+snp_location_feature: 
+  default: null
+filter_factor: 
+  default: 0.5
+width: 
+  default: 32
+layers_factor: 
+  default: 0.5
+fc_layer_size: 
+  default: null
+dropout_p: 
+  default: 0.1
+
+# Data arguments
+chromosome: 
+  default: 6
+p_val: 
+  default: 1_000
+p_test: 
+  default: 1_000
+limit_train: 
+  default: 10_000
