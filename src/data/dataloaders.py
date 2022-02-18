@@ -7,7 +7,7 @@ import dask.array as da
 
 import torch
 from torch.utils.data import DataLoader, Dataset, IterableDataset
-
+import dask
 
 class DaskMapDataset(Dataset):
     """
@@ -118,9 +118,10 @@ def load_dataset(
     np.random.seed(1234)  # ensures consistent splits
     np.random.shuffle(splits)
 
-    train = arr[splits == 0].rechunk()
-    val = arr[splits == 1].rechunk()
-    test = arr[splits == 2].rechunk()
+    with dask.config.set(**{'array.slicing.split_large_chunks': True}):
+        train = arr[splits == 0]
+        val = arr[splits == 1]
+        test = arr[splits == 2]
 
     ds_train = DaskIterableDataset(array=train, buffer_size=buffer_size)
     ds_val = DaskIterableDataset(array=val, buffer_size=buffer_size)

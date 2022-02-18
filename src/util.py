@@ -10,18 +10,23 @@ def log_conf_matrix(model, dataloader):
     """Logs a wandb conf matrix, from a model and dataloader"""
     preds = []
     y = []
-    for x, y_ in dataloader:
+    
+    for x in dataloader:
         x_hat = model(x)
         probs_ = x_hat.softmax(dim=1)
-        y.append(y_)
+        y.append(x)
         preds.append(probs_.argmax(dim=1))
 
     preds = torch.cat(preds, dim=0)
     y = torch.cat(y, dim=0)
+
+    preds = preds.view((-1))
+    y = y.view((-1))
+    not_nans = ~y.isnan()
     wandb.log(
         {
             "conf": wandb.plot.confusion_matrix(
-                preds=preds.view((-1)).cpu().numpy(), y_true=y.view((-1)).cpu().numpy()
+                preds=preds[not_nans].cpu().numpy(), y_true=y[not_nans].cpu().numpy()
             )
         }
     )

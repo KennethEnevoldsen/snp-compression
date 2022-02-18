@@ -49,7 +49,6 @@ class PlOnehotWrapper(pl.LightningModule):
         x = train_batch
         # x.shape should be (batch, sequence length)
 
-        x = torch.nan_to_num(x, nan=3)
         x_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
@@ -71,7 +70,6 @@ class PlOnehotWrapper(pl.LightningModule):
         x = val_batch
 
         notnan = ~x.isnan()
-        x = torch.nan_to_num(x, nan=3)
         x_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
@@ -89,8 +87,8 @@ class PlOnehotWrapper(pl.LightningModule):
             preds_no_na = preds[batch][notnan[batch]].unsqueeze(0)
             # needs to be float:
             pearson(
-                preds_no_na.squeeze(0).type(torch.float).to(self.device),
-                target_no_na.squeeze(0).type(torch.float).to(self.device),
+                preds_no_na.squeeze(0).type(torch.float).to("cpu"),
+                target_no_na.squeeze(0).type(torch.float).to("cpu"),
             )
 
         self.log("val_loss", loss)

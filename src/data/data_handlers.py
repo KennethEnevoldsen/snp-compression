@@ -15,7 +15,8 @@ from wasabi import msg
 
 def plinkfile_to_tensor(file: PlinkFile) -> Tuple[torch.Tensor, torch.Tensor]:
     """
-    returns a two tensors, the first one containing snps with the shapes (n_snps, n_samples) the second containing phenotype with the shape (n_samples)
+    returns a two tensors, the first one containing snps with the shapes (n_snps,
+    n_samples) the second containing phenotype with the shape (n_samples)
     """
     x = torch.Tensor([[genotype for genotype in row] for row in file])
     y = torch.Tensor([sample.phenotype for sample in file.get_samples()])
@@ -29,7 +30,7 @@ def read_plink_as_tensor(file: str) -> Tuple[torch.Tensor, torch.Tensor]:
     return x, y
 
 
-def snps_to_one_hot(x: torch.Tensor, convert_nan_to_cat: bool = False) -> torch.Tensor:
+def snps_to_one_hot(x: torch.Tensor, convert_nan_to_cat: bool = True) -> torch.Tensor:
     """
     transform tensor of snps to one hot vectors
     """
@@ -77,7 +78,8 @@ def write_plink_to_pt_batched(
     plink_path: str, save_path: str, batch_size: int = 10_000
 ) -> None:
     """
-    Convert a plink file to pytorch tensor and write them to .pt in chunk of size (number of loci) x (batch size).
+    Convert a plink file to pytorch tensor and write them to .pt in chunk of size
+    (number of loci) x (batch size).
     """
     plink = plinkfile.open(plink_path)
 

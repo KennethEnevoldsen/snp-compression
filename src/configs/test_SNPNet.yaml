@@ -4,7 +4,7 @@ profiler:
 max_epochs: 
   default: 1
 val_check_interval:
-  default: 5000
+  default: 1000
 
 # model specific
 architecture: 
@@ -28,8 +28,8 @@ dropout_p:
 chromosome: 
   default: 6
 p_val: 
-  default: 1_000
+  default: 500
 p_test: 
-  default: 1_000
+  default: 500
 limit_train: 
-  default: 10_000
+  default: 1_000

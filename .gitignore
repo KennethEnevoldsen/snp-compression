@@ -102,3 +102,4 @@ SNPNet/bin/*
 SNPNet/share/*
 SNPNet/pyvenv.cfg
 SNPNet/lib64
+models/*
