@@ -6,16 +6,18 @@
 #SBATCH --gres=gpu:1
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
-#SBATCH --dependency afterok:60842002
 
 NUM=10
-SWEEPID="initial_search"
+SWEEPID="kenevoldsen/snp-compression-src_models/8u0l51wp"
 venv="SNPNet"
 
 echo 'Activating virtual environment: ' $venv
-conda activate $venv
+source /faststorage/project/NLPPred/snp-compression/SNPNet/bin/activate
 which python
 
+echo 'Update sweep config based on local'
+wandb sweep --update kenevoldsen/snp-compression-src_models/8u0l51wp src/train/sweep.yaml
+
 echo 'Running wandb sweep'
-wandb sweep src/train/sweep.yaml --count $NUM $SWEEPID
+wandb agent --count $NUM $SWEEPID
 

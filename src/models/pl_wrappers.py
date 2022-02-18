@@ -49,6 +49,7 @@ class PlOnehotWrapper(pl.LightningModule):
         x = train_batch
         # x.shape should be (batch, sequence length)
 
+        x = torch.nan_to_num(x, nan=3)
         x_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
@@ -70,6 +71,7 @@ class PlOnehotWrapper(pl.LightningModule):
         x = val_batch
 
         notnan = ~x.isnan()
+        x = torch.nan_to_num(x, nan=3)
         x_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 

@@ -1,4 +1,4 @@
-program: train.py
+program: src/train/train.py
 method: bayes
 metric:
   name: val_loss
@@ -22,4 +22,12 @@ parameters:
   batch_size:
     values: [4, 8, 12]
   val_check_interval:
+    values: [2000]
+  p_val: 
     values: [1000]
+  p_test: 
+    values: [1000]
+  limit_train: 
+    values: [10000]
+  max_epochs: 
+    values: [1]

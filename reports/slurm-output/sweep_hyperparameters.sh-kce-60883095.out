@@ -1,0 +1,21 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+Update sweep config based on local
+wandb: Updating sweep from: src/train/sweep.yaml
+wandb: ERROR Error while calling W&B API: cannot reconfigure sweep which has already started (<Response [400]>)
+wandb: ERROR Find detailed error logs at: /faststorage/project/NLPPred/snp-compression/wandb/debug-cli.log
+Error: cannot reconfigure sweep which has already started
+Running wandb sweep
+wandb: Starting wandb agent 🕵️
+2022-02-18 17:38:21,199 - wandb.wandb_agent - INFO - Running runs: []
+2022-02-18 17:38:21,626 - wandb.wandb_agent - INFO - Agent received command: run
+2022-02-18 17:38:21,635 - wandb.wandb_agent - INFO - Agent starting run with config:
+	batch_size: 12
+	fc_layer_size: None
+	filter_factor: 0.25
+	learning_rate: 0.034128674289512766
+	optimizer: adam
+	val_check_interval: 1000
+	width: 16
+2022-02-18 17:38:21,731 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=12 --fc_layer_size=None --filter_factor=0.25 --learning_rate=0.034128674289512766 --optimizer=adam --val_check_interval=1000 --width=16
+2022-02-18 17:38:26,752 - wandb.wandb_agent - INFO - Running runs: ['qxbn2yf1']
