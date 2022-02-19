@@ -8,15 +8,16 @@
 #SBATCH -A NLPPred
 
 NUM=10
-SWEEPID="kenevoldsen/snp-compression-src_models/8u0l51wp"
+SWEEPID="kenevoldsen/snp-compression-src_train/yg6qbx1b"
 venv="SNPNet"
 
 echo 'Activating virtual environment: ' $venv
 source /faststorage/project/NLPPred/snp-compression/SNPNet/bin/activate
 which python
 
-echo 'Update sweep config based on local'
-wandb sweep --update kenevoldsen/snp-compression-src_models/8u0l51wp src/train/sweep.yaml
+# echo 'Update sweep config based on local'
+# wandb sweep src/train/sweep.yaml
+
 
 echo 'Running wandb sweep'
 wandb agent --count $NUM $SWEEPID
