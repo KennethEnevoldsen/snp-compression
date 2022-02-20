@@ -80,6 +80,7 @@ def main():
         config=arguments,
         project="snp-compression",
         dir=arguments.default_root_dir,
+        allow_val_change=True,
     )
     config = wandb.config
     config.run_name = wandb.run.name
@@ -97,7 +98,7 @@ def main():
     # Train
     if config.auto_lr_find:
         lr_finder = trainer.tuner.lr_find(model)
-        config.learning_rate = lr_finder.suggestion()
+        config.update({"learning_rate": lr_finder.suggestion()}, allow_val_change=True)
         fig = lr_finder.plot(suggest=True)
         wandb.log({"lr_finder.plot": fig})
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)

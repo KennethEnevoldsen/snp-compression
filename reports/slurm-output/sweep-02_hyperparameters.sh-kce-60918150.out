@@ -1,0 +1,85 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+Running wandb sweep
+wandb: Starting wandb agent 🕵️
+2022-02-20 18:16:42,077 - wandb.wandb_agent - INFO - Running runs: []
+2022-02-20 18:16:42,421 - wandb.wandb_agent - INFO - Agent received command: run
+2022-02-20 18:16:42,422 - wandb.wandb_agent - INFO - Agent starting run with config:
+	auto_lr_find: True
+	batch_size: 12
+	layers_factor: 0.5
+	limit_train: 20000
+	max_epochs: 1
+	optimizer: adam
+	p_test: 2000
+	p_val: 2000
+	precision: 16
+	val_check_interval: 4000
+	width: 64
+2022-02-20 18:16:42,493 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=adam --p_test=2000 --p_val=2000 --precision=16 --val_check_interval=4000 --width=64
+2022-02-20 18:16:47,509 - wandb.wandb_agent - INFO - Running runs: ['v7i6slj8']
+wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
+wandb: WARNING Ignored wandb.init() arg project when running a sweep.
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run earthy-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
+wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/0raxxnr8
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/v7i6slj8
+wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_181649-v7i6slj8
+wandb: Run `wandb offline` to turn off syncing.
+Using 16bit native Automatic Mixed Precision (AMP)
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Set SLURM handle signals.
+
+Finding best initial lr:   0% 0/100 [00:00<?, ?it/s]Finding best initial lr:   1% 1/100 [00:00<00:27,  3.65it/s]Finding best initial lr:   2% 2/100 [00:00<00:21,  4.57it/s]Finding best initial lr:   3% 3/100 [00:00<00:18,  5.15it/s]Finding best initial lr:   4% 4/100 [00:00<00:17,  5.49it/s]Finding best initial lr:   5% 5/100 [00:00<00:16,  5.63it/s]Finding best initial lr:   6% 6/100 [00:01<00:16,  5.76it/s]Finding best initial lr:   7% 7/100 [00:01<00:15,  5.87it/s]Finding best initial lr:   8% 8/100 [00:01<00:15,  5.95it/s]Finding best initial lr:   9% 9/100 [00:01<00:15,  5.99it/s]Finding best initial lr:  10% 10/100 [00:01<00:14,  6.02it/s]Finding best initial lr:  11% 11/100 [00:01<00:14,  6.02it/s]Finding best initial lr:  12% 12/100 [00:02<00:14,  6.03it/s]Finding best initial lr:  13% 13/100 [00:02<00:14,  6.04it/s]Finding best initial lr:  14% 14/100 [00:02<00:14,  6.05it/s]Finding best initial lr:  15% 15/100 [00:02<00:14,  6.06it/s]Finding best initial lr:  16% 16/100 [00:02<00:13,  6.07it/s]Finding best initial lr:  17% 17/100 [00:02<00:13,  6.07it/s]Finding best initial lr:  18% 18/100 [00:03<00:13,  6.07it/s]Finding best initial lr:  19% 19/100 [00:03<00:13,  6.08it/s]Finding best initial lr:  20% 20/100 [00:03<00:13,  6.08it/s]Finding best initial lr:  21% 21/100 [00:03<00:12,  6.08it/s]Finding best initial lr:  22% 22/100 [00:03<00:12,  6.08it/s]Finding best initial lr:  23% 23/100 [00:03<00:12,  6.07it/s]Finding best initial lr:  24% 24/100 [00:04<00:12,  6.08it/s]Finding best initial lr:  25% 25/100 [00:04<00:12,  6.08it/s]Finding best initial lr:  26% 26/100 [00:04<00:12,  6.08it/s]Finding best initial lr:  27% 27/100 [00:04<00:11,  6.08it/s]Finding best initial lr:  28% 28/100 [00:04<00:11,  6.08it/s]Finding best initial lr:  29% 29/100 [00:04<00:11,  6.09it/s]Finding best initial lr:  30% 30/100 [00:05<00:11,  6.08it/s]Finding best initial lr:  31% 31/100 [00:05<00:11,  6.07it/s]Finding best initial lr:  32% 32/100 [00:05<00:11,  6.07it/s]Finding best initial lr:  33% 33/100 [00:05<00:11,  6.07it/s]Finding best initial lr:  34% 34/100 [00:05<00:10,  6.07it/s]Finding best initial lr:  35% 35/100 [00:05<00:10,  6.07it/s]Finding best initial lr:  36% 36/100 [00:06<00:10,  6.06it/s]Finding best initial lr:  37% 37/100 [00:06<00:10,  6.05it/s]Finding best initial lr:  38% 38/100 [00:06<00:10,  6.05it/s]Finding best initial lr:  39% 39/100 [00:06<00:10,  6.06it/s]Finding best initial lr:  40% 40/100 [00:06<00:09,  6.07it/s]Finding best initial lr:  41% 41/100 [00:06<00:09,  6.05it/s]Finding best initial lr:  42% 42/100 [00:07<00:09,  6.06it/s]Finding best initial lr:  43% 43/100 [00:07<00:09,  6.07it/s]Finding best initial lr:  44% 44/100 [00:07<00:09,  6.07it/s]Finding best initial lr:  45% 45/100 [00:07<00:09,  6.07it/s]Finding best initial lr:  46% 46/100 [00:07<00:08,  6.07it/s]Finding best initial lr:  47% 47/100 [00:07<00:08,  6.08it/s]Finding best initial lr:  48% 48/100 [00:08<00:08,  6.08it/s]Finding best initial lr:  49% 49/100 [00:08<00:08,  6.09it/s]Finding best initial lr:  50% 50/100 [00:08<00:08,  6.09it/s]Finding best initial lr:  51% 51/100 [00:08<00:08,  6.09it/s]Finding best initial lr:  52% 52/100 [00:08<00:07,  6.09it/s]Finding best initial lr:  53% 53/100 [00:08<00:07,  6.08it/s]Finding best initial lr:  54% 54/100 [00:09<00:07,  5.95it/s]Finding best initial lr:  55% 55/100 [00:09<00:07,  5.99it/s]Finding best initial lr:  56% 56/100 [00:09<00:07,  6.01it/s]Finding best initial lr:  57% 57/100 [00:09<00:07,  6.03it/s]Finding best initial lr:  58% 58/100 [00:09<00:06,  6.05it/s]Finding best initial lr:  59% 59/100 [00:09<00:06,  6.06it/s]Finding best initial lr:  60% 60/100 [00:10<00:06,  6.05it/s]Finding best initial lr:  61% 61/100 [00:10<00:06,  6.07it/s]Finding best initial lr:  62% 62/100 [00:10<00:06,  6.07it/s]Finding best initial lr:  63% 63/100 [00:10<00:06,  6.08it/s]Finding best initial lr:  64% 64/100 [00:10<00:05,  6.09it/s]Finding best initial lr:  65% 65/100 [00:10<00:05,  6.09it/s]Finding best initial lr:  66% 66/100 [00:11<00:05,  6.08it/s]Finding best initial lr:  67% 67/100 [00:11<00:05,  6.08it/s]Finding best initial lr:  68% 68/100 [00:11<00:05,  6.09it/s]Finding best initial lr:  69% 69/100 [00:11<00:05,  6.09it/s]Finding best initial lr:  70% 70/100 [00:11<00:04,  6.09it/s]Finding best initial lr:  71% 71/100 [00:11<00:04,  6.09it/s]Finding best initial lr:  72% 72/100 [00:11<00:04,  6.09it/s]Finding best initial lr:  73% 73/100 [00:12<00:04,  6.09it/s]Finding best initial lr:  74% 74/100 [00:12<00:04,  6.09it/s]Finding best initial lr:  75% 75/100 [00:12<00:04,  6.08it/s]Finding best initial lr:  76% 76/100 [00:12<00:03,  6.08it/s]Finding best initial lr:  77% 77/100 [00:12<00:03,  6.09it/s]Finding best initial lr:  78% 78/100 [00:12<00:03,  6.09it/s]Finding best initial lr:  79% 79/100 [00:13<00:03,  6.08it/s]Finding best initial lr:  80% 80/100 [00:13<00:03,  6.08it/s]Finding best initial lr:  81% 81/100 [00:13<00:03,  6.09it/s]Finding best initial lr:  82% 82/100 [00:13<00:02,  6.09it/s]Finding best initial lr:  83% 83/100 [00:13<00:02,  6.07it/s]Finding best initial lr:  84% 84/100 [00:13<00:02,  6.07it/s]Finding best initial lr:  85% 85/100 [00:14<00:02,  6.07it/s]Finding best initial lr:  86% 86/100 [00:14<00:02,  6.07it/s]Finding best initial lr:  87% 87/100 [00:14<00:02,  6.07it/s]Finding best initial lr:  88% 88/100 [00:14<00:01,  6.07it/s]Finding best initial lr:  89% 89/100 [00:14<00:01,  6.07it/s]Finding best initial lr:  90% 90/100 [00:14<00:01,  6.07it/s]Finding best initial lr:  91% 91/100 [00:15<00:01,  6.02it/s]Finding best initial lr:  92% 92/100 [00:15<00:01,  6.04it/s]Finding best initial lr:  93% 93/100 [00:15<00:01,  6.05it/s]Finding best initial lr:  94% 94/100 [00:15<00:00,  6.06it/s]Finding best initial lr:  95% 95/100 [00:15<00:00,  6.07it/s]Finding best initial lr:  96% 96/100 [00:15<00:00,  6.15it/s]Finding best initial lr:  97% 97/100 [00:16<00:00,  6.13it/s]Finding best initial lr:  98% 98/100 [00:16<00:00,  6.19it/s]Finding best initial lr:  99% 99/100 [00:16<00:00,  6.24it/s]Finding best initial lr: 100% 100/100 [00:16<00:00,  6.27it/s]Restoring states from the checkpoint path at /home/kce/NLPPred/snp-compression/models/lr_find_temp_model_97ecbf5e-256f-46d1-850b-6136ae867b0f.ckpt
+Finding best initial lr: 100% 100/100 [00:16<00:00,  5.92it/s]
+Traceback (most recent call last):
+  File "src/train/train.py", line 111, in <module>
+    main()
+  File "src/train/train.py", line 102, in main
+    fig = lr_finder.plot(suggest=True)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 140, in plot
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+wandb: Waiting for W&B process to finish, PID 70046... (failed 1). Press ctrl-c to abort syncing.
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced earthy-sweep-1: https://wandb.ai/kenevoldsen/snp-compression/runs/v7i6slj8
+wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_181649-v7i6slj8/logs/debug.log
+wandb: 
+
+2022-02-20 18:17:34,803 - wandb.wandb_agent - INFO - Cleaning up finished run: v7i6slj8
+2022-02-20 18:17:35,187 - wandb.wandb_agent - INFO - Agent received command: run
+2022-02-20 18:17:35,188 - wandb.wandb_agent - INFO - Agent starting run with config:
+	auto_lr_find: True
+	batch_size: 12
+	layers_factor: 0.5
+	limit_train: 20000
+	max_epochs: 1
+	optimizer: adam
+	p_test: 2000
+	p_val: 2000
+	precision: 32
+	val_check_interval: 4000
+	width: 64
+2022-02-20 18:17:35,215 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=adam --p_test=2000 --p_val=2000 --precision=32 --val_check_interval=4000 --width=64
+2022-02-20 18:17:40,232 - wandb.wandb_agent - INFO - Running runs: ['w1ss0o3n']
+wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
+wandb: WARNING Ignored wandb.init() arg project when running a sweep.
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run stilted-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
+wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/0raxxnr8
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/w1ss0o3n
+wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_181741-w1ss0o3n
+wandb: Run `wandb offline` to turn off syncing.
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Set SLURM handle signals.
+
+Finding best initial lr:   0% 0/100 [00:00<?, ?it/s]Finding best initial lr:   1% 1/100 [00:00<01:19,  1.25it/s]Finding best initial lr:   2% 2/100 [00:01<01:16,  1.28it/s]Finding best initial lr:   3% 3/100 [00:02<01:15,  1.29it/s]Finding best initial lr:   4% 4/100 [00:03<01:14,  1.30it/s]Finding best initial lr:   5% 5/100 [00:03<01:13,  1.30it/s]Finding best initial lr:   6% 6/100 [00:04<01:12,  1.30it/s]Finding best initial lr:   7% 7/100 [00:05<01:11,  1.30it/s]Finding best initial lr:   8% 8/100 [00:06<01:10,  1.31it/s]Finding best initial lr:   9% 9/100 [00:06<01:09,  1.31it/s]Finding best initial lr:  10% 10/100 [00:07<01:08,  1.31it/s]Finding best initial lr:  11% 11/100 [00:08<01:08,  1.31it/s]slurmstepd: error: *** JOB 60918150 ON s10n01 CANCELLED AT 2022-02-20T18:18:06 ***

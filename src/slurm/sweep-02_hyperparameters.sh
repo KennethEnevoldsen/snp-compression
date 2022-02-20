@@ -7,7 +7,7 @@
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
 
-SWEEPID="kenevoldsen/snp-compression/4ze1zumz"
+SWEEPID="kenevoldsen/snp-compression/cqqyn6wf"
 venv="SNPNet"
 
 echo 'Activating virtual environment: ' $venv
