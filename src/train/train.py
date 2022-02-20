@@ -63,6 +63,8 @@ def create_trainer(config) -> Trainer:
         max_epochs=config.max_epochs,
         default_root_dir=config.default_root_dir,
         weights_save_path=os.path.join(config.default_root_dir, config.run_name),
+        precision=config.precision,
+        auto_lr_find=config.auto_lr_find,
     )
     return trainer
 
@@ -76,7 +78,7 @@ def main():
     arguments = parser.parse_args()
     wandb.init(
         config=arguments,
-        project="snp-compression-src_models",
+        project="snp-compression",
         dir=arguments.default_root_dir,
     )
     config = wandb.config
@@ -93,6 +95,11 @@ def main():
     trainer = create_trainer(config)
 
     # Train
+    if config.auto_lr_find:
+        lr_finder = trainer.tuner.lr_find(model)
+        config.learning_rate = lr_finder.suggestion()
+        fig = lr_finder.plot(suggest=True)
+        wandb.log({"lr_finder.plot": fig})
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
     # Finalize

@@ -13,8 +13,8 @@ class PlOnehotWrapper(pl.LightningModule):
     def __init__(
         self,
         model: nn.Module,
+        learning_rate: float,
         optimizer="adam",
-        learning_rate: float = 1e-3,
         num_classes: int = 4,
         ignore_index=3,
     ):
@@ -25,7 +25,7 @@ class PlOnehotWrapper(pl.LightningModule):
         super().__init__()
         self.model = model
         self.loss = nn.CrossEntropyLoss(ignore_index=ignore_index)
-        self.lr = learning_rate
+        self.learning_rate = learning_rate
         self.accuracy = torchmetrics.Accuracy(ignore_index=ignore_index)
         self.f1 = torchmetrics.F1Score(
             num_classes=num_classes, mdmc_average="global", ignore_index=ignore_index
@@ -38,8 +38,12 @@ class PlOnehotWrapper(pl.LightningModule):
         return self.model(x)
 
     def configure_optimizers(self):
-        if self.optimizer_name:
-            optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
+        if self.optimizer_name.lower() == "adam":
+            optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
+        elif self.optimizer_name.lower() == "adamw":
+            optimizer = torch.optim.AdamW(self.parameters(), lr=self.learning_rate)
+        elif self.optimizer_name.lower() == "sgd":
+            optimizer = torch.optim.SGD(self.parameters(), lr=self.learning_rate)
         else:
             raise NotImplementedError(f"{self.optimizer_name}")
         return optimizer

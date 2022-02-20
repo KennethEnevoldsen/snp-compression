@@ -1,8 +1,16 @@
 # Training Arguments
+#    Optimizer
 learning_rate: 
   default: 0.001
+auto_lr_find:
+  default: False
+  help: Should the model find the learning rate? Overwrites learning rate
 optimizer: 
   default: "Adam"
+  help: Options include adam, adamw, sgd
+#    Other training arguments
+precision:
+  default: 32
 batch_size: 
   default: 4
 num_workers: 
@@ -39,9 +47,11 @@ snp_encoding:
 snp_location_feature: 
   default: null
 filter_factor: 
-  default: 0.5
+  default: 1
+  help: Following the resnet50. have previously been 0.5.
 width: 
-  default: 32
+  default: 64
+  help: Following the resnet50. have previously been 32.
 layers_factor: 
   default: 0.5
 fc_layer_size: 
