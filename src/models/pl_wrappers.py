@@ -1,10 +1,12 @@
 import time
-
+from typing import Optional
 
 import pytorch_lightning as pl
 
 import torch
 import torch.nn as nn
+from torch.utils.data import DataLoader
+
 import torchmetrics
 from torchmetrics import PearsonCorrCoef
 
@@ -17,6 +19,8 @@ class PlOnehotWrapper(pl.LightningModule):
         optimizer="adam",
         num_classes: int = 4,
         ignore_index=3,
+        train_loader: Optional[DataLoader] = None,
+        val_loader: Optional[DataLoader] = None,
     ):
         """
         Args:
@@ -32,6 +36,8 @@ class PlOnehotWrapper(pl.LightningModule):
         )
         self.pearson = PearsonCorrCoef
         self.optimizer_name = optimizer
+        self.train_loader = train_loader
+        self.val_loader = val_loader
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x.shape should be (batch, channels=1, genotype/snp=4, sequence length)
@@ -102,3 +108,9 @@ class PlOnehotWrapper(pl.LightningModule):
         self.log("val_f1", self.f1(preds, x))
         self.log("val_pearson_cor", pearson.compute())
         self.log("val_step/sec", time.time() - s)
+
+    def train_dataloader(self) -> DataLoader:
+        return self.train_loader
+
+    def val_dataloader(self) -> DataLoader:
+        return self.val_loader

@@ -1,4 +1,5 @@
 import pytorch_lightning as pl
+from torch.utils.data import DataLoader
 
 import wandb
 
@@ -7,7 +8,9 @@ from src.models.DenoisingAutoencoder import DenoisingAutoencoder
 from src.models.pl_wrappers import PlOnehotWrapper
 
 
-def create_model(config) -> pl.LightningModule:
+def create_model(
+    config, train_loader: DataLoader, val_loader: DataLoader
+) -> pl.LightningModule:
     if config.architecture.lower() == "snpnet":
         enc_filters = [int(f * config.filter_factor) for f in [64, 128, 256]]
         dec_filters = [int(f * config.filter_factor) for f in [128, 128, 64, 32]]
@@ -27,6 +30,8 @@ def create_model(config) -> pl.LightningModule:
             model=dae,
             learning_rate=config.learning_rate,
             optimizer=config.optimizer,
+            train_loader=train_loader,
+            val_loader=val_loader,
         )
     else:
         raise NotImplementedError(

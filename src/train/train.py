@@ -90,8 +90,8 @@ def main():
         config.update(hyperparameter_config, allow_val_change=True)
 
     # Create model, dataset, trainer
-    model = create_model(config)
     train_loader, val_loader = create_dataloaders(config)
+    model = create_model(config, train_loader, val_loader)
     trainer = create_trainer(config)
 
     # Train
