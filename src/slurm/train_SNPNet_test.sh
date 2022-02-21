@@ -10,7 +10,7 @@
 venv="SNPNet"
 
 echo 'Activating virtual environment: ' $venv
-conda activate $venv
+source /faststorage/project/NLPPred/snp-compression/SNPNet/bin/activate
 which python
 
 echo 'Training SNPNet'

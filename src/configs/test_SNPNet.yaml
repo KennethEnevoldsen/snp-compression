@@ -28,8 +28,8 @@ dropout_p:
 chromosome: 
   default: 6
 p_val: 
-  default: 500
+  default: 1000
 p_test: 
-  default: 500
+  default: 1000
 limit_train: 
-  default: 1_000
+  default: 4000

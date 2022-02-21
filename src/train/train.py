@@ -17,12 +17,12 @@ from torch.utils.data import DataLoader
 import wandb
 
 from pytorch_lightning import Trainer
-from pytorch_lightning.callbacks import EarlyStopping
+from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 
 from src.data.dataloaders import load_dataset
 from src.models.create import create_model
-from src.util import create_argparser, config_yaml_to_dict, log_conf_matrix
+from src.util import create_argparser, config_yaml_to_dict
 
 
 def create_dataloaders(config) -> Tuple[DataLoader, DataLoader]:
@@ -46,12 +46,13 @@ def create_dataloaders(config) -> Tuple[DataLoader, DataLoader]:
 
 def create_trainer(config) -> Trainer:
     wandb_logger = WandbLogger()
-    callbacks = None
+    callbacks = [ModelCheckpoint(monitor='val_loss', mode='min')]
     if config.patience:
         early_stopping = EarlyStopping("val_loss", patience=config.patience)
         if callbacks is None:
             callbacks = []
         callbacks.append(early_stopping)
+
 
     trainer = Trainer(
         logger=wandb_logger,
@@ -104,7 +105,7 @@ def main():
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
     # Finalize
-    log_conf_matrix(model, val_loader)
+    # log_conf_matrix(model, val_loader)
 
 
 if __name__ == "__main__":

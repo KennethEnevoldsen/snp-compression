@@ -6,32 +6,6 @@ import torch
 import wandb
 
 
-def log_conf_matrix(model, dataloader):
-    """Logs a wandb conf matrix, from a model and dataloader"""
-    preds = []
-    y = []
-    
-    for x in dataloader:
-        x_hat = model(x)
-        probs_ = x_hat.softmax(dim=1)
-        y.append(x)
-        preds.append(probs_.argmax(dim=1))
-
-    preds = torch.cat(preds, dim=0)
-    y = torch.cat(y, dim=0)
-
-    preds = preds.view((-1))
-    y = y.view((-1))
-    not_nans = ~y.isnan()
-    wandb.log(
-        {
-            "conf": wandb.plot.confusion_matrix(
-                preds=preds[not_nans].cpu().numpy(), y_true=y[not_nans].cpu().numpy()
-            )
-        }
-    )
-
-
 def create_argparser(default_yml_path: str) -> argparse.ArgumentParser:
     """Creates an argparser from a yaml file. Where each component is a flag to set and
     each subcomponent is an argument to be passed to the argparse

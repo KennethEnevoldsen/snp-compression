@@ -8,7 +8,12 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 
 import torchmetrics
-from torchmetrics import PearsonCorrCoef
+from torchmetrics import PearsonCorrCoef, ConfusionMatrix
+
+import numpy as np
+import seaborn as sn
+import matplotlib.pyplot as plt
+import wandb
 
 
 class PlOnehotWrapper(pl.LightningModule):
@@ -34,10 +39,12 @@ class PlOnehotWrapper(pl.LightningModule):
         self.f1 = torchmetrics.F1Score(
             num_classes=num_classes, mdmc_average="global", ignore_index=ignore_index
         )
+        self.conf_mat = ConfusionMatrix(num_classes=num_classes - 1)  # ignores NAs
         self.pearson = PearsonCorrCoef
         self.optimizer_name = optimizer
         self.train_loader = train_loader
         self.val_loader = val_loader
+        self.conf_matrix = None
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x.shape should be (batch, channels=1, genotype/snp=4, sequence length)
@@ -102,15 +109,56 @@ class PlOnehotWrapper(pl.LightningModule):
                 preds_no_na.squeeze(0).type(torch.float).to("cpu"),
                 target_no_na.squeeze(0).type(torch.float).to("cpu"),
             )
+            conf_matrix_ = self.conf_mat(preds=preds_no_na, target=target_no_na)
+            if self.conf_matrix is None:
+                conf_matrix = conf_matrix_
+            else:
+                conf_matrix += conf_matrix_
 
+        self.log_conf_matrix(conf_matrix=conf_matrix)
         self.log("val_loss", loss)
         self.log("val_acc", self.accuracy(preds, x))
         self.log("val_f1", self.f1(preds, x))
         self.log("val_pearson_cor", pearson.compute())
         self.log("val_step/sec", time.time() - s)
 
+    def validation_epoch_end(self, outputs):
+        if self.conf_matrix:
+            self.log_conf_matrix(conf_matrix=self.conf_matrix)
+
+        # reset conf matrix
+        self.conf_matrix = None
+
     def train_dataloader(self) -> DataLoader:
         return self.train_loader
 
     def val_dataloader(self) -> DataLoader:
         return self.val_loader
+
+    def log_conf_matrix(self, conf_matrix: torch.Tensor) -> None:
+        # count confusion matrix
+        plt.clf()
+        fig, ax = plt.subplots(figsize=(11.7, 8.27))
+        conf_matrix = conf_matrix.cpu().numpy()
+        cmat = sn.heatmap(conf_matrix, annot=True)
+
+        self.logger.experiment.log(
+            {
+                "Confusion Matrix": wandb.Image(cmat.get_figure()),
+                "global_step": self.global_step,
+            }
+        )
+
+        # normalize confusion matrix
+        conf_matrix_norm = conf_matrix / conf_matrix.astype(np.float).sum(axis=1)
+
+        plt.clf()
+        fig, ax = plt.subplots(figsize=(11.7, 8.27))
+        cmat = sn.heatmap(conf_matrix_norm, annot=True)
+
+        self.logger.experiment.log(
+            {
+                "Normalized Confusion Matrix": wandb.Image(cmat.get_figure()),
+                "global_step": self.global_step,
+            }
+        )

@@ -9,7 +9,7 @@ parameters:
   layers_factor:
     values: [0.5, 1, 2]
   batch_size:
-    values: [16, 32, 64] # 12 or higher 
+    values: [32, 64] # 12 or higher 
   val_check_interval:
     values: [4000]
   p_val: 
