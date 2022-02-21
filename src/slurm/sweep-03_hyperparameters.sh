@@ -7,7 +7,7 @@
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
 
-SWEEPID="kenevoldsen/snp-compression/mmdpfr2s"
+SWEEPID="kenevoldsen/snp-compression/119y127n"
 venv="SNPNet"
 
 echo 'Activating virtual environment: ' $venv
@@ -15,7 +15,7 @@ source /faststorage/project/NLPPred/snp-compression/SNPNet/bin/activate
 which python
 
 # echo 'Update sweep config based on local'
-# wandb sweep src/train/sweep-01.yaml
+# wandb sweep src/train/sweep-03.yaml
 
 echo 'Running wandb sweep'
 wandb agent $SWEEPID

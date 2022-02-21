@@ -3,16 +3,16 @@
 learning_rate: 
   default: 0.001
 auto_lr_find:
-  default: False
+  default: True
   help: Should the model find the learning rate? Overwrites learning rate
 optimizer: 
-  default: "Adam"
+  default: "adam"
   help: Options include adam, adamw, sgd
 #    Other training arguments
 precision:
-  default: 32
-batch_size: 
-  default: 4
+  default: 16
+batch_size:
+  default: 12
 num_workers: 
   default: 4
 val_check_interval:
