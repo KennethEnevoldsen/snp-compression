@@ -1,0 +1,90 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+Training SNPNet
+wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run comic-lake-44
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/1lzdaw5o
+wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220221_174302-1lzdaw5o
+wandb: Run `wandb offline` to turn off syncing.
+Using 16bit native Automatic Mixed Precision (AMP)
+GPU available: True, used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Set SLURM handle signals.
+
+Traceback (most recent call last):
+  File "src/train/train.py", line 111, in <module>
+    main()
+  File "src/train/train.py", line 100, in main
+    lr_finder = trainer.tuner.lr_find(model)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 185, in lr_find
+    result = self.trainer.tune(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1099, in tune
+    result = self.tuner._tune(model, scale_batch_size_kwargs=scale_batch_size_kwargs, lr_find_kwargs=lr_find_kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 53, in _tune
+    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 238, in lr_find
+    trainer.tuner._run(model)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 63, in _run
+    self.trainer._run(*args, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
+    self._dispatch()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
+    self.training_type_plugin.start_training(self)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
+    self._results = trainer.run_stage()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
+    return self._run_train()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
+    self._run_sanity_check(self.lightning_module)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
+    self._evaluation_loop.run()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
+    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
+    self.advance(*args, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
+    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
+    output = self.trainer.accelerator.validation_step(step_kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
+    return self.training_type_plugin.validation_step(*step_kwargs.values())
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+  File "./src/models/pl_wrappers.py", line 118, in validation_step
+    wandb.log({"conf_matrix": fig, "global_step": self.global_step})
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1349, in log
+    self.history._row_add(data)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/wandb_history.py", line 44, in _row_add
+    self._flush()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/wandb_history.py", line 59, in _flush
+    self._callback(row=self._data, step=self._step)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/wandb_run.py", line 1027, in _history_callback
+    self._backend.interface.publish_history(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/interface/interface.py", line 496, in publish_history
+    data = data_types.history_dict_to_json(run, data, step=step)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/data_types.py", line 2591, in history_dict_to_json
+    payload[key] = val_to_json(run, key, val, namespace=step)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/data_types.py", line 2616, in val_to_json
+    val = Plotly.make_plot_media(val)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/sdk/data_types.py", line 2540, in make_plot_media
+    val = util.matplotlib_to_plotly(val)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/wandb/util.py", line 510, in matplotlib_to_plotly
+    return tools.mpl_to_plotly(obj)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/plotly/tools.py", line 112, in mpl_to_plotly
+    matplotlylib.Exporter(renderer).run(fig)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/plotly/matplotlylib/mplexporter/exporter.py", line 53, in run
+    self.crawl_fig(fig)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/plotly/matplotlylib/mplexporter/exporter.py", line 124, in crawl_fig
+    self.crawl_ax(ax)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/plotly/matplotlylib/mplexporter/exporter.py", line 146, in crawl_ax
+    self.draw_collection(ax, collection)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/plotly/matplotlylib/mplexporter/exporter.py", line 289, in draw_collection
+    offset_order = offset_dict[collection.get_offset_position()]
+AttributeError: 'QuadMesh' object has no attribute 'get_offset_position'
+wandb: ERROR Problem finishing run
