@@ -1,0 +1,31 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+compressing chromosomes
+Saving to path:
+	src/apply/../../data/processed/chrom_6
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 103, in <module>
+    compress(mdl, loader, save_path=save_path)
+  File "src/apply/validate.py", line 66, in compress
+    arr = torch_tensor_stream_to_dask(encode_stream, save_path)
+  File "src/apply/validate.py", line 76, in torch_tensor_stream_to_dask
+    for i, array in enumerate(arrays):
+  File "src/apply/validate.py", line 63, in encode
+    yield model.encode(sample)
+  File "./src/models/pl_wrappers.py", line 53, in encode
+    return self.model.encoder(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "./src/models/SNPNet.py", line 307, in forward
+    x = self.conv1(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "./src/models/SNPNet.py", line 45, in forward
+    x = self.conv(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 446, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 442, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor

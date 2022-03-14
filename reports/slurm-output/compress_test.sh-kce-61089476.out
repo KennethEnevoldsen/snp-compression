@@ -1,0 +1,4 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+Training SNPNet
+slurmstepd: error: *** JOB 61089476 ON s10n01 CANCELLED AT 2022-02-25T13:36:45 ***

@@ -1,0 +1,14 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+Training SNPNet
+Saving to path:
+	src/apply/../../data/processed/chrom_6
+Currently at:  0
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 101, in <module>
+    compress(mdl, loader, save_path=save_path)
+  File "src/apply/validate.py", line 66, in compress
+    arr = torch_tensor_stream_to_dask(encode_stream, save_path)
+  File "src/apply/validate.py", line 81, in torch_tensor_stream_to_dask
+    dask_arr.to_zarr(save_name, overwrite=overwrite)
+AttributeError: 'numpy.ndarray' object has no attribute 'to_zarr'

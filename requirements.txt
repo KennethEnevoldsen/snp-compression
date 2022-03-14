@@ -6,6 +6,7 @@ black
 plinkio==0.9.8
 pandas_plink==2.2.9
 zarr==2.11.0
+dask[diagnostics]
 
 # ml
 torch==1.10.2

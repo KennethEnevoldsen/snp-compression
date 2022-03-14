@@ -1,9 +1,68 @@
+from typing import Union
 import argparse
+from argparse import Namespace
 
 import yaml
 
-import torch
-import wandb
+
+def create_config_namespace(
+    default_yml_path: str, config: Union[dict, str] = {}
+) -> Namespace:
+    """Creates a config NameSpace from a default yaml dict which can
+    for instance be used when replacing the wandb config. E.g. used
+    when loading in the model without wanting to use wandb.
+
+    Args:
+        default_yml_path (str): The default yml path
+        config (Union[dict, str], optional): An additional config which overwrites
+        arguments in the default yaml path.
+
+    Returns:
+        Namespace: A namespace config
+    """
+    config_ = load_yaml_config(default_yml_path)
+    if config:
+        if isinstance(config, str):
+            config = load_yaml_config(config)
+        else:
+            config = __clean_yaml_config(config)
+
+        for k, item in config.items():
+            config_[k] = item
+    # collapse arguments
+    config_ = {k: args["default"] for k, args in config_.items()}
+    return Namespace(**config_)
+
+
+def load_yaml_config(yaml_config_path: str) -> dict:
+    with open(yaml_config_path, "r") as f:
+        yaml_config_dict = yaml.safe_load(f)
+    return __clean_yaml_config(yaml_config_dict)
+
+
+def __clean_yaml_config(yaml_config_dict: dict) -> dict:
+    for k, args in yaml_config_dict.items():
+        if isinstance(args, dict):
+            # normalize desc (to help) and value (to default)
+            if ("value" in args) and ("default" in args):
+                raise ValueError(
+                    f"{k} contains both a 'value' and a 'default'," + " Remove one."
+                )
+            if ("desc" in args) and ("help" in args):
+                raise ValueError(
+                    f"{k} contains both a 'desc' and a 'help'." + " Remove one."
+                )
+            if "value" in args:
+                args["default"] = args["value"].pop()
+            if "desc" in args:
+                args["default"] = args["value"].pop()
+            if "type" in args:
+                args["type"] = eval(args["type"])
+        else:
+            # assume the value is the default
+            yaml_config_dict[k] = {"default": args}
+
+    return yaml_config_dict
 
 
 def create_argparser(default_yml_path: str) -> argparse.ArgumentParser:
@@ -28,30 +87,11 @@ def create_argparser(default_yml_path: str) -> argparse.ArgumentParser:
         argparse.ArgumentParser: The ArgumentParser for parsing all the arguments in the
             config.
     """
-
-    with open(default_yml_path, "r") as f:
-        default_dict = yaml.safe_load(f)
+    default_dict = load_yaml_config(default_yml_path)
 
     parser = argparse.ArgumentParser()
     for k, args in default_dict.items():
-        if isinstance(args, dict):
-            if ("value" in args) and ("default" in args):
-                raise ValueError(
-                    f"{k} contains both a 'value' and a 'default'," + " Remove one."
-                )
-            if ("desc" in args) and ("help" in args):
-                raise ValueError(
-                    f"{k} contains both a 'desc' and a 'help'." + " Remove one."
-                )
-            if "value" in args:
-                args["default"] = args["value"].pop()
-            if "desc" in args:
-                args["default"] = args["value"].pop()
-            parser.add_argument(f"--{k}", **args)
-
-        # if not dict assume args is the default values
-        else:
-            parser.add_argument(f"--{k}", default=args)
+        parser.add_argument(f"--{k}", **args)
 
     return parser
 
@@ -68,6 +108,7 @@ def config_yaml_to_dict(path: str) -> dict:
             value: 100
 
     becomes:
+
     .. code::
 
         {epochs: 100}
@@ -75,18 +116,5 @@ def config_yaml_to_dict(path: str) -> dict:
     Args:
         path (str): Path to yaml file containing arguments to parse.
     """
-    with open(path, "r") as f:
-        default_dict = yaml.safe_load(f)
-    hyperparameter_dict = {}
-    for k, args in default_dict.items():
-        if isinstance(args, dict):
-            if ("value" in args) and ("default" in args):
-                raise ValueError(
-                    f"{k} contains both a 'value' and a 'default'," + " Remove one."
-                )
-            if "value" in args:
-                args["default"] = args["value"].pop()
-            hyperparameter_dict[k] = args["default"]
-        else:
-            hyperparameter_dict[k] = args
-    return hyperparameter_dict
+    default_dict = load_yaml_config(path)
+    return {k: args["default"] for k, args in default_dict.items()}

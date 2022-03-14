@@ -1,6 +1,16 @@
 SNP-Compression
 ==============================
 
+
+TODO: 
+1) Generalize data read function to include xarrays metadata.
+    1) reformat the dataset into .zarr (started)
+    2) create code for doing the forward pass with metadata
+2) Get doug a txt with chr 1, 2, 6 as a N part. 
+
+
+
+
 This project seeks to compress snp's using deep neural networks.
 
 

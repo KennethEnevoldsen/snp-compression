@@ -1,0 +1,15 @@
+Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.79it/s]Mapping files:  67%|██████▋   | 2/3 [00:00<00:00,  2.05it/s]Mapping files: 100%|██████████| 3/3 [01:14<00:00, 33.66s/it]Mapping files: 100%|██████████| 3/3 [01:14<00:00, 24.76s/it]
+Traceback (most recent call last):
+  File "src/data/plink_to_xarray.py", line 19, in <module>
+    ds.save_to_disk(save_path)
+  File "./src/data/dataloaders.py", line 196, in save_to_disk
+    ds.to_zarr(path)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/dataset.py", line 2035, in to_zarr
+    return to_zarr(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/backends/api.py", line 1391, in to_zarr
+    zstore = backends.ZarrStore.open_group(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/backends/zarr.py", line 387, in open_group
+    zarr_group = zarr.open_group(store, **open_kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/zarr/hierarchy.py", line 1197, in open_group
+    raise ContainsGroupError(path)
+zarr.errors.ContainsGroupError: path '' contains a group

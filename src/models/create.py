@@ -1,3 +1,4 @@
+from typing import Optional
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 
@@ -9,7 +10,9 @@ from src.models.pl_wrappers import PlOnehotWrapper
 
 
 def create_model(
-    config, train_loader: DataLoader, val_loader: DataLoader
+    config,
+    train_loader: Optional[DataLoader] = None,
+    val_loader: Optional[DataLoader] = None,
 ) -> pl.LightningModule:
     if config.architecture.lower() == "snpnet":
         enc_filters = [int(f * config.filter_factor) for f in [64, 128, 256]]
@@ -32,6 +35,7 @@ def create_model(
             optimizer=config.optimizer,
             train_loader=train_loader,
             val_loader=val_loader,
+            log_slow=config.log_slow,
         )
     else:
         raise NotImplementedError(

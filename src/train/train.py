@@ -66,6 +66,7 @@ def create_trainer(config) -> Trainer:
         weights_save_path=os.path.join(config.default_root_dir, config.run_name),
         precision=config.precision,
         auto_lr_find=config.auto_lr_find,
+        check_val_every_n_epoch=config.check_val_every_n_epoch,
     )
     return trainer
 
