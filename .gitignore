@@ -103,3 +103,13 @@ SNPNet/share/*
 SNPNet/pyvenv.cfg
 SNPNet/lib64
 models/*
+
+# Plink datafiles
+**/*.bim
+**/*.bed
+**/*.fam
+**/*.sp
+**/*.stats
+**/*.missing
+**/*.progress
+**/*.linux

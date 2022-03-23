@@ -1,19 +1,20 @@
+from typing import Optional, Union
+
 import os
 import sys
-from typing import Iterable, Optional, Union
+from pathlib import Path
 
 sys.path.append(".")
 sys.path.append("../../.")
 
-from pathlib import Path
-
-import dask.array as da
-
 import pytorch_lightning as pl
 import torch
 from torch.utils.data import DataLoader
+import xarray as xr
 
-from src.data.dataloaders import load_dataset
+from pandas_plink import write_plink1_bin
+
+from src.data.dataloaders import PLINKIterableDataset, xarray_collate_batch
 from src.models.create import create_model
 from src.util import create_config_namespace
 
@@ -64,40 +65,25 @@ def compress(model: pl.LightningModule, dataloader: DataLoader, save_path: str) 
         model.eval()
         with torch.no_grad():
             for sample in dataloader:
-                yield model.encode(sample.to(model.device))
+                yield model.xarray_encode(sample)
 
     encode_stream = encode(dataloader)
-    arr = torch_tensor_stream_to_dask(encode_stream, save_path)
-    save_name = os.path.join(save_path, "transposed.zarr")
-    arr.T.to_zarr(save_name)
-
-
-def torch_tensor_stream_to_dask(
-    arrays: Iterable[torch.Tensor], save_path: str, overwrite: bool = True
-) -> da.Array:
-    s_paths = []
-
-    for i, array in enumerate(arrays):
-        print("Currently at: ", i)
-        dask_arr = da.from_array(array.cpu().numpy())
-        save_name = os.path.join(save_path, f"{i}.zarr")
-        s_paths.append(save_name)
-        dask_arr.to_zarr(save_name, overwrite=overwrite)
-
-    dask_arrays = [da.from_zarr(p) for p in s_paths]
-    arr = da.concatenate(dask_arrays, axis=0)
-    return arr
+    arr = xr.concat(list(encode_stream), dim="sample")
+    save_name = os.path.join(save_path, "chrom.bed")
+    write_plink1_bin(arr, save_name)
 
 
 if __name__ == "__main__":
     chrom = 6
     mdl = load_model("rich-thunder-72", config={"chromosome": chrom})
     mdl.to(device=torch.device("cuda"))
-    mdl.eval()
 
-    train, val, test = load_dataset(chromosome=chrom)
-    ds = val
-    loader = DataLoader(val, batch_size=32)
+    path = os.path.join(
+        os.path.dirname(__file__), "..", "..", "data", "interim", "genotype.zarr"
+    )
+    print("Loading data")
+    ds = PLINKIterableDataset(path, chromosome=chrom, to_tensor=False)
+    loader = DataLoader(ds, batch_size=32, collate_fn=xarray_collate_batch)
 
     fpath = os.path.dirname(__file__)
     save_path = os.path.join(fpath, "..", "..", "data", "processed", f"chrom_{chrom}")
@@ -106,46 +92,4 @@ if __name__ == "__main__":
 
     compress(mdl, loader, save_path=save_path)
 
-chrom = 6
-read_p = os.path.join("data", "processed", f"chrom_{chrom}", "transposed.zarr")
-arr = da.from_zarr(read_p)
-arr=arr.squeeze(2).squeeze(0)
-test = arr.compute()
-
-import numpy as np
-np.savetxt("tmp.txt", test, delimiter=" ")
-
-
-
-
-import os
-import time
-
-from wasabi import msg
-
-import dask
-from pandas_plink import read_plink
-
-
-read_path = os.path.join("..", "..", "dsmwpred", "data", "ukbb", "geno")
-save_path = os.path.join("data", "interim")
-
-(bim, fam, G) = read_plink(read_path)
-
-msg.info("Read in data")
-
-with dask.config.set(**{"array.slicing.split_large_chunks": True}):
-    for chr in bim["chrom"].unique():
-        start = time.time()
-        G_ = G[bim["chrom"].to_numpy() == chr].rechunk()
-        path = os.path.join(save_path, f"chrom_{chr}")
-        G_.T.to_zarr(path, overwrite=True)
-        e = time.time() - start
-        msg.info(f"Saved chromosome {chr} to {path}. Time spent: {e}")
-    msg.good("Process complete")
-
-
-
-G.shape
-fam.shape
-bim.shape
+# some error with GPU - probably have to move to CPU at the right place (maybe in the dataloader?)

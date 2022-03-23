@@ -58,11 +58,11 @@ class PlOnehotWrapper(pl.LightningModule):
         # x.shape should be (batch, channels=1, genotype/snp=4, sequence length)
         return self.model(x)
 
-    def xarray_forward(self, x: xr.DataArray) -> xr.DataArray:
+    def xarray_encode(self, x: xr.DataArray) -> xr.DataArray:
         """
-        Computes the forward pass of the model on the xarray data by transforming it
-        to a torch.Tensor and calling the forward method. Then transforms the output
-        back to an xarray.DataArray.
+        Computes the forward pass of the model encoder on the xarray data by
+        transforming it to a torch.Tensor and calling the forward method. Then
+        transforms the output back to an xarray.DataArray.
 
         Args:
             x (xarray.DataArray): input data.
@@ -73,10 +73,10 @@ class PlOnehotWrapper(pl.LightningModule):
         """
         x_torch = torch.from_numpy(x.compute().data).to(self.device)
 
-        condensed = self.model(x_torch)
+        condensed = self.encode(x_torch).squeeze(-1).squeeze(1)
 
         c_geno = xr.DataArray(
-            condensed,
+            condensed.to("cpu").detach().numpy(),
             dims=["sample", "variant"],
             coords={
                 "sample": x.sample,  # add metadata, including iid, chrom, trait, etc.

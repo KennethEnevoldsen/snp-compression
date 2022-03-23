@@ -1,6 +1,6 @@
 import os
 import random
-from typing import Iterator, Optional, Tuple, Union
+from typing import Iterator, Optional, Tuple, Union, List
 
 import numpy as np
 import dask.array as da
@@ -117,6 +117,7 @@ class PLINKIterableDataset(IterableDataset):
         plink_path: str,
         buffer_size: int = 1024,
         shuffle: bool = True,
+        limit: Optional[int] = None,
         chromosome: Optional[int] = None,
         seed: int = 42,
         to_tensor: bool = True,
@@ -126,7 +127,7 @@ class PLINKIterableDataset(IterableDataset):
         self.seed = seed
         self.convert_to_tensor = to_tensor
 
-        self.from_disk(plink_path)
+        self.from_disk(plink_path, limit=limit)
         self.set_chromosome(chromosome)
 
     def set_chromosome(self, chromosome: Optional[int]) -> None:
@@ -157,10 +158,14 @@ class PLINKIterableDataset(IterableDataset):
             for x in X:
                 yield x
 
-    def create_data_array_iter(self) -> Iterator:
+    def create_data_array_iter(self, batch_size: Optional[int] = None) -> Iterator:
         """
         An iterable version of the plink dataset. If shuffle is True, the data is
         shuffled using a shufflebuffer.
+
+        Args:
+            batch_size (Optional[int], optional): Defaults to None. If not None,
+                the data is returned in batches of size batch_size.
 
         Yields:
             DataArray: A DataArray object containing the genotype data.
@@ -168,7 +173,29 @@ class PLINKIterableDataset(IterableDataset):
         dataset_iter = self.__create_iter()
         if self.shuffle:
             dataset_iter = self.shuffle_buffer(dataset_iter)
+        if batch_size:
+            dataset_iter = self.batch_iter(dataset_iter, batch_size)
         return dataset_iter
+
+    def batch_iter(self, dataset_iter: Iterator, batch_size: int) -> Iterator:
+        """
+        An iterator that returns batches of size batch_size.
+
+        Args:
+            dataset_iter (Iterator): The iterator to be batched.
+            batch_size (int): The batch size.
+
+        Yields:
+            DataArray: A DataArray object containing the genotype data.
+        """
+        batch = []
+        for item in dataset_iter:
+            batch.append(item)
+            if len(batch) == batch_size:
+                yield batch
+                batch = []
+        if len(batch) > 0:
+            yield batch
 
     def __iter__(self) -> Iterator:
         dataset_iter = self.create_data_array_iter()
@@ -197,14 +224,15 @@ class PLINKIterableDataset(IterableDataset):
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
-    def from_disk(self, path: str) -> None:
+    def from_disk(self, path: str, limit: Optional[int]) -> None:
         """
         Load the dataset from disk.
 
         Args:
             path (str): Path to the dataset. Read format is determined by the
                 file extension. Options include ".bed" or ".zarr".
-
+            limit (Optional[int], optional): Defaults to None. If not None,
+                only the first limit number of rows will be loaded.
         """
         ext = os.path.splitext(path)[-1]
         if ext == ".bed":
@@ -214,6 +242,9 @@ class PLINKIterableDataset(IterableDataset):
             self._genotype = zarr_ds.genotype
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
+
+        if limit:
+            self._genotype = self._genotype[:limit]
 
     def to_tensor(self, x: DataArray):
         """Convert DataArray to tensor
@@ -279,7 +310,7 @@ def load_dataset(
 
     splits = np.zeros((arr.shape[0],))
     splits[:n_val] = 1
-    splits[n_val: n_val + n_test] = 2
+    splits[n_val : n_val + n_test] = 2
     np.random.seed(1234)  # ensures consistent splits
     np.random.shuffle(splits)
 
@@ -294,133 +325,24 @@ def load_dataset(
     return (ds_train, ds_val, ds_test)
 
 
+def xarray_collate_batch(batch: List[DataArray]) -> DataArray:
+    """collates batch into a dataarray"""
+    return xr.concat(batch, dim="sample", coords="all")
+
+
+
+
 if __name__ == "__main__":
-    path = os.path.join("/home", "kce", "NLPPred", "data-science-exam", "mhcabi.bed")
-    dataset = PLINKIterableDataset(path, chromosome=6, to_tensor=False)
-    
+    path = os.path.join(
+        "/home", "kce", "NLPPred", "snp-compression", "data", "interim", "genotype.zarr"
+    )
+    dataset = PLINKIterableDataset(path, chromosome=6, to_tensor=False, limit=100)
+
     from torch.utils.data import DataLoader
 
-    dataloader = DataLoader(dataset)
-    plink_iter = iter(dataset)
-    sample = next(plink_iter)
-    print(type(sample))
+    dataloader = DataLoader(dataset, batch_size=32, collate_fn=xarray_collate_batch)
 
-
-    # meta_data_iter = dataset.create_data_array_iter()
-    # sample_meta = next(meta_data_iter)
-
-    # meta_data_iter = dataset.create_data_array_iter()
-    # sample_meta2 = next(meta_data_iter)
-    # print("done")
-
-    # load_dataset_with_bim_and_fam(chromosome=6)
-    # import time
-
-    # path = os.path.join("data", "interim", "chrom_1")
-    # arr = da.from_zarr(path)  # shape (participants, snps)
-
-    # testing the speeds of the different datasets:
-
-    # Iterable dataset
-    # dataset = DaskIterableDataset(array=arr)
-    # dl = DataLoader(dataset, batch_size=64, shuffle=False)
-    # s = time.time()
-    # iter_dl = iter(dl)
-    # n = 0
-    # for i, d in enumerate(iter(dl)):
-    #     n += d.shape[0]
-    #     assert isinstance(d, torch.Tensor)
-    #     assert n > 0
-    #     if i % 100 == 0 and i != 0:
-    #         print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-    #     if i > 200:
-    #         break
-    # print(f"iterable took {time.time() - s}")
-
-    # .. with buffer
-    # dataset = DaskIterableDataset(array=arr)
-    # dataset = ShuffleDataset(dataset, 1024)
-    # dl = DataLoader(dataset, batch_size=64, shuffle=False)
-    # s = time.time()
-    # iter_dl = iter(dl)
-    # n = 0
-    # for i, d in enumerate(iter(dl)):
-    #     n += d.shape[0]
-    #     assert isinstance(d, torch.Tensor)
-    #     assert n > 0
-    #     if i % 100 == 0 and i != 0:
-    #         print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-    #     if i > 200:
-    #         break
-    # print(f"iterable w. shuffle took {time.time() - s}")
-
-    # map style dataset (allows for a 'true' shuffle but is MUCH slower)
-    # dataset = DaskMapDataset(array=arr)
-    # dl = DataLoader(dataset, batch_size=64, shuffle=True)
-    # s = time.time()
-    # iter_dl = iter(dl)
-    # n = 0
-    # for i, d in enumerate(iter(dl)):
-    #     n += d.shape[0]
-    #     assert isinstance(d, torch.Tensor)
-    #     assert n > 0
-    #     print(f"\t{n}: {(time.time() - s)/n*1000} sec/ 1k samples")
-    #     if i > 200:
-    #         break
-    # print(f"map took {time.time() - s}")
-
-#     dataset, val, test = load_dataset(22, 1024)
-#     dl = DataLoader(dataset, batch_size=64, shuffle=False)
-#     s = time.time()
-#     iter_dl = iter(dl)
-#     n = 0
-#     for i, d in enumerate(iter(dl)):
-#         n += d.shape[0]
-#         assert isinstance(d, torch.Tensor)
-
-# from xarray import DataArray
-# import xarray as xr
-# from pandas_plink import read_plink1_bin, write_plink1_bin
-# import os
-
-# # path = os.path.join("/home", "kce", "dsmwpred", "data", "ukbb", "geno.bed")
-# # G = read_plink1_bin(path)
-# # G
-
-
-# D = DataArray(
-#     [[3.0, 2.0, 2.0], [0.0, 0.0, 1.0]],
-#     dims=["sample", "variant"],
-#     coords=dict(
-#         iid=("sample", [1, 2]),
-#         chrom=("variant", ["1", "1", "2"]),
-#     ),
-# )
-
-# C = DataArray(
-#     [[3.0, 2.0, 2.0], [0.0, 0.0, 1.0]],
-#     dims=["sample", "variant"],
-#     coords=dict(
-#         iid=("sample", [1, 2]),
-#         chrom=("variant", ["1", "1", "2"]),
-#     ),
-# )
-
-# # C = DataArray(
-# #     [[3.0, 2.0, 2.0], [0.0, 0.0, 1.0]],
-# #     dims=C.dims,
-# #     coords=C.coords,
-# # )
-
-
-# # print(D)
-# write_plink1_bin(D, "sample.bed", verbose=False)
-# t = read_plink1_bin("sample.bed")
-# t = xr.Dataset(dict(genotype=t))
-# t.to_zarr("sample.zarr")
-
-# ds_zarr = xr.open_zarr("sample.zarr")
-# genotype = ds_zarr.genotype
-# xarr = xr.open_dataset("saved_on_disk.nc").to_array()
-
-# xr.concat([D, C], dim="sample")
+    for i in dataloader:
+        if i % 10:
+            print(i.shape)
+        pass
