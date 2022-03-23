@@ -1,0 +1,53 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+compressing chromosomes
+Loading data
+Saving to path:
+	src/apply/../../data/processed/chrom_6
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 93, in <module>
+    compress(mdl, loader, save_path=save_path)
+  File "src/apply/validate.py", line 71, in compress
+    arr = xr.concat(encode_stream, dim="sample")
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/concat.py", line 220, in concat
+    first_obj, objs = utils.peek_at(objs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/utils.py", line 196, in peek_at
+    peek = next(gen)
+  File "src/apply/validate.py", line 67, in encode
+    for sample in dataloader:
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 40, in fetch
+    return self.collate_fn(data)
+  File "./src/data/dataloaders.py", line 330, in xarray_collate_batch
+    return xr.concat(batch, dim="sample")
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/concat.py", line 238, in concat
+    return f(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/concat.py", line 578, in _dataarray_concat
+    ds = _dataset_concat(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/concat.py", line 517, in _dataset_concat
+    combined = concat_vars(vars, dim, positions, combine_attrs=combine_attrs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/variable.py", line 2952, in concat
+    return Variable.concat(variables, dim, positions, shortcut, combine_attrs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/variable.py", line 1900, in concat
+    data = duck_array_ops.concatenate(arrays, axis=axis)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/duck_array_ops.py", line 286, in concatenate
+    return _concatenate(as_shared_dtype(arrays), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 1681, in __array_function__
+    return da_func(*args, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 4015, in concatenate
+    seq = [asarray(a, allow_unknown_chunksizes=allow_unknown_chunksizes) for a in seq]
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 4015, in <listcomp>
+    seq = [asarray(a, allow_unknown_chunksizes=allow_unknown_chunksizes) for a in seq]
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 4343, in asarray
+    return from_array(a, getitem=getter_inline, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 3276, in from_array
+    chunks = normalize_chunks(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 2897, in normalize_chunks
+    chunks = auto_chunks(chunks, shape, limit, dtype, previous_chunks)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/dask/array/core.py", line 2993, in auto_chunks
+    raise NotImplementedError(
+NotImplementedError: Can not use auto rechunking with object dtype. We are unable to estimate the size in bytes of object data
