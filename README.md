@@ -1,6 +1,7 @@
 SNP-Compression
 ==============================
 
+**Note:** This is a work in progress
 
 TODO: 
 1) Generalize data read function to include xarrays metadata.
