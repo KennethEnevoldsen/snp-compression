@@ -122,6 +122,7 @@ class PLINKIterableDataset(IterableDataset):
         seed: int = 42,
         to_tensor: bool = True,
     ) -> IterableDataset:
+
         self.buffer_size = buffer_size
         self.shuffle = shuffle
         self.seed = seed
@@ -142,19 +143,7 @@ class PLINKIterableDataset(IterableDataset):
             self.genotype = self._genotype
 
     def __create_iter(self) -> Iterator:
-        n, _ = self._genotype.shape
-
-        starts = range(0, n, self.buffer_size)
-        ends = range(self.buffer_size, n, self.buffer_size)
-
-        end = 0  # if buffer_size > array.shape[1]
-        for start, end in zip(starts, ends):
-            X = self._genotype[start:end]
-            assert X.shape[0] == self.buffer_size
-            for x in X:
-                yield x
-        if n > end:
-            X = self._genotype[end:n]
+        for X in self.batch_iter(self.buffer_size):
             for x in X:
                 yield x
 
@@ -170,43 +159,49 @@ class PLINKIterableDataset(IterableDataset):
         Yields:
             DataArray: A DataArray object containing the genotype data.
         """
-        dataset_iter = self.__create_iter()
+        if batch_size:
+            dataset_iter = self.batch_iter(batch_size)
+        else:
+            dataset_iter = self.__create_iter()
+
         if self.shuffle:
             dataset_iter = self.shuffle_buffer(dataset_iter)
-        if batch_size:
-            dataset_iter = self.batch_iter(dataset_iter, batch_size)
         return dataset_iter
 
-    def batch_iter(self, dataset_iter: Iterator, batch_size: int) -> Iterator:
+    def batch_iter(self, batch_size: int) -> Iterator:
         """
         An iterator that returns batches of size batch_size.
 
         Args:
-            dataset_iter (Iterator): The iterator to be batched.
             batch_size (int): The batch size.
 
         Yields:
             DataArray: A DataArray object containing the genotype data.
         """
-        batch = []
-        for item in dataset_iter:
-            batch.append(item)
-            if len(batch) == batch_size:
-                yield batch
-                batch = []
-        if len(batch) > 0:
-            yield batch
+        n, _ = self._genotype.shape
+
+        starts = range(0, n, self.buffer_size)
+        ends = range(self.buffer_size, n, self.buffer_size)
+
+        end = 0  # if batch_size > array.shape[1]
+        for start, end in zip(starts, ends):
+            X = self._genotype[start:end].compute()
+            if self.convert_to_tensor:
+                X = self.to_tensor(X)
+            yield X
+        if n > end:
+            if self.convert_to_tensor:
+                X = self.to_tensor(X)
+            X = self._genotype[end:n].compute()
+            yield X
 
     def __iter__(self) -> Iterator:
         dataset_iter = self.create_data_array_iter()
 
         for x in dataset_iter:
-            if self.convert_to_tensor:
-                yield self.to_tensor(x)
-            else:
-                yield x
+            yield x
 
-    def save_to_disk(self, path: str):
+    def save_to_disk(self, path: str, chunks: int = 2**13) -> None:
         """
         Save the dataset to disk.
 
@@ -214,12 +209,15 @@ class PLINKIterableDataset(IterableDataset):
             path (str): Path to save the dataset. Save format is determined by the
                 file extension. Options include ".bed" or ".zarr". Defaults to
                 ".zarr".
+            chunks (int, optional): Defaults to 2**13. The chunk size to be passed to
+                Xarray.chunk, Defaults to 2**13.
         """
         ext = os.path.splitext(path)[-1]
         if ext == ".bed":
-            write_plink1_bin(self._genotype, path)
+            write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
-            ds = xr.Dataset(dict(genotype=self._genotype))
+            genotype = self.genotype.chunk(chunks)
+            ds = xr.Dataset(dict(genotype=self.genotype))
             ds.to_zarr(path)
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
@@ -330,13 +328,13 @@ def xarray_collate_batch(batch: List[DataArray]) -> DataArray:
     return xr.concat(batch, dim="sample", coords="all")
 
 
-
-
 if __name__ == "__main__":
     path = os.path.join(
         "/home", "kce", "NLPPred", "snp-compression", "data", "interim", "genotype.zarr"
     )
-    dataset = PLINKIterableDataset(path, chromosome=6, to_tensor=False, limit=100)
+    #path = os.path.join("/home/kce", "NLPPred", "data-science-exam", "mhcabe.bed")
+
+    dataset = PLINKIterableDataset(path, chromosome=6, to_tensor=False)
 
     from torch.utils.data import DataLoader
 

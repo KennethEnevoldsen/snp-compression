@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=20:00:00
+#SBATCH --time=11:00:00
 #SBATCH --mem 64g
 #SBATCH -c 32
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out

@@ -1,8 +1,10 @@
 from typing import Union
 from pathlib import Path
 
-from pandas_plink._write import _fill_sample, _fill_variant, _write_fam, _write_bim
 import xarray as xr
+import numpy as np
+
+from pandas_plink._write import _fill_sample, _fill_variant, _write_fam, _write_bim
 
 
 def write_to_sped(
@@ -16,8 +18,8 @@ def write_to_sped(
     A .sped binary file set consists of three files:
 
     - .sped: containing the genotype.
-    - BIM: containing variant information.
-    - FAM: containing sample information.
+    - .bim: containing variant information.
+    - .fam: containing sample information.
 
     The user must provide the genotype (dosage) via a :class:`xarray.DataArray`.
     That matrix must have two named dimensions: **sample** and **variant**.
@@ -92,7 +94,6 @@ def _write_sped(G: xr.DataArray, sped: Union[str, Path]) -> None:
 
 
 if __name__ == "__main__":
-    import numpy as np
     import os
 
     path = os.path.join(

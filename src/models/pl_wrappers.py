@@ -52,7 +52,7 @@ class PlOnehotWrapper(pl.LightningModule):
         self.log_slow = log_slow
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
-        return self.model.encoder(x)
+        return self.model.encoder(x.to(self.device))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x.shape should be (batch, channels=1, genotype/snp=4, sequence length)

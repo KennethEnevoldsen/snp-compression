@@ -4,17 +4,21 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.append(".")
-sys.path.append("../../.")
-
 import pytorch_lightning as pl
 import torch
 from torch.utils.data import DataLoader
 import xarray as xr
+from tqdm import tqdm
 
-from pandas_plink import write_plink1_bin
+sys.path.append(".")
+sys.path.append("../../.")
 
-from src.data.dataloaders import PLINKIterableDataset, xarray_collate_batch
+from src.data.dataloaders import (
+    PLINKIterableDataset,
+    xarray_collate_batch,
+    load_dataset,
+)
+from src.data.write_to_sped import write_to_sped
 from src.models.create import create_model
 from src.util import create_config_namespace
 
@@ -30,6 +34,7 @@ def load_model(
     config: Union[str, dict] = {},
 ) -> pl.LightningModule:
     """loads model
+
 
     Args:
         ckpt_file_path (str): Loads a model ckpt from file path, if the path isn't to a
@@ -64,17 +69,22 @@ def compress(model: pl.LightningModule, dataloader: DataLoader, save_path: str) 
     def encode(dataloader):
         model.eval()
         with torch.no_grad():
-            for sample in dataloader:
-                yield model.xarray_encode(sample)
+            for sample in tqdm(dataloader):
+                if isinstance(sample, xr.DataArray):
+                    yield model.xarray_encode(sample)
+                else:
+                    yield model.encode(sample)
 
     encode_stream = encode(dataloader)
     arr = xr.concat(list(encode_stream), dim="sample")
-    save_name = os.path.join(save_path, "chrom.bed")
-    write_plink1_bin(arr, save_name)
+    save_name = os.path.join(save_path, "chrom.sped")
+
+    write_to_sped(arr, save_name)
 
 
 if __name__ == "__main__":
     chrom = 6
+    print("loading model")
     mdl = load_model("rich-thunder-72", config={"chromosome": chrom})
     mdl.to(device=torch.device("cuda"))
 
@@ -82,8 +92,10 @@ if __name__ == "__main__":
         os.path.dirname(__file__), "..", "..", "data", "interim", "genotype.zarr"
     )
     print("Loading data")
-    ds = PLINKIterableDataset(path, chromosome=chrom, to_tensor=False)
-    loader = DataLoader(ds, batch_size=32, collate_fn=xarray_collate_batch)
+    # ds, val, test = load_dataset(chrom)
+    ds = PLINKIterableDataset(path, chromosome=chrom, to_tensor=True, shuffle=False)
+    # loader = DataLoader(ds, batch_size=32, collate_fn=xarray_collate_batch)
+    loader = DataLoader(ds, batch_size=32)
 
     fpath = os.path.dirname(__file__)
     save_path = os.path.join(fpath, "..", "..", "data", "processed", f"chrom_{chrom}")
@@ -91,5 +103,3 @@ if __name__ == "__main__":
     Path(save_path).mkdir(parents=True, exist_ok=True)
 
     compress(mdl, loader, save_path=save_path)
-
-# some error with GPU - probably have to move to CPU at the right place (maybe in the dataloader?)
