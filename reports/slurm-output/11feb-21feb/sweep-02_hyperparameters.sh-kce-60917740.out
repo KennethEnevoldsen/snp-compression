@@ -1,254 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Running wandb sweep
-wandb: Starting wandb agent 🕵️
-2022-02-20 17:54:52,624 - wandb.wandb_agent - INFO - Running runs: []
-2022-02-20 17:54:52,954 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-20 17:54:52,956 - wandb.wandb_agent - INFO - Agent starting run with config:
-	auto_lr_find: True
-	batch_size: 12
-	layers_factor: 0.5
-	limit_train: 20000
-	max_epochs: 1
-	optimizer: adam
-	p_test: 2000
-	p_val: 2000
-	precision: 16
-	val_check_interval: 4000
-	width: 64
-2022-02-20 17:54:52,964 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=adam --p_test=2000 --p_val=2000 --precision=16 --val_check_interval=4000 --width=64
-2022-02-20 17:54:57,982 - wandb.wandb_agent - INFO - Running runs: ['1rp9xysk']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep.
-wandb: Tracking run with wandb version 0.12.10
-wandb: Syncing run daily-sweep-1
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
-wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/4ze1zumz
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/1rp9xysk
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175500-1rp9xysk
-wandb: Run `wandb offline` to turn off syncing.
-Using 16bit native Automatic Mixed Precision (AMP)
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-
-Traceback (most recent call last):
-  File "src/train/train.py", line 110, in <module>
-    main()
-  File "src/train/train.py", line 99, in main
-    lr_finder = trainer.tuner.lr_find(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 185, in lr_find
-    result = self.trainer.tune(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1099, in tune
-    result = self.tuner._tune(model, scale_batch_size_kwargs=scale_batch_size_kwargs, lr_find_kwargs=lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 53, in _tune
-    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 238, in lr_find
-    trainer.tuner._run(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 63, in _run
-    self.trainer._run(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1128, in _run
-    verify_loop_configurations(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 36, in verify_loop_configurations
-    __verify_train_val_loop_configuration(trainer, model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 74, in __verify_train_val_loop_configuration
-    raise MisconfigurationException(
-pytorch_lightning.utilities.exceptions.MisconfigurationException: No `train_dataloader()` method defined. Lightning `Trainer` expects as minimum a `training_step()`, `train_dataloader()` and `configure_optimizers()` to be defined.
-wandb: Waiting for W&B process to finish, PID 67738... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced daily-sweep-1: https://wandb.ai/kenevoldsen/snp-compression/runs/1rp9xysk
-wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175500-1rp9xysk/logs/debug.log
-wandb: 
-
-2022-02-20 17:55:19,040 - wandb.wandb_agent - INFO - Cleaning up finished run: 1rp9xysk
-2022-02-20 17:55:19,390 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-20 17:55:19,392 - wandb.wandb_agent - INFO - Agent starting run with config:
-	auto_lr_find: True
-	batch_size: 12
-	layers_factor: 0.5
-	limit_train: 20000
-	max_epochs: 1
-	optimizer: adam
-	p_test: 2000
-	p_val: 2000
-	precision: 32
-	val_check_interval: 4000
-	width: 64
-2022-02-20 17:55:19,400 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=adam --p_test=2000 --p_val=2000 --precision=32 --val_check_interval=4000 --width=64
-2022-02-20 17:55:24,416 - wandb.wandb_agent - INFO - Running runs: ['1288th5g']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep.
-wandb: Tracking run with wandb version 0.12.10
-wandb: Syncing run dandy-sweep-2
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
-wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/4ze1zumz
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/1288th5g
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175525-1288th5g
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-
-Traceback (most recent call last):
-  File "src/train/train.py", line 110, in <module>
-    main()
-  File "src/train/train.py", line 99, in main
-    lr_finder = trainer.tuner.lr_find(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 185, in lr_find
-    result = self.trainer.tune(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1099, in tune
-    result = self.tuner._tune(model, scale_batch_size_kwargs=scale_batch_size_kwargs, lr_find_kwargs=lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 53, in _tune
-    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 238, in lr_find
-    trainer.tuner._run(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 63, in _run
-    self.trainer._run(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1128, in _run
-    verify_loop_configurations(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 36, in verify_loop_configurations
-    __verify_train_val_loop_configuration(trainer, model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 74, in __verify_train_val_loop_configuration
-    raise MisconfigurationException(
-pytorch_lightning.utilities.exceptions.MisconfigurationException: No `train_dataloader()` method defined. Lightning `Trainer` expects as minimum a `training_step()`, `train_dataloader()` and `configure_optimizers()` to be defined.
-wandb: Waiting for W&B process to finish, PID 67808... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced dandy-sweep-2: https://wandb.ai/kenevoldsen/snp-compression/runs/1288th5g
-wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175525-1288th5g/logs/debug.log
-wandb: 
-
-2022-02-20 17:55:40,172 - wandb.wandb_agent - INFO - Cleaning up finished run: 1288th5g
-2022-02-20 17:55:40,584 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-20 17:55:40,585 - wandb.wandb_agent - INFO - Agent starting run with config:
-	auto_lr_find: True
-	batch_size: 12
-	layers_factor: 0.5
-	limit_train: 20000
-	max_epochs: 1
-	optimizer: sgd
-	p_test: 2000
-	p_val: 2000
-	precision: 16
-	val_check_interval: 4000
-	width: 64
-2022-02-20 17:55:40,594 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=sgd --p_test=2000 --p_val=2000 --precision=16 --val_check_interval=4000 --width=64
-2022-02-20 17:55:45,612 - wandb.wandb_agent - INFO - Running runs: ['gfa1p6sp']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep.
-wandb: Tracking run with wandb version 0.12.10
-wandb: Syncing run clear-sweep-3
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
-wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/4ze1zumz
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/gfa1p6sp
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175546-gfa1p6sp
-wandb: Run `wandb offline` to turn off syncing.
-Using 16bit native Automatic Mixed Precision (AMP)
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-
-Traceback (most recent call last):
-  File "src/train/train.py", line 110, in <module>
-    main()
-  File "src/train/train.py", line 99, in main
-    lr_finder = trainer.tuner.lr_find(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 185, in lr_find
-    result = self.trainer.tune(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1099, in tune
-    result = self.tuner._tune(model, scale_batch_size_kwargs=scale_batch_size_kwargs, lr_find_kwargs=lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 53, in _tune
-    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 238, in lr_find
-    trainer.tuner._run(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 63, in _run
-    self.trainer._run(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1128, in _run
-    verify_loop_configurations(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 36, in verify_loop_configurations
-    __verify_train_val_loop_configuration(trainer, model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 74, in __verify_train_val_loop_configuration
-    raise MisconfigurationException(
-pytorch_lightning.utilities.exceptions.MisconfigurationException: No `train_dataloader()` method defined. Lightning `Trainer` expects as minimum a `training_step()`, `train_dataloader()` and `configure_optimizers()` to be defined.
-wandb: Waiting for W&B process to finish, PID 67935... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced clear-sweep-3: https://wandb.ai/kenevoldsen/snp-compression/runs/gfa1p6sp
-wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175546-gfa1p6sp/logs/debug.log
-wandb: 
-
-2022-02-20 17:56:01,390 - wandb.wandb_agent - INFO - Cleaning up finished run: gfa1p6sp
-2022-02-20 17:56:01,738 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-20 17:56:01,739 - wandb.wandb_agent - INFO - Agent starting run with config:
-	auto_lr_find: True
-	batch_size: 12
-	layers_factor: 0.5
-	limit_train: 20000
-	max_epochs: 1
-	optimizer: sgd
-	p_test: 2000
-	p_val: 2000
-	precision: 32
-	val_check_interval: 4000
-	width: 64
-2022-02-20 17:56:01,746 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=sgd --p_test=2000 --p_val=2000 --precision=32 --val_check_interval=4000 --width=64
-2022-02-20 17:56:06,761 - wandb.wandb_agent - INFO - Running runs: ['pfkjwbp6']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep.
-wandb: Tracking run with wandb version 0.12.10
-wandb: Syncing run driven-sweep-4
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
-wandb: 🧹 View sweep at https://wandb.ai/kenevoldsen/snp-compression/sweeps/4ze1zumz
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/pfkjwbp6
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175608-pfkjwbp6
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-
-Traceback (most recent call last):
-  File "src/train/train.py", line 110, in <module>
-    main()
-  File "src/train/train.py", line 99, in main
-    lr_finder = trainer.tuner.lr_find(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 185, in lr_find
-    result = self.trainer.tune(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1099, in tune
-    result = self.tuner._tune(model, scale_batch_size_kwargs=scale_batch_size_kwargs, lr_find_kwargs=lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 53, in _tune
-    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 238, in lr_find
-    trainer.tuner._run(model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/tuning.py", line 63, in _run
-    self.trainer._run(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1128, in _run
-    verify_loop_configurations(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 36, in verify_loop_configurations
-    __verify_train_val_loop_configuration(trainer, model)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/configuration_validator.py", line 74, in __verify_train_val_loop_configuration
-    raise MisconfigurationException(
-pytorch_lightning.utilities.exceptions.MisconfigurationException: No `train_dataloader()` method defined. Lightning `Trainer` expects as minimum a `training_step()`, `train_dataloader()` and `configure_optimizers()` to be defined.
-wandb: Waiting for W&B process to finish, PID 68003... (failed 1). Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced driven-sweep-4: https://wandb.ai/kenevoldsen/snp-compression/runs/pfkjwbp6
-wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220220_175608-pfkjwbp6/logs/debug.log
-wandb: 
-
-2022-02-20 17:56:22,536 - wandb.wandb_agent - INFO - Cleaning up finished run: pfkjwbp6
-2022-02-20 17:56:22,913 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-20 17:56:22,914 - wandb.wandb_agent - INFO - Agent starting run with config:
-	auto_lr_find: True
-	batch_size: 12
-	layers_factor: 0.5
-	limit_train: 20000
-	max_epochs: 1
-	optimizer: adamw
-	p_test: 2000
-	p_val: 2000
-	precision: 16
-	val_check_interval: 4000
-	width: 64
-2022-02-20 17:56:22,922 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --auto_lr_find=True --batch_size=12 --layers_factor=0.5 --limit_train=20000 --max_epochs=1 --optimizer=adamw --p_test=2000 --p_val=2000 --precision=16 --val_check_interval=4000 --width=64
-slurmstepd: error: *** JOB 60917740 ON s10n01 CANCELLED AT 2022-02-20T17:56:27 ***

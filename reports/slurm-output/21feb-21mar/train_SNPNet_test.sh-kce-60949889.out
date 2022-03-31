@@ -1,5 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Training SNPNet
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-slurmstepd: error: *** JOB 60949889 ON s10n02 CANCELLED AT 2022-02-21T19:00:53 ***

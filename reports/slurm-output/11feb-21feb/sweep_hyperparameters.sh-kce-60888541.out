@@ -1,6 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Running wandb sweep
-wandb: Starting wandb agent 🕵️
-wandb: ERROR Find detailed error logs at: /faststorage/project/NLPPred/snp-compression/wandb/debug-cli.log
-Error: Sweep kenevoldsen/snp-compression-src_models/izoutvek not found

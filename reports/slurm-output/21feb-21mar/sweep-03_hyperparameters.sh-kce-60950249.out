@@ -1,7 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Running wandb sweep
-wandb: Starting wandb agent 🕵️
-wandb: ERROR Error while calling W&B API: Sweep kenevoldsen/snp-compression/119y127n is not running (<Response [400]>)
-wandb: ERROR Find detailed error logs at: /faststorage/project/NLPPred/snp-compression/wandb/debug-cli.log
-Error: Sweep kenevoldsen/snp-compression/119y127n is not running

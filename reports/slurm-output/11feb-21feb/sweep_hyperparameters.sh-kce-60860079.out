@@ -1,532 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Update sweep config based on local
-wandb: Updating sweep from: src/train/sweep.yaml
-wandb: Updated sweep with ID: 8u0l51wp
-wandb: View sweep at: https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb: Run sweep agent with: wandb agent kenevoldsen/snp-compression-src_models/8u0l51wp
-Running wandb sweep
-wandb: Starting wandb agent 🕵️
-2022-02-18 14:13:46,149 - wandb.wandb_agent - INFO - Running runs: []
-2022-02-18 14:13:46,789 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-18 14:13:46,790 - wandb.wandb_agent - INFO - Agent starting run with config:
-	batch_size: 8
-	fc_layer_size: None
-	filter_factor: 0.5
-	learning_rate: 0.0005838740515115601
-	optimizer: adam
-	val_check_interval: 1000
-	width: 32
-2022-02-18 14:13:46,823 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=8 --fc_layer_size=None --filter_factor=0.5 --learning_rate=0.0005838740515115601 --optimizer=adam --val_check_interval=1000 --width=32
-2022-02-18 14:13:51,839 - wandb.wandb_agent - INFO - Running runs: ['l973ggz3']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run pretty-sweep-1
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View sweep at https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/l973ggz3
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141422-l973ggz3
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 574 K 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-574 K     Trainable params
-0         Non-trainable params
-574 K     Total params
-2.297     Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "src/train/train.py", line 103, in <module>
-    main()
-  File "src/train/train.py", line 96, in main
-    trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
-    self._call_and_handle_interrupt(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
-    self._run(model, ckpt_path=ckpt_path)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
-    self._dispatch()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
-    self.training_type_plugin.start_training(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
-    self._results = trainer.run_stage()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
-    return self._run_train()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
-    self._run_sanity_check(self.lightning_module)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
-    self._evaluation_loop.run()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
-    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
-    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
-    output = self.trainer.accelerator.validation_step(step_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
-    return self.training_type_plugin.validation_step(*step_kwargs.values())
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
-    return self.model.validation_step(*args, **kwargs)
-  File "./src/models/pl_wrappers.py", line 95, in validation_step
-    self.log("val_acc", self.accuracy(preds, x))
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 205, in forward
-    self.update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 263, in wrapped_func
-    return update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/classification/accuracy.py", line 228, in update
-    mode = _mode(preds, target, self.threshold, self.top_k, self.num_classes, self.multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/functional/classification/accuracy.py", line 58, in _mode
-    mode = _check_classification_inputs(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 251, in _check_classification_inputs
-    _basic_input_validation(preds, target, threshold, multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 35, in _basic_input_validation
-    raise ValueError("The `target` has to be a non-negative tensor.")
-ValueError: The `target` has to be a non-negative tensor.
-wandb: Waiting for W&B process to finish, PID 118675
-wandb: Program failed with code 1.  Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141422-l973ggz3/logs/debug.log
-wandb: Find internal logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141422-l973ggz3/logs/debug-internal.log
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: 
-wandb: Synced pretty-sweep-1: https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/l973ggz3
-
-2022-02-18 14:15:11,445 - wandb.wandb_agent - INFO - Cleaning up finished run: l973ggz3
-2022-02-18 14:15:12,023 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-18 14:15:12,023 - wandb.wandb_agent - INFO - Agent starting run with config:
-	batch_size: 8
-	fc_layer_size: None
-	filter_factor: 1
-	learning_rate: 0.004187172507680851
-	optimizer: adam
-	val_check_interval: 1000
-	width: 16
-2022-02-18 14:15:12,060 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=8 --fc_layer_size=None --filter_factor=1 --learning_rate=0.004187172507680851 --optimizer=adam --val_check_interval=1000 --width=16
-2022-02-18 14:15:17,077 - wandb.wandb_agent - INFO - Running runs: ['zraplqgj']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run faithful-sweep-2
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View sweep at https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/zraplqgj
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141518-zraplqgj
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 1.6 M 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-1.6 M     Trainable params
-0         Non-trainable params
-1.6 M     Total params
-6.565     Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "src/train/train.py", line 103, in <module>
-    main()
-  File "src/train/train.py", line 96, in main
-    trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
-    self._call_and_handle_interrupt(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
-    self._run(model, ckpt_path=ckpt_path)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
-    self._dispatch()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
-    self.training_type_plugin.start_training(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
-    self._results = trainer.run_stage()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
-    return self._run_train()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
-    self._run_sanity_check(self.lightning_module)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
-    self._evaluation_loop.run()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
-    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
-    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
-    output = self.trainer.accelerator.validation_step(step_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
-    return self.training_type_plugin.validation_step(*step_kwargs.values())
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
-    return self.model.validation_step(*args, **kwargs)
-  File "./src/models/pl_wrappers.py", line 95, in validation_step
-    self.log("val_acc", self.accuracy(preds, x))
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 205, in forward
-    self.update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 263, in wrapped_func
-    return update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/classification/accuracy.py", line 228, in update
-    mode = _mode(preds, target, self.threshold, self.top_k, self.num_classes, self.multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/functional/classification/accuracy.py", line 58, in _mode
-    mode = _check_classification_inputs(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 251, in _check_classification_inputs
-    _basic_input_validation(preds, target, threshold, multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 35, in _basic_input_validation
-    raise ValueError("The `target` has to be a non-negative tensor.")
-ValueError: The `target` has to be a non-negative tensor.
-wandb: Waiting for W&B process to finish, PID 118972
-wandb: Program failed with code 1.  Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141518-zraplqgj/logs/debug.log
-wandb: Find internal logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141518-zraplqgj/logs/debug-internal.log
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: 
-wandb: Synced faithful-sweep-2: https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/zraplqgj
-
-2022-02-18 14:15:48,885 - wandb.wandb_agent - INFO - Cleaning up finished run: zraplqgj
-2022-02-18 14:15:49,605 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-18 14:15:49,605 - wandb.wandb_agent - INFO - Agent starting run with config:
-	batch_size: 4
-	fc_layer_size: None
-	filter_factor: 0.25
-	learning_rate: 0.09808627536755392
-	optimizer: adam
-	val_check_interval: 1000
-	width: 128
-2022-02-18 14:15:49,626 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=4 --fc_layer_size=None --filter_factor=0.25 --learning_rate=0.09808627536755392 --optimizer=adam --val_check_interval=1000 --width=128
-2022-02-18 14:15:54,642 - wandb.wandb_agent - INFO - Running runs: ['0yapllxb']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run faithful-sweep-3
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View sweep at https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/0yapllxb
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141556-0yapllxb
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 976 K 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-976 K     Trainable params
-0         Non-trainable params
-976 K     Total params
-3.905     Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "src/train/train.py", line 103, in <module>
-    main()
-  File "src/train/train.py", line 96, in main
-    trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
-    self._call_and_handle_interrupt(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
-    self._run(model, ckpt_path=ckpt_path)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
-    self._dispatch()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
-    self.training_type_plugin.start_training(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
-    self._results = trainer.run_stage()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
-    return self._run_train()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
-    self._run_sanity_check(self.lightning_module)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
-    self._evaluation_loop.run()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
-    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
-    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
-    output = self.trainer.accelerator.validation_step(step_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
-    return self.training_type_plugin.validation_step(*step_kwargs.values())
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
-    return self.model.validation_step(*args, **kwargs)
-  File "./src/models/pl_wrappers.py", line 95, in validation_step
-    self.log("val_acc", self.accuracy(preds, x))
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 205, in forward
-    self.update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 263, in wrapped_func
-    return update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/classification/accuracy.py", line 228, in update
-    mode = _mode(preds, target, self.threshold, self.top_k, self.num_classes, self.multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/functional/classification/accuracy.py", line 58, in _mode
-    mode = _check_classification_inputs(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 251, in _check_classification_inputs
-    _basic_input_validation(preds, target, threshold, multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 35, in _basic_input_validation
-    raise ValueError("The `target` has to be a non-negative tensor.")
-ValueError: The `target` has to be a non-negative tensor.
-wandb: Waiting for W&B process to finish, PID 119297
-wandb: Program failed with code 1.  Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141556-0yapllxb/logs/debug.log
-wandb: Find internal logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141556-0yapllxb/logs/debug-internal.log
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: 
-wandb: Synced faithful-sweep-3: https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/0yapllxb
-
-2022-02-18 14:16:21,181 - wandb.wandb_agent - INFO - Cleaning up finished run: 0yapllxb
-2022-02-18 14:16:21,795 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-18 14:16:21,795 - wandb.wandb_agent - INFO - Agent starting run with config:
-	batch_size: 8
-	fc_layer_size: None
-	filter_factor: 2
-	learning_rate: 0.0779127320214549
-	optimizer: adam
-	val_check_interval: 1000
-	width: 16
-2022-02-18 14:16:21,829 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=8 --fc_layer_size=None --filter_factor=2 --learning_rate=0.0779127320214549 --optimizer=adam --val_check_interval=1000 --width=16
-2022-02-18 14:16:26,845 - wandb.wandb_agent - INFO - Running runs: ['3802znt7']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run dandy-sweep-4
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View sweep at https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/3802znt7
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141631-3802znt7
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 6.2 M 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-6.2 M     Trainable params
-0         Non-trainable params
-6.2 M     Total params
-24.627    Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "src/train/train.py", line 103, in <module>
-    main()
-  File "src/train/train.py", line 96, in main
-    trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
-    self._call_and_handle_interrupt(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
-    self._run(model, ckpt_path=ckpt_path)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
-    self._dispatch()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
-    self.training_type_plugin.start_training(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
-    self._results = trainer.run_stage()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
-    return self._run_train()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
-    self._run_sanity_check(self.lightning_module)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
-    self._evaluation_loop.run()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
-    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
-    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
-    output = self.trainer.accelerator.validation_step(step_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
-    return self.training_type_plugin.validation_step(*step_kwargs.values())
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
-    return self.model.validation_step(*args, **kwargs)
-  File "./src/models/pl_wrappers.py", line 95, in validation_step
-    self.log("val_acc", self.accuracy(preds, x))
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 205, in forward
-    self.update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 263, in wrapped_func
-    return update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/classification/accuracy.py", line 228, in update
-    mode = _mode(preds, target, self.threshold, self.top_k, self.num_classes, self.multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/functional/classification/accuracy.py", line 58, in _mode
-    mode = _check_classification_inputs(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 251, in _check_classification_inputs
-    _basic_input_validation(preds, target, threshold, multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 35, in _basic_input_validation
-    raise ValueError("The `target` has to be a non-negative tensor.")
-ValueError: The `target` has to be a non-negative tensor.
-wandb: Waiting for W&B process to finish, PID 119563
-wandb: Program failed with code 1.  Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141631-3802znt7/logs/debug.log
-wandb: Find internal logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141631-3802znt7/logs/debug-internal.log
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: 
-wandb: Synced dandy-sweep-4: https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/3802znt7
-
-2022-02-18 14:16:58,633 - wandb.wandb_agent - INFO - Cleaning up finished run: 3802znt7
-2022-02-18 14:16:59,355 - wandb.wandb_agent - INFO - Agent received command: run
-2022-02-18 14:16:59,369 - wandb.wandb_agent - INFO - Agent starting run with config:
-	batch_size: 4
-	fc_layer_size: None
-	filter_factor: 2
-	learning_rate: 0.014501961805241536
-	optimizer: adam
-	val_check_interval: 1000
-	width: 16
-2022-02-18 14:16:59,375 - wandb.wandb_agent - INFO - About to run command: /usr/bin/env python src/train/train.py --batch_size=4 --fc_layer_size=None --filter_factor=2 --learning_rate=0.014501961805241536 --optimizer=adam --val_check_interval=1000 --width=16
-2022-02-18 14:17:04,391 - wandb.wandb_agent - INFO - Running runs: ['owmhkv5j']
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: WARNING Ignored wandb.init() arg project when running a sweep
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run lilac-sweep-5
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View sweep at https://wandb.ai/kenevoldsen/snp-compression-src_models/sweeps/8u0l51wp
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/owmhkv5j
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141705-owmhkv5j
-wandb: Run `wandb offline` to turn off syncing.
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 6.2 M 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-6.2 M     Trainable params
-0         Non-trainable params
-6.2 M     Total params
-24.627    Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "src/train/train.py", line 103, in <module>
-    main()
-  File "src/train/train.py", line 96, in main
-    trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 740, in fit
-    self._call_and_handle_interrupt(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 685, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 777, in _fit_impl
-    self._run(model, ckpt_path=ckpt_path)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1199, in _run
-    self._dispatch()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1279, in _dispatch
-    self.training_type_plugin.start_training(self)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 202, in start_training
-    self._results = trainer.run_stage()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1289, in run_stage
-    return self._run_train()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1311, in _run_train
-    self._run_sanity_check(self.lightning_module)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1375, in _run_sanity_check
-    self._evaluation_loop.run()
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 110, in advance
-    dl_outputs = self.epoch_loop.run(dataloader, dataloader_idx, dl_max_batches, self.num_dataloaders)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/base.py", line 145, in run
-    self.advance(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 122, in advance
-    output = self._evaluation_step(batch, batch_idx, dataloader_idx)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 217, in _evaluation_step
-    output = self.trainer.accelerator.validation_step(step_kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/accelerators/accelerator.py", line 239, in validation_step
-    return self.training_type_plugin.validation_step(*step_kwargs.values())
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/plugins/training_type/training_type_plugin.py", line 219, in validation_step
-    return self.model.validation_step(*args, **kwargs)
-  File "./src/models/pl_wrappers.py", line 95, in validation_step
-    self.log("val_acc", self.accuracy(preds, x))
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 205, in forward
-    self.update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/metric.py", line 263, in wrapped_func
-    return update(*args, **kwargs)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/classification/accuracy.py", line 228, in update
-    mode = _mode(preds, target, self.threshold, self.top_k, self.num_classes, self.multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/functional/classification/accuracy.py", line 58, in _mode
-    mode = _check_classification_inputs(
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 251, in _check_classification_inputs
-    _basic_input_validation(preds, target, threshold, multiclass)
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torchmetrics/utilities/checks.py", line 35, in _basic_input_validation
-    raise ValueError("The `target` has to be a non-negative tensor.")
-ValueError: The `target` has to be a non-negative tensor.
-wandb: Waiting for W&B process to finish, PID 119888
-wandb: Program failed with code 1.  Press ctrl-c to abort syncing.
-wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: | 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: / 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: - 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb: \ 0.01MB of 0.01MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141705-owmhkv5j/logs/debug.log
-wandb: Find internal logs for this run at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220218_141705-owmhkv5j/logs/debug-internal.log
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: 
-wandb: Synced lilac-sweep-5: https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/owmhkv5j
-
-2022-02-18 14:17:30,943 - wandb.wandb_agent - ERROR - Detected 5 failed runs in a row, shutting down.
-2022-02-18 14:17:30,944 - wandb.wandb_agent - INFO - To change this value set WANDB_AGENT_MAX_INITIAL_FAILURES=val
-wandb: Terminating and syncing runs. Press ctrl-c to kill.

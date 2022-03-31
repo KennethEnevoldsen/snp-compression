@@ -1,37 +1,0 @@
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: wandb version 0.12.10 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.12.1
-wandb: Syncing run firm-grass-126
-wandb:  View project at https://wandb.ai/kenevoldsen/snp-compression-src_models
-wandb:  View run at https://wandb.ai/kenevoldsen/snp-compression-src_models/runs/14c299l9
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220217_193649-14c299l9
-wandb: Run `wandb offline` to turn off syncing.
-./src/data/dataloaders.py:121: PerformanceWarning: Slicing is producing a large chunk. To accept the large
-chunk and silence this warning, set the option
-    >>> with dask.config.set(**{'array.slicing.split_large_chunks': False}):
-    ...     array[indexer]
-
-To avoid creating the large chunks, set the option
-    >>> with dask.config.set(**{'array.slicing.split_large_chunks': True}):
-    ...     array[indexer]
-  train = arr[splits == 0].rechunk()
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 574 K 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
---------------------------------------------------
-574 K     Trainable params
-0         Non-trainable params
-574 K     Total params
-2.297     Total estimated model params size (MB)
-
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Validation sanity check:  50% 1/2 [00:02<00:02,  2.67s/it]                                                          Training: 0it [00:00, ?it/s]Training: 0it [00:00, ?it/s]Epoch 0: : 0it [00:00, ?it/s]Epoch 0: : 1it [00:03,  3.15s/it]Epoch 0: : 1it [00:03,  3.15s/it, loss=1.1]slurmstepd: error: *** JOB 60836890 ON s10n01 CANCELLED AT 2022-02-17T19:37:15 ***

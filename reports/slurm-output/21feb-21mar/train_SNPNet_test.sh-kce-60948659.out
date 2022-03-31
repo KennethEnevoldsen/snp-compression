@@ -1,160 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Training SNPNet
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-wandb: Tracking run with wandb version 0.12.10
-wandb: Syncing run vocal-oath-50
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/snp-compression
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/snp-compression/runs/t8o2eq9t
-wandb: Run data is saved locally in /home/kce/NLPPred/snp-compression/models/wandb/run-20220221_183110-t8o2eq9t
-wandb: Run `wandb offline` to turn off syncing.
-Using 16bit native Automatic Mixed Precision (AMP)
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-FIT Profiler Report
-
-Action                             	|  Mean duration (s)	|Num calls      	|  Total time (s) 	|  Percentage %   	|
---------------------------------------------------------------------------------------------------------------------------------------
-Total                              	|  -              	|_              	|  10.659         	|  100 %          	|
---------------------------------------------------------------------------------------------------------------------------------------
-get_sanity_check_batch             	|  0.59397        	|3              	|  1.7819         	|  16.717         	|
-fetch_next_sanity_check_batch      	|  0.59393        	|3              	|  1.7818         	|  16.716         	|
-evaluation_step_and_end            	|  0.49461        	|2              	|  0.98923        	|  9.2805         	|
-validation_step                    	|  0.4945         	|2              	|  0.98901        	|  9.2785         	|
-run_training_epoch                 	|  0.27692        	|1              	|  0.27692        	|  2.598          	|
-get_train_batch                    	|  0.035102       	|1              	|  0.035102       	|  0.32931        	|
-fetch_next_train_batch             	|  0.035044       	|1              	|  0.035044       	|  0.32877        	|
-evaluation_batch_to_device         	|  0.0061974      	|2              	|  0.012395       	|  0.11628        	|
-on_train_start                     	|  0.0026532      	|1              	|  0.0026532      	|  0.024891       	|
-configure_optimizers               	|  0.0015701      	|1              	|  0.0015701      	|  0.01473        	|
-on_validation_model_eval           	|  0.0010954      	|1              	|  0.0010954      	|  0.010277       	|
-on_validation_batch_start          	|  7.0655e-05     	|2              	|  0.00014131     	|  0.0013257      	|
-on_configure_sharded_model         	|  4.8297e-05     	|1              	|  4.8297e-05     	|  0.0004531      	|
-on_pretrain_routine_start          	|  4.2699e-05     	|1              	|  4.2699e-05     	|  0.00040059     	|
-on_train_epoch_end                 	|  4.1364e-05     	|1              	|  4.1364e-05     	|  0.00038806     	|
-setup                              	|  3.5984e-05     	|1              	|  3.5984e-05     	|  0.00033759     	|
-teardown                           	|  3.2848e-05     	|1              	|  3.2848e-05     	|  0.00030816     	|
-on_validation_batch_end            	|  1.6196e-05     	|2              	|  3.2391e-05     	|  0.00030388     	|
-on_validation_start                	|  2.6917e-05     	|1              	|  2.6917e-05     	|  0.00025253     	|
-on_sanity_check_start              	|  2.6887e-05     	|1              	|  2.6887e-05     	|  0.00025225     	|
-on_epoch_start                     	|  1.1621e-05     	|2              	|  2.3242e-05     	|  0.00021805     	|
-on_before_accelerator_backend_setup	|  2.3076e-05     	|1              	|  2.3076e-05     	|  0.00021649     	|
-on_validation_end                  	|  2.2622e-05     	|1              	|  2.2622e-05     	|  0.00021223     	|
-configure_callbacks                	|  2.1175e-05     	|1              	|  2.1175e-05     	|  0.00019865     	|
-on_epoch_end                       	|  9.56e-06       	|2              	|  1.912e-05      	|  0.00017938     	|
-on_train_end                       	|  1.8258e-05     	|1              	|  1.8258e-05     	|  0.00017129     	|
-validation_step_end                	|  8.8904e-06     	|2              	|  1.7781e-05     	|  0.00016681     	|
-on_validation_epoch_start          	|  1.7622e-05     	|1              	|  1.7622e-05     	|  0.00016533     	|
-on_validation_epoch_end            	|  1.6741e-05     	|1              	|  1.6741e-05     	|  0.00015706     	|
-on_pretrain_routine_end            	|  1.4817e-05     	|1              	|  1.4817e-05     	|  0.00013901     	|
-on_sanity_check_end                	|  1.437e-05      	|1              	|  1.437e-05      	|  0.00013482     	|
-configure_sharded_model            	|  1.3476e-05     	|1              	|  1.3476e-05     	|  0.00012643     	|
-prepare_data                       	|  1.0932e-05     	|1              	|  1.0932e-05     	|  0.00010256     	|
-on_val_dataloader                  	|  1.0202e-05     	|1              	|  1.0202e-05     	|  9.5708e-05     	|
-val_dataloader                     	|  8.259e-06      	|1              	|  8.259e-06      	|  7.7482e-05     	|
-train_dataloader                   	|  6.9682e-06     	|1              	|  6.9682e-06     	|  6.5373e-05     	|
-on_train_epoch_start               	|  5.1241e-06     	|1              	|  5.1241e-06     	|  4.8073e-05     	|
-on_train_dataloader                	|  5.0012e-06     	|1              	|  5.0012e-06     	|  4.6919e-05     	|
-
-LR finder stopped early after 0 steps due to diverging loss.
-Restoring states from the checkpoint path at /home/kce/NLPPred/snp-compression/models/lr_find_temp_model_2a9e7089-8bc2-4d32-83ee-0ddd6bb6fb41.ckpt
-Failed to compute suggesting for `lr`. There might not be enough points.
-Traceback (most recent call last):
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 176, in suggestion
-    min_grad = np.gradient(loss).argmin()
-  File "<__array_function__ internals>", line 180, in gradient
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/numpy/lib/function_base.py", line 1195, in gradient
-    raise ValueError(
-ValueError: Shape of array too small to calculate a numerical gradient, at least (edge_order + 1) elements are required.
-Failed to compute suggesting for `lr`. There might not be enough points.
-Traceback (most recent call last):
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/tuner/lr_finder.py", line 176, in suggestion
-    min_grad = np.gradient(loss).argmin()
-  File "<__array_function__ internals>", line 180, in gradient
-  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/numpy/lib/function_base.py", line 1195, in gradient
-    raise ValueError(
-ValueError: Shape of array too small to calculate a numerical gradient, at least (edge_order + 1) elements are required.
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Set SLURM handle signals.
-
-  | Name     | Type                 | Params
---------------------------------------------------
-0 | model    | DenoisingAutoencoder | 574 K 
-1 | loss     | CrossEntropyLoss     | 0     
-2 | accuracy | Accuracy             | 0     
-3 | f1       | F1Score              | 0     
-4 | conf_mat | ConfusionMatrix      | 0     
---------------------------------------------------
-574 K     Trainable params
-0         Non-trainable params
-574 K     Total params
-1.148     Total estimated model params size (MB)
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0% 0/2 [00:00<?, ?it/s]Validation sanity check:  50% 1/2 [00:02<00:02,  2.50s/it]Validation sanity check: 100% 2/2 [00:03<00:00,  1.36s/it]                                                          /faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/pytorch_lightning/loggers/wandb.py:341: UserWarning:
-
-There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
-
-Training: 0it [00:00, ?it/s]Training: 0it [00:00, ?it/s]Epoch 0: : 0it [00:00, ?it/s]Epoch 0: : 1it [00:00,  2.78it/s]Epoch 0: : 1it [00:00,  2.78it/s, loss=nan, v_num=eq9t]Epoch 0: : 1it [00:00,  2.77it/s, loss=nan, v_num=eq9t]FIT Profiler Report
-
-Action                             	|  Mean duration (s)	|Num calls      	|  Total time (s) 	|  Percentage %   	|
---------------------------------------------------------------------------------------------------------------------------------------
-Total                              	|  -              	|_              	|  15.081         	|  100 %          	|
---------------------------------------------------------------------------------------------------------------------------------------
-get_sanity_check_batch             	|  0.59422        	|6              	|  3.5653         	|  23.641         	|
-fetch_next_sanity_check_batch      	|  0.59418        	|6              	|  3.5651         	|  23.64          	|
-evaluation_step_and_end            	|  0.50314        	|4              	|  2.0126         	|  13.345         	|
-validation_step                    	|  0.50298        	|4              	|  2.0119         	|  13.341         	|
-run_training_epoch                 	|  0.31889        	|2              	|  0.63778        	|  4.229          	|
-get_train_batch                    	|  0.075985       	|2              	|  0.15197        	|  1.0077         	|
-fetch_next_train_batch             	|  0.075929       	|2              	|  0.15186        	|  1.0069         	|
-evaluation_batch_to_device         	|  0.0055925      	|4              	|  0.02237        	|  0.14833        	|
-on_pretrain_routine_start          	|  0.0094666      	|2              	|  0.018933       	|  0.12554        	|
-on_train_start                     	|  0.005164       	|2              	|  0.010328       	|  0.068483       	|
-configure_optimizers               	|  0.0014339      	|2              	|  0.0028677      	|  0.019015       	|
-on_validation_model_eval           	|  0.0010518      	|2              	|  0.0021035      	|  0.013948       	|
-on_validation_batch_end            	|  0.00043958     	|4              	|  0.0017583      	|  0.011659       	|
-on_sanity_check_start              	|  0.00059153     	|2              	|  0.0011831      	|  0.0078447      	|
-on_train_epoch_end                 	|  0.00050781     	|2              	|  0.0010156      	|  0.0067345      	|
-on_validation_end                  	|  0.00045078     	|2              	|  0.00090156     	|  0.0059781      	|
-on_train_epoch_start               	|  0.00026073     	|2              	|  0.00052147     	|  0.0034578      	|
-on_train_end                       	|  0.00015198     	|2              	|  0.00030397     	|  0.0020156      	|
-on_validation_start                	|  0.00015018     	|2              	|  0.00030037     	|  0.0019917      	|
-on_validation_batch_start          	|  6.2384e-05     	|4              	|  0.00024954     	|  0.0016546      	|
-on_validation_epoch_end            	|  6.0557e-05     	|2              	|  0.00012111     	|  0.0008031      	|
-teardown                           	|  5.3245e-05     	|2              	|  0.00010649     	|  0.00070612     	|
-on_configure_sharded_model         	|  4.753e-05      	|2              	|  9.506e-05      	|  0.00063033     	|
-setup                              	|  4.3626e-05     	|2              	|  8.7252e-05     	|  0.00057856     	|
-on_epoch_start                     	|  2.1778e-05     	|4              	|  8.711e-05      	|  0.00057762     	|
-on_sanity_check_end                	|  4.1976e-05     	|2              	|  8.3951e-05     	|  0.00055667     	|
-on_before_accelerator_backend_setup	|  3.8228e-05     	|2              	|  7.6456e-05     	|  0.00050697     	|
-on_epoch_end                       	|  1.826e-05      	|4              	|  7.3042e-05     	|  0.00048433     	|
-on_fit_end                         	|  6.4757e-05     	|1              	|  6.4757e-05     	|  0.00042939     	|
-validation_step_end                	|  1.3093e-05     	|4              	|  5.237e-05      	|  0.00034726     	|
-on_validation_epoch_start          	|  2.4424e-05     	|2              	|  4.8848e-05     	|  0.0003239      	|
-on_fit_start                       	|  4.7736e-05     	|1              	|  4.7736e-05     	|  0.00031653     	|
-on_pretrain_routine_end            	|  2.2595e-05     	|2              	|  4.519e-05      	|  0.00029965     	|
-configure_callbacks                	|  1.9573e-05     	|2              	|  3.9145e-05     	|  0.00025957     	|
-configure_sharded_model            	|  1.4802e-05     	|2              	|  2.9603e-05     	|  0.00019629     	|
-prepare_data                       	|  1.0849e-05     	|2              	|  2.1698e-05     	|  0.00014388     	|
-on_val_dataloader                  	|  9.9353e-06     	|2              	|  1.9871e-05     	|  0.00013176     	|
-on_train_dataloader                	|  8.231e-06      	|2              	|  1.6462e-05     	|  0.00010916     	|
-val_dataloader                     	|  8.259e-06      	|1              	|  8.259e-06      	|  5.4764e-05     	|
-train_dataloader                   	|  6.9682e-06     	|1              	|  6.9682e-06     	|  4.6205e-05     	|
-
-
-wandb: Waiting for W&B process to finish, PID 37710... (success).
-wandb: - 0.06MB of 0.06MB uploaded (0.00MB deduped)wandb: \ 0.06MB of 0.06MB uploaded (0.00MB deduped)wandb: | 0.06MB of 0.06MB uploaded (0.00MB deduped)wandb: / 0.06MB of 0.07MB uploaded (0.00MB deduped)wandb: - 0.06MB of 0.07MB uploaded (0.00MB deduped)wandb: \ 0.06MB of 0.07MB uploaded (0.00MB deduped)wandb: | 0.06MB of 0.07MB uploaded (0.00MB deduped)wandb: / 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: - 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: \ 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: | 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: / 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: - 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb: \ 0.07MB of 0.07MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Run history:
-wandb:   global_step ▁▁
-wandb: 
-wandb: Run summary:
-wandb:   global_step 0
-wandb: 
-wandb: Synced 5 W&B file(s), 3 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Synced vocal-oath-50: https://wandb.ai/kenevoldsen/snp-compression/runs/t8o2eq9t
-wandb: Find logs at: /home/kce/NLPPred/snp-compression/models/wandb/run-20220221_183110-t8o2eq9t/logs/debug.log
-wandb: 
-

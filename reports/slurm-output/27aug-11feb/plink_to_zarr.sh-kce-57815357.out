@@ -1,47 +1,0 @@
-Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.04it/s]Mapping files:  67%|██████▋   | 2/3 [00:01<00:00,  1.01it/s]Mapping files: 100%|██████████| 3/3 [01:17<00:00, 34.84s/it]Mapping files: 100%|██████████| 3/3 [01:17<00:00, 25.70s/it]
-[38;5;4mℹ Read in data[0m
-[38;5;4mℹ Saved chromosome 1 to data/interim/chrom_1. Time spent:
-174.2158558368683[0m
-[38;5;4mℹ Saved chromosome 2 to data/interim/chrom_2. Time spent:
-182.5379068851471[0m
-[38;5;4mℹ Saved chromosome 3 to data/interim/chrom_3. Time spent:
-155.26998019218445[0m
-[38;5;4mℹ Saved chromosome 4 to data/interim/chrom_4. Time spent:
-143.87849926948547[0m
-[38;5;4mℹ Saved chromosome 5 to data/interim/chrom_5. Time spent:
-161.28845381736755[0m
-[38;5;4mℹ Saved chromosome 6 to data/interim/chrom_6. Time spent:
-152.59481620788574[0m
-[38;5;4mℹ Saved chromosome 7 to data/interim/chrom_7. Time spent:
-124.00209355354309[0m
-[38;5;4mℹ Saved chromosome 8 to data/interim/chrom_8. Time spent:
-126.20114469528198[0m
-[38;5;4mℹ Saved chromosome 9 to data/interim/chrom_9. Time spent:
-100.86686992645264[0m
-[38;5;4mℹ Saved chromosome 10 to data/interim/chrom_10. Time spent:
-118.1592845916748[0m
-[38;5;4mℹ Saved chromosome 11 to data/interim/chrom_11. Time spent:
-116.83015751838684[0m
-[38;5;4mℹ Saved chromosome 12 to data/interim/chrom_12. Time spent:
-115.19807052612305[0m
-[38;5;4mℹ Saved chromosome 13 to data/interim/chrom_13. Time spent:
-86.58564186096191[0m
-[38;5;4mℹ Saved chromosome 14 to data/interim/chrom_14. Time spent:
-86.10673928260803[0m
-[38;5;4mℹ Saved chromosome 15 to data/interim/chrom_15. Time spent:
-88.19883966445923[0m
-[38;5;4mℹ Saved chromosome 16 to data/interim/chrom_16. Time spent:
-83.93759059906006[0m
-[38;5;4mℹ Saved chromosome 17 to data/interim/chrom_17. Time spent:
-83.29285430908203[0m
-[38;5;4mℹ Saved chromosome 18 to data/interim/chrom_18. Time spent:
-78.1039559841156[0m
-[38;5;4mℹ Saved chromosome 19 to data/interim/chrom_19. Time spent:
-66.45211577415466[0m
-[38;5;4mℹ Saved chromosome 20 to data/interim/chrom_20. Time spent:
-69.0420310497284[0m
-[38;5;4mℹ Saved chromosome 21 to data/interim/chrom_21. Time spent:
-52.47075629234314[0m
-[38;5;4mℹ Saved chromosome 22 to data/interim/chrom_22. Time spent:
-51.818336963653564[0m
-[38;5;2m✔ Process complete[0m

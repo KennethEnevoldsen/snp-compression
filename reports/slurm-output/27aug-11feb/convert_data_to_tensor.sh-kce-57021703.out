@@ -1,4 +1,0 @@
-  File "src/data/main.py", line 12
-    plink_path = os.path.join("..", "..", "dsmwpred", "data", "ukbb", "geno")
-    ^
-IndentationError: unexpected indent

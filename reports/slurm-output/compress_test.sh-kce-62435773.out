@@ -1,17 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-compressing chromosomes
-/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/indexing.py:1228: PerformanceWarning: Slicing is producing a large chunk. To accept the large
-chunk and silence this warning, set the option
-    >>> with dask.config.set(**{'array.slicing.split_large_chunks': False}):
-    ...     array[indexer]
-
-To avoid creating the large chunks, set the option
-    >>> with dask.config.set(**{'array.slicing.split_large_chunks': True}):
-    ...     array[indexer]
-  return self.array[key]
-loading model
-Loading data
-Saving to path:
-	src/apply/../../data/processed/chrom_6
-0it [00:00, ?it/s]1it [00:14, 14.98s/it]2it [00:16,  7.21s/it]3it [00:18,  4.68s/it]4it [00:20,  3.48s/it]5it [00:21,  2.83s/it]6it [00:23,  2.43s/it]7it [00:25,  2.18s/it]8it [00:26,  2.01s/it]9it [00:28,  1.91s/it]10it [00:30,  1.83s/it]11it [00:31,  1.78s/it]12it [00:33,  1.76s/it]13it [00:35,  1.75s/it]14it [00:36,  1.74s/it]15it [00:38,  1.73s/it]16it [00:40,  1.72s/it]17it [00:41,  1.70s/it]18it [00:43,  1.69s/it]19it [00:45,  1.72s/it]20it [00:47,  1.72s/it]21it [00:48,  1.72s/it]22it [00:50,  1.72s/it]23it [00:59,  3.92s/it]24it [01:01,  3.24s/it]25it [01:02,  2.76s/it]26it [01:04,  2.43s/it]27it [01:06,  2.20s/it]28it [01:18,  5.23s/it]29it [01:20,  4.16s/it]30it [01:21,  3.41s/it]31it [01:23,  2.89s/it]32it [01:25,  2.52s/it]33it [01:33,  4.41s/it]34it [01:35,  3.58s/it]35it [01:37,  3.01s/it]36it [01:38,  2.60s/it]37it [01:48,  4.61s/it]38it [02:06,  8.63s/it]39it [02:07,  6.54s/it]40it [02:09,  5.08s/it]41it [02:14,  5.14s/it]42it [02:16,  4.10s/it]43it [02:18,  3.37s/it]44it [02:19,  2.86s/it]45it [02:21,  2.50s/it]46it [02:30,  4.54s/it]slurmstepd: error: *** JOB 62435773 ON s10n02 CANCELLED AT 2022-03-24T13:24:21 ***

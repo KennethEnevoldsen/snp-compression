@@ -1,6 +1,0 @@
-Activating virtual environment:  SNPNet
-/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
-Running wandb sweep
-wandb: Starting wandb agent 🕵️
-2022-02-20 18:09:59,583 - wandb.wandb_agent - INFO - Running runs: []
-slurmstepd: error: *** JOB 60917748 ON s10n01 CANCELLED AT 2022-02-20T18:13:35 ***

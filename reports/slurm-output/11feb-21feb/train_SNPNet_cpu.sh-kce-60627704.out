@@ -1,3 +1,0 @@
-wandb: Currently logged in as: kenevoldsen (use `wandb login --relogin` to force relogin)
-libgcc_s.so.1 must be installed for pthread_cancel to work
-/var/spool/slurmd/job60627704/slurm_script: line 6: 17368 Aborted                 (core dumped) python src/models/train_SNPNet.py
