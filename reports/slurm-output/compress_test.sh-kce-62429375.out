@@ -1,0 +1,51 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+compressing chromosomes
+/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/indexing.py:1228: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': True}):
+    ...     array[indexer]
+  return self.array[key]
+loading model
+Loading data
+Saving to path:
+	src/apply/../../data/processed/chrom_6
+0it [00:00, ?it/s]0it [00:05, ?it/s]
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 97, in <module>
+    compress(mdl, loader, save_path=save_path)
+  File "src/apply/validate.py", line 72, in compress
+    arr = xr.concat(list(encode_stream), dim="sample")
+  File "src/apply/validate.py", line 69, in encode
+    yield model.xarray_encode(sample)
+  File "./src/models/pl_wrappers.py", line 76, in xarray_encode
+    condensed = self.encode(x_torch).squeeze(-1).squeeze(1)
+  File "./src/models/pl_wrappers.py", line 55, in encode
+    return self.model.encoder(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "./src/models/SNPNet.py", line 311, in forward
+    x = l(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "./src/models/SNPNet.py", line 184, in forward
+    identity = self.downsample(x)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/modules/batchnorm.py", line 168, in forward
+    return F.batch_norm(
+  File "/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/torch/nn/functional.py", line 2282, in batch_norm
+    return torch.batch_norm(
+RuntimeError: CUDA out of memory. Tried to allocate 4.80 GiB (GPU 0; 15.78 GiB total capacity; 7.35 GiB already allocated; 4.65 GiB free; 9.77 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

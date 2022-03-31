@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "src/data/plink_to_xarray.py", line 8, in <module>
+    from wasabi import msg
+ModuleNotFoundError: No module named 'wasabi'

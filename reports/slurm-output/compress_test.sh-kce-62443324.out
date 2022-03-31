@@ -1,0 +1,20 @@
+Activating virtual environment:  SNPNet
+/faststorage/project/NLPPred/snp-compression/SNPNet/bin/python
+compressing chromosomes
+/faststorage/project/NLPPred/snp-compression/SNPNet/lib/python3.8/site-packages/xarray/core/indexing.py:1228: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': True}):
+    ...     array[indexer]
+  return self.array[key]
+loading model
+Loading data
+Saving to path:
+	src/apply/../../data/processed/chrom_6
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 105, in <module>
+    compress(mdl, loader, save_path=save_path)
+NameError: name 'loader' is not defined
