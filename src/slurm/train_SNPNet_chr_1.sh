@@ -7,11 +7,6 @@
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
 
-venv="SNPNet"
-
-echo 'Activating virtual environment: ' $venv
-conda activate $venv
-which python
 
 echo 'Training SNPNet'
 python src/train/train.py --chromosome 1

@@ -7,10 +7,6 @@
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
 
-venv="SNPNet"
-
-echo 'Activating virtual environment: ' $venv
-source /faststorage/project/NLPPred/snp-compression/SNPNet/bin/activate
 which python
 
 echo 'compressing chromosomes'
