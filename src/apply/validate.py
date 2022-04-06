@@ -21,6 +21,7 @@ from src.data.dataloaders import (
 from src.data.write_to_sped import write_to_sped
 from src.models.create import create_model
 from src.util import create_config_namespace
+import dask.array as da
 
 
 def filter_key(value):
@@ -75,11 +76,16 @@ def compress(model: pl.LightningModule, dataloader: DataLoader, save_path: str) 
                 else:
                     yield model.encode(sample)
 
-    encode_stream = encode(dataloader)
-    arr = xr.concat(list(encode_stream), dim="sample")
-    save_name = os.path.join(save_path, "chrom.sped")
-
-    write_to_sped(arr, save_name)
+    encode_stream = list(encode(dataloader))
+    if isinstance(encode_stream[0], xr.DataArray):
+        arr = xr.concat(encode_stream, dim="sample")
+        save_name = os.path.join(save_path, "chrom.sped")
+        write_to_sped(arr, save_name)
+    else:
+        dask_arrays = [da.from_array(arr.cpu().numpy()) for arr in encode_stream]
+        arr = da.concatenate(dask_arrays, axis=0)
+        save_name = os.path.join(save_path, "chrom.zarr")
+        arr.to_zarr(save_name)
 
 
 if __name__ == "__main__":
