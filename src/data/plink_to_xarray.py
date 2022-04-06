@@ -13,9 +13,9 @@ sys.path.append("../../.")
 from src.data.dataloaders import PLINKIterableDataset
 
 read_path = os.path.join("/home", "kce", "dsmwpred", "data", "ukbb", "geno.bed")
-save_path = os.path.join("data", "interim", "genotype.zarr")
+save_path = os.path.join("/home", "kce", "NLPPred", "snp-compression", "data", "interim", "genotype.zarr")
 
 ds = PLINKIterableDataset(read_path)
-ds.save_to_disk(save_path)
+ds.to_disk(save_path, overwrite=True)
 
 msg.good("Process complete")

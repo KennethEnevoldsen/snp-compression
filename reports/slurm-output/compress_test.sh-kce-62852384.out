@@ -1,0 +1,10 @@
+/home/kce/miniconda3/envs/snpnet/bin/python
+compressing chromosomes
+loading model
+Loading data
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/snp-compression/src/apply/validate.py", line 95, in <module>
+    ds, val, test = load_dataset(chrom)
+  File "/faststorage/project/NLPPred/snp-compression/./src/data/dataloaders.py", line 314, in load_dataset
+    c
+NameError: name 'c' is not defined

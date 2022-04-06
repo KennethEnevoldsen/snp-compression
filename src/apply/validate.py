@@ -83,23 +83,25 @@ def compress(model: pl.LightningModule, dataloader: DataLoader, save_path: str) 
 
 
 if __name__ == "__main__":
-    chrom = 6
     print("loading model")
-    mdl = load_model("rich-thunder-72", config={"chromosome": chrom})
-    mdl.to(device=torch.device("cuda"))
+    best_models = {6: "rich-thunder-72", 2: "clear-oat-74", 1: "ruby-sea-73"}
+    for chrom in best_models:
+        path = os.path.join(
+            os.path.dirname(__file__), "..", "..", "data", "interim", "genotype.zarr"
+        )
+        print("Loading data")
+        ds, val, test = load_dataset(chrom, p_val=0, p_test=0)  # no test val
+        loader = DataLoader(ds, batch_size=32)
 
-    path = os.path.join(
-        os.path.dirname(__file__), "..", "..", "data", "interim", "genotype.zarr"
-    )
-    print("Loading data")
-    # ds, val, test = load_dataset(chrom)
-    ds = PLINKIterableDataset(path, chromosome=chrom, to_tensor=True, shuffle=False)
-    # loader = DataLoader(ds, batch_size=32, collate_fn=xarray_collate_batch)
-    loader = DataLoader(ds, batch_size=32)
+        print("Loading Model")
+        mdl = load_model(best_models[chrom], config={"chromosome": chrom})
+        mdl.to(device=torch.device("cuda"))
 
-    fpath = os.path.dirname(__file__)
-    save_path = os.path.join(fpath, "..", "..", "data", "processed", f"chrom_{chrom}")
-    print(f"Saving to path:\n\t{save_path}")
-    Path(save_path).mkdir(parents=True, exist_ok=True)
+        fpath = os.path.dirname(__file__)
+        save_path = os.path.join(
+            fpath, "..", "..", "data", "processed", f"chrom_{chrom}"
+        )
+        print(f"Saving to path:\n\t{save_path}")
+        Path(save_path).mkdir(parents=True, exist_ok=True)
 
-    compress(mdl, loader, save_path=save_path)
+        compress(mdl, loader, save_path=save_path)

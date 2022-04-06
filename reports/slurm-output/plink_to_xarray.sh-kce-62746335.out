@@ -1,0 +1,5 @@
+Saving as xarray: 
+Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.66it/s]Mapping files:  67%|██████▋   | 2/3 [00:01<00:00,  1.71it/s]Mapping files: 100%|██████████| 3/3 [01:09<00:00, 31.44s/it]Mapping files: 100%|██████████| 3/3 [01:09<00:00, 23.16s/it]
+/home/kce/miniconda3/envs/snpnet/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+[38;5;2m✔ Process complete[0m

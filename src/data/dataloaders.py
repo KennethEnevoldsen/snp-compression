@@ -201,7 +201,7 @@ class PLINKIterableDataset(IterableDataset):
         for x in dataset_iter:
             yield x
 
-    def save_to_disk(self, path: str, chunks: int = 2**13) -> None:
+    def to_disk(self, path: str, chunks: int = 2**13, overwrite: bool = False) -> None:
         """
         Save the dataset to disk.
 
@@ -217,12 +217,17 @@ class PLINKIterableDataset(IterableDataset):
             write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
             genotype = self.genotype.chunk(chunks)
-            ds = xr.Dataset(dict(genotype=self.genotype))
-            ds.to_zarr(path)
+            ds = xr.Dataset(dict(genotype=genotype))
+            if overwrite:
+                ds.to_zarr(path, mode="w", consolidated=True, compute=True)
+            else:
+                ds.to_zarr(path, consolidated=True, compute=True)
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
-    def from_disk(self, path: str, limit: Optional[int]) -> None:
+    def from_disk(
+        self, path: str, limit: Optional[int], rechunk: Optional[bool] = None
+    ) -> None:
         """
         Load the dataset from disk.
 
@@ -231,6 +236,9 @@ class PLINKIterableDataset(IterableDataset):
                 file extension. Options include ".bed" or ".zarr".
             limit (Optional[int], optional): Defaults to None. If not None,
                 only the first limit number of rows will be loaded.
+            rechunk (bool, optional): Defaults to False. If True, the dataset will
+                be rechunked into chunks of size 2**13.
+
         """
         ext = os.path.splitext(path)[-1]
         if ext == ".bed":
@@ -243,6 +251,10 @@ class PLINKIterableDataset(IterableDataset):
 
         if limit:
             self._genotype = self._genotype[:limit]
+        if rechunk is None and ext == ".zarr":
+            self._genotype = self._genotype.chunk(2**13)
+        elif rechunk:
+            self._genotype = self._genotype.chunk(2**13)
 
     def to_tensor(self, x: DataArray):
         """Convert DataArray to tensor
@@ -332,7 +344,7 @@ if __name__ == "__main__":
     path = os.path.join(
         "/home", "kce", "NLPPred", "snp-compression", "data", "interim", "genotype.zarr"
     )
-    #path = os.path.join("/home/kce", "NLPPred", "data-science-exam", "mhcabe.bed")
+    # path = os.path.join("/home/kce", "NLPPred", "data-science-exam", "mhcabe.bed")
 
     dataset = PLINKIterableDataset(path, chromosome=6, to_tensor=False)
 
