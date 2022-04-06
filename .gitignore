@@ -114,3 +114,8 @@ models/*
 **/*.progress
 **/*.linux
 **/*.sped
+**/*.assoc
+**/*.coeff
+**/*.score
+**/*.summaries
+**/*.pvalues
