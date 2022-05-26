@@ -5,4 +5,4 @@
 #SBATCH --output ./reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
 
-/home/kce/miniconda3/envs/snpnet/bin/python /home/kce/NLPPred/snp-compression/src/fine-tune/baselines.py
+/home/kce/miniconda3/envs/snpnet/bin/python /home/kce/NLPPred/snp-compression/src/fine_tune/baselines.py

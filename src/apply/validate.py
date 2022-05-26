@@ -91,7 +91,7 @@ def compress(model: pl.LightningModule, dataloader: DataLoader, save_path: str) 
 if __name__ == "__main__":
     print("loading model")
     best_models = {
-        # 6: "rich-thunder-72",
+        6: "rich-thunder-72",
         2: "clear-oath-74",
         1: "ruby-sea-73",
     }

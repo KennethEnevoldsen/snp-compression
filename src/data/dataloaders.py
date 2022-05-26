@@ -38,26 +38,39 @@ class DaskIterableDataset(IterableDataset):
     at less than 1s pr. 1k samples (800 times faster than map).
     """
 
-    def __init__(self, array: da.Array, buffer_size: int = 1024) -> IterableDataset:
-        self.array = array
+    def __init__(
+        self, X: da.Array, y: Optional[da.Array] = None, buffer_size: int = 1024
+    ) -> IterableDataset:
+        self.X = X
+        self.y = y
         self.buffer_size = buffer_size
 
     def __iter__(self) -> Iterator:
-        n, _ = self.array.shape
+        n, _ = self.X.shape
 
         starts = range(0, n, self.buffer_size)
         ends = range(self.buffer_size, n, self.buffer_size)
 
         end = 0  # if buffer_size > array.shape[1]
         for start, end in zip(starts, ends):
-            X = torch.from_numpy(self.array[start:end].compute())
+            X = torch.from_numpy(self.X[start:end].compute())
             assert X.shape[0] == self.buffer_size
-            for x in X:
-                yield x
+            if self.y:
+                Y = torch.from_numpy(self.y[start:end].compute())
+                for x, y in zip(X, Y):
+                    yield x, y
+            else:
+                for x in X:
+                    yield x
         if n > end:
-            X = torch.from_numpy(self.array[end:n].compute())
-            for x in X:
-                yield x
+            X = torch.from_numpy(self.X[end:n].compute())
+            if self.y:
+                Y = torch.from_numpy(self.y[end:n].compute())
+                for x, y in zip(X, Y):
+                    yield x, y
+            else:
+                for x in X:
+                    yield x
 
 
 class ShuffleDataset(IterableDataset):
@@ -201,7 +214,9 @@ class PLINKIterableDataset(IterableDataset):
         for x in dataset_iter:
             yield x
 
-    def to_disk(self, path: str, chunks: int = 2**13, overwrite: bool = False) -> None:
+    def to_disk(
+        self, path: str, chunks: int = 2**13, overwrite: bool = False
+    ) -> None:
         """
         Save the dataset to disk.
 
@@ -329,9 +344,9 @@ def load_dataset(
         val = arr[splits == 1]
         test = arr[splits == 2]
 
-    ds_train = DaskIterableDataset(array=train, buffer_size=buffer_size)
-    ds_val = DaskIterableDataset(array=val, buffer_size=buffer_size)
-    ds_test = DaskIterableDataset(array=test, buffer_size=buffer_size)
+    ds_train = DaskIterableDataset(X=train, buffer_size=buffer_size)
+    ds_val = DaskIterableDataset(X=val, buffer_size=buffer_size)
+    ds_test = DaskIterableDataset(X=test, buffer_size=buffer_size)
     return (ds_train, ds_val, ds_test)
 
 

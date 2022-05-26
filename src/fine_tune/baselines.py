@@ -50,7 +50,7 @@ def load_csnps():
     return c_snps
 
 
-def load_pheno(path: str, c_snps, split="train"):
+def load_pheno(path: str, c_snps, split="train", compute=True):
     path = Path(path).with_suffix("." + split)
 
     df = pd.read_csv(path, sep=" ", header=None)
@@ -61,14 +61,15 @@ def load_pheno(path: str, c_snps, split="train"):
 
     pheno_mapping = {iid: pheno for iid, pheno in zip(df["IID"], df["PHENO"])}
     out = c_snps[overlapping_ids]
-    X = out.data.compute()
+    if compute:
+        X = out.data.compute()
+    else:
+        X = out.data
     y = np.array(
         [pheno_mapping[i] for i in out.coords["iid"].astype(int).compute().data]
     )
     return X, y
 
-
-c_snps = load_csnps()
 
 phenotypes = [
     "bmi",
@@ -85,29 +86,34 @@ phenotypes = [
     "fvc",
     "ever",
 ]
+pheno_path = Path("/home/kce/dsmwpred/data/ukbb")
 
-results = {"linear": {}, "MLP": {}}
-for pheno in phenotypes:
-    data_path = Path("/home/kce/dsmwpred/data/ukbb") / pheno
-    X, y = load_pheno(
-        "/home/kce/dsmwpred/data/ukbb/awake", c_snps=c_snps, split="train"
-    )
-    X_test, y_test = load_pheno(
-        "/home/kce/dsmwpred/data/ukbb/awake", c_snps=c_snps, split="test"
-    )
+if __name__ == "__main__":
 
-    mdl = LinearRegression()
-    mdl = mdl.fit(X, y)
-    results["linear"][pheno] = mdl.score(X_test, y_test)
-    print(f"{pheno} linear: {results['linear'][pheno]}")
+    c_snps = load_csnps()
+    results = {"linear": {}, "MLP": {}}
+    for pheno in phenotypes:
+        print(f"started on pheno {pheno}")
+        data_path = pheno_path / pheno
+        X, y = load_pheno(
+            data_path, c_snps=c_snps, split="train"
+        )
+        X_test, y_test = load_pheno(
+            data_path, c_snps=c_snps, split="test"
+        )
 
-    mdl = MLPRegressor()
-    mdl = mdl.fit(X, y)
-    results["MLP"][pheno] = mdl.score(X_test, y_test)
-    print(f"{pheno}: MLP {results['MLP'][pheno]}")
+        mdl = LinearRegression()
+        mdl = mdl.fit(X, y)
+        results["linear"][pheno] = mdl.score(X_test, y_test)
+        print(f"{pheno} linear: {results['linear'][pheno]}")
 
-save_path = Path("data/results")
-save_path.mkdir(exist_ok=True, parents=True)
+        mdl = MLPRegressor()
+        mdl = mdl.fit(X, y)
+        results["MLP"][pheno] = mdl.score(X_test, y_test)
+        print(f"{pheno}: MLP {results['MLP'][pheno]}")
 
-with open(save_path / "csnps_linear_results.json", "w") as f:
-    json.dump(results, f)
+    save_path = Path("data/results")
+    save_path.mkdir(exist_ok=True, parents=True)
+
+    with open(save_path / "csnps_linear_results.json", "w") as f:
+        json.dump(results, f)

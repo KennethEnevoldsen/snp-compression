@@ -1,0 +1,39 @@
+started on pheno bmi
+bmi linear: -0.01780028630980035
+bmi: MLP -1.878400045973727e-05
+started on pheno awake
+awake linear: -0.026874704186369724
+awake: MLP -8.025497619357225e-06
+started on pheno height
+height linear: -0.007098438070576973
+height: MLP -3.410435269768364e-05
+started on pheno hyper
+hyper linear: -0.021090246167938087
+hyper: MLP -3.636269705653561e-05
+started on pheno reaction
+reaction linear: -0.02752626146274495
+reaction: MLP -1.8673405047353597e-05
+started on pheno snoring
+snoring linear: -0.028445243769067652
+snoring: MLP -1.7599083949049188e-05
+started on pheno pulse
+pulse linear: -0.021193879105479763
+pulse: MLP -3.399275879623076e-05
+started on pheno sbp
+sbp linear: -0.018325633178850387
+sbp: MLP -1.5837624849357468e-06
+started on pheno quals
+quals linear: -0.019798498912229512
+quals: MLP -9.77029197186674e-05
+started on pheno neur
+neur linear: -0.01788387534715752
+neur: MLP -8.603709509213964e-05
+started on pheno chron
+chron linear: -0.017307351198337484
+chron: MLP -0.0001447651143102746
+started on pheno fvc
+fvc linear: -0.013277769899443959
+fvc: MLP -1.794407203004056e-05
+started on pheno ever
+ever linear: -0.02181658875494885
+ever: MLP -3.2719321751528696e-05
