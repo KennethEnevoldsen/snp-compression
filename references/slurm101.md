@@ -6,7 +6,7 @@ https://docs.rc.fas.harvard.edu/kb/convenient-slurm-commands
 
 
 ```
-srun -p normal --pty -c 4 --mem=16g bash
+srun --pty -c 4 --mem=16g bash -A NLPPred
 ```
 
 ## Run a job
