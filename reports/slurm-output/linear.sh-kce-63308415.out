@@ -1,0 +1,625 @@
+/home/kce/miniconda3/envs/snpnet/bin/python
+running linear model (height)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear height
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in height.assoc, with a summary version in height.summaries, p-values in height.pvalues and score file in height.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (hyper)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear hyper
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/hyper.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/hyper.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/hyper.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in hyper.assoc, with a summary version in hyper.summaries, p-values in hyper.pvalues and score file in hyper.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (reaction)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear reaction
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/reaction.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/reaction.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/reaction.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in reaction.assoc, with a summary version in reaction.summaries, p-values in reaction.pvalues and score file in reaction.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (snoring)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear snoring
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/snoring.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/snoring.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/snoring.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in snoring.assoc, with a summary version in snoring.summaries, p-values in snoring.pvalues and score file in snoring.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (pulse)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear pulse
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/pulse.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/pulse.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/pulse.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in pulse.assoc, with a summary version in pulse.summaries, p-values in pulse.pvalues and score file in pulse.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (sbp)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear sbp
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/sbp.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/sbp.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/sbp.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in sbp.assoc, with a summary version in sbp.summaries, p-values in sbp.pvalues and score file in sbp.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (quals)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear quals
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/quals.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/quals.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/quals.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in quals.assoc, with a summary version in quals.summaries, p-values in quals.pvalues and score file in quals.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (neur)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear neur
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/neur.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/neur.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/neur.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in neur.assoc, with a summary version in neur.summaries, p-values in neur.pvalues and score file in neur.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (chron)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear chron
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/chron.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/chron.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/chron.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in chron.assoc, with a summary version in chron.summaries, p-values in chron.pvalues and score file in chron.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (fvc)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear fvc
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/fvc.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/fvc.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/fvc.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in fvc.assoc, with a summary version in fvc.summaries, p-values in fvc.pvalues and score file in fvc.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (ever)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear ever
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/ever.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/ever.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/ever.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in ever.assoc, with a summary version in ever.summaries, p-values in ever.pvalues and score file in ever.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (bmi)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear bmi
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/bmi.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/bmi.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/bmi.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in bmi.assoc, with a summary version in bmi.summaries, p-values in bmi.pvalues and score file in bmi.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (awake)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear awake
+--sped data/processed/csnp
+--pheno /home/kce/dsmwpred/data/ukbb/awake.train
+--mpheno 1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from data/processed/csnp.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/awake.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 4521 predictors from data/processed/csnp.bim
+Warning, Predictor c1_0 has a non-positive basepair (0) and will be ignored
+
+Data contain 392214 samples and 4521 predictors; will be using 200000 and 4520
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/awake.train
+
+Warning, to process the data will require approximately 6.7 Gb; to reduce use "--bit-size" (currently 4520)
+
+Performing single-SNP analysis for Chunk 1 of 1
+
+Main results saved in awake.assoc, with a summary version in awake.summaries, p-values in awake.pvalues and score file in awake.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

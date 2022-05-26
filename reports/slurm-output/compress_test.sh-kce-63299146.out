@@ -1,0 +1,6 @@
+/home/kce/miniconda3/bin/python
+compressing chromosomes
+Traceback (most recent call last):
+  File "src/apply/validate.py", line 7, in <module>
+    import pytorch_lightning as pl
+ModuleNotFoundError: No module named 'pytorch_lightning'

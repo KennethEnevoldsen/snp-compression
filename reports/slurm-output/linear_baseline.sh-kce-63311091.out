@@ -1,0 +1,2250 @@
+/home/kce/miniconda3/envs/snpnet/bin/python
+running linear model (height)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/height_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/height_baseline.assoc, with a summary version in ldak_results/height_baseline.summaries, p-values in ldak_results/height_baseline.pvalues and score file in ldak_results/height_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (hyper)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/hyper_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/hyper.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/hyper.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/hyper.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/hyper_baseline.assoc, with a summary version in ldak_results/hyper_baseline.summaries, p-values in ldak_results/hyper_baseline.pvalues and score file in ldak_results/hyper_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (reaction)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/reaction_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/reaction.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/reaction.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/reaction.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/reaction_baseline.assoc, with a summary version in ldak_results/reaction_baseline.summaries, p-values in ldak_results/reaction_baseline.pvalues and score file in ldak_results/reaction_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (snoring)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/snoring_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/snoring.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/snoring.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/snoring.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/snoring_baseline.assoc, with a summary version in ldak_results/snoring_baseline.summaries, p-values in ldak_results/snoring_baseline.pvalues and score file in ldak_results/snoring_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (pulse)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/pulse_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/pulse.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/pulse.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/pulse.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/pulse_baseline.assoc, with a summary version in ldak_results/pulse_baseline.summaries, p-values in ldak_results/pulse_baseline.pvalues and score file in ldak_results/pulse_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (sbp)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/sbp_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/sbp.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/sbp.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/sbp.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/sbp_baseline.assoc, with a summary version in ldak_results/sbp_baseline.summaries, p-values in ldak_results/sbp_baseline.pvalues and score file in ldak_results/sbp_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (quals)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/quals_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/quals.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/quals.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/quals.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/quals_baseline.assoc, with a summary version in ldak_results/quals_baseline.summaries, p-values in ldak_results/quals_baseline.pvalues and score file in ldak_results/quals_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (neur)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/neur_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/neur.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/neur.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/neur.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/neur_baseline.assoc, with a summary version in ldak_results/neur_baseline.summaries, p-values in ldak_results/neur_baseline.pvalues and score file in ldak_results/neur_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (chron)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/chron_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/chron.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/chron.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/chron.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/chron_baseline.assoc, with a summary version in ldak_results/chron_baseline.summaries, p-values in ldak_results/chron_baseline.pvalues and score file in ldak_results/chron_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (fvc)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/fvc_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/fvc.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/fvc.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/fvc.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/fvc_baseline.assoc, with a summary version in ldak_results/fvc_baseline.summaries, p-values in ldak_results/fvc_baseline.pvalues and score file in ldak_results/fvc_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (ever)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/ever_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/ever.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/ever.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/ever.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/ever_baseline.assoc, with a summary version in ldak_results/ever_baseline.summaries, p-values in ldak_results/ever_baseline.pvalues and score file in ldak_results/ever_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (bmi)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/bmi_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/bmi.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/bmi.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/bmi.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/bmi_baseline.assoc, with a summary version in ldak_results/bmi_baseline.summaries, p-values in ldak_results/bmi_baseline.pvalues and score file in ldak_results/bmi_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+running linear model (awake)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--linear ldak_results/awake_baseline
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/awake.train
+--mpheno 1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/awake.train
+Due to missing phenotypic values, the number of samples is reduced from 392214 to 200000
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 200000 and 628694
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/awake.train
+
+Warning, to process the data will require approximately 7.5 Gb; to reduce use "--bit-size" (currently 5000)
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in ldak_results/awake_baseline.assoc, with a summary version in ldak_results/awake_baseline.summaries, p-values in ldak_results/awake_baseline.pvalues and score file in ldak_results/awake_baseline.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
