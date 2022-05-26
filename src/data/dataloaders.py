@@ -300,7 +300,7 @@ def load_dataset(
     p_val: Union[float, int] = 10_000,
     p_test: Union[float, int] = 10_000,
     limit_train: Optional[int] = None,
-) -> Tuple[ShuffleDataset, ShuffleDataset, ShuffleDataset]:
+) -> Tuple[IterableDataset, IterableDataset, IterableDataset]:
     """Load the specific chromosome required
 
     Args:
