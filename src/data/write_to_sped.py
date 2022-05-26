@@ -3,6 +3,7 @@ from pathlib import Path
 
 import xarray as xr
 import numpy as np
+from dask import array as da
 
 from pandas_plink._write import _fill_sample, _fill_variant, _write_fam, _write_bim
 
@@ -90,7 +91,12 @@ def _write_sped(G: xr.DataArray, sped: Union[str, Path]) -> None:
 
     """
     sped = Path(sped)
-    G.data.astype(np.float32).T.tofile(sped)
+    arr = G.data
+    if isinstance(arr, da.Array):
+        arr = arr.compute()
+    if not isinstance(arr, np.ndarray):
+        raise ValueError(f"Array type: {type(arr)} is not handled")
+    arr.astype(np.float32).T.tofile(sped)
 
 
 if __name__ == "__main__":
