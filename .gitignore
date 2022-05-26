@@ -121,4 +121,6 @@ models/*
 **/*.pvalues
 
 # temporary files
-tmp2.py
+
+# large visualization
+reports/images/single_snp_analysis/*.html
