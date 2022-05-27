@@ -33,15 +33,21 @@ class OneHotClassifier(pl.LightningModule):
                 None.
         """
         super().__init__()
-        self.encoders = encoders
+        self.encoders = nn.ModuleDict(
+            {str(chrom): model["model"] for chrom, model in encoders.items()}
+        )
         self.chrom_to_snp_indexes = chrom_to_snp_indexes
-        self.input_snps = sum(chrom_to_snp_indexes.values)
-        # self.loss = nn.CrossEntropyLoss(ignore_index=ignore_index)
+        self.input_snps = sum(i[1] - i[0] for i in chrom_to_snp_indexes.values())
+        self.loss = nn.MSELoss()
         self.learning_rate = learning_rate
         self.optimizer_name = optimizer
         self.train_loader = train_loader
         self.val_loader = val_loader
-        self.clf_layer = None
+
+        # dummy forward pass to determine shape
+        X = torch.randint(0, 3, size=(1, self.input_snps))
+        encoded = self.encode(X)
+        self.clf_layer = nn.Linear(encoded.shape[1], 1)
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
         assert x.shape[1] == self.input_snps
@@ -49,16 +55,15 @@ class OneHotClassifier(pl.LightningModule):
 
         encoded = []
         for chrom, chrom_encoder in self.encoders.items():
-            lower, upper = self.chrom_to_snp_indexes[chrom]
+            lower, upper = self.chrom_to_snp_indexes[int(chrom)]
             chrom_snps = x[:, lower:upper]
             encoded_chrom = chrom_encoder(chrom_snps)
+            encoded_chrom = encoded_chrom.squeeze(-1).squeeze(1)
             encoded.append(encoded_chrom)
         return torch.concat(encoded, dim=1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         encoded = self.encode(x)
-        if self.clf_layer is None:
-            self.clf_layer = nn.Linear(encoded.shape[1], 1)
         return self.clf_layer(encoded)
 
     def configure_optimizers(self):
@@ -74,16 +79,15 @@ class OneHotClassifier(pl.LightningModule):
 
     def training_step(self, train_batch, batch_idx):
         s = time.time()
-        x = train_batch
+        x, y = train_batch
         # x.shape should be (batch, sequence length)
 
         x = torch.nan_to_num(x, nan=3)
-        x_hat = self.forward(x)
+        y_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
         # calculate metrics
-        x = x.type(torch.LongTensor).to(self.device)
-        loss = self.loss(x_hat, x)
+        loss = self.loss(y_hat, y)
 
         self.log("train_loss", loss)
         self.log("train_step/sec", time.time() - s)
@@ -91,15 +95,15 @@ class OneHotClassifier(pl.LightningModule):
 
     def validation_step(self, val_batch, batch_idx):
         s = time.time()
-        x = val_batch
+        x, y = val_batch
 
         x = torch.nan_to_num(x, nan=3)
-        x_hat = self.forward(x)
+        y_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
         # calculate metrics
         x = x.type(torch.LongTensor).to(self.device)
-        loss = self.loss(x_hat, x)
+        loss = self.loss(y_hat, y)
 
         self.log("val_loss", loss)
         self.log("val_step/sec", time.time() - s)

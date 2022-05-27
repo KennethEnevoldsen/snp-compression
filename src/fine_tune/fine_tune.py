@@ -1,6 +1,7 @@
 """
 Fine-tune pre-trained networks on new data samples
 """
+from typing import Tuple
 import os
 import sys
 from pathlib import Path
@@ -9,6 +10,8 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 import dask.array as da
+
+from torch.utils.data import DataLoader
 
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -76,7 +79,7 @@ def load_pheno(path: str, geno, dask_geno, split="train"):
     return X, y, out
 
 
-def create_data_loaders(phenotype, chrom=[1, 2, 6]):
+def create_datasets(phenotype, chrom=[1, 2, 6]):
     geno = load_geno()
     dask_geno = load_dask_geno()
 
@@ -94,10 +97,25 @@ def create_data_loaders(phenotype, chrom=[1, 2, 6]):
     return train, val, test, metadata
 
 
+def create_dataloaders(config) -> Tuple[DataLoader, DataLoader]:
+    train, val, test, metadata = create_datasets(config.phenotype)
+    train_loader = DataLoader(
+        train,
+        batch_size=config.batch_size,
+        shuffle=False,
+        num_workers=config.num_workers,
+    )
+    val_loader = DataLoader(
+        val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
+    )
+    return train_loader, val_loader, metadata
+
+
 def create_model(metadata, train, val, config):
     i = 0
     chrom_to_snp_indexes = {}
     for chrom, value in metadata.items():
+        value = int(value)
         chrom_to_snp_indexes[chrom] = i, i + value
         i += value
 
@@ -159,10 +177,8 @@ def main():
         config.update(hyperparameter_config, allow_val_change=True)
 
     # Create model, dataset, trainer
-    train_loader, val_loader, test_loader, metadata = create_data_loaders(
-        config.phenotype
-    )
-    model = create_model(metadata, train_loader, val_loader)
+    train_loader, val_loader, metadata = create_dataloaders(config)
+    model = create_model(metadata, train_loader, val_loader, config=config)
     trainer = create_trainer(config)
 
     # Train

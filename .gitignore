@@ -96,6 +96,7 @@ lightning_logs/*
 checkpoints/*
 */snp-compression-src_models/*
 */snp-compression/*
+**/*.ckpt
 
 # other
 SNPNet/bin/*
@@ -124,3 +125,4 @@ models/*
 
 # large visualization
 reports/images/single_snp_analysis/*.html
+

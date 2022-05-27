@@ -55,8 +55,8 @@ class DaskIterableDataset(IterableDataset):
         for start, end in zip(starts, ends):
             X = torch.from_numpy(self.X[start:end].compute())
             assert X.shape[0] == self.buffer_size
-            if self.y:
-                Y = torch.from_numpy(self.y[start:end].compute())
+            if self.y is not None:
+                Y = torch.from_numpy(self.y[start:end])
                 for x, y in zip(X, Y):
                     yield x, y
             else:
@@ -64,8 +64,8 @@ class DaskIterableDataset(IterableDataset):
                     yield x
         if n > end:
             X = torch.from_numpy(self.X[end:n].compute())
-            if self.y:
-                Y = torch.from_numpy(self.y[end:n].compute())
+            if self.y is not None:
+                Y = torch.from_numpy(self.y[end:n])
                 for x, y in zip(X, Y):
                     yield x, y
             else:
