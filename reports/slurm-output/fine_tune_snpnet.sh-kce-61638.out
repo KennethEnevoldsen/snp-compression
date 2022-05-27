@@ -1,0 +1,19 @@
+Fine-tuning SNPNet
+wandb: Currently logged in as: danish_embeddings (use `wandb login --relogin` to force relogin)
+wandb: wandb version 0.12.17 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: ERROR Error while calling W&B API: Error 1062: Duplicate entry '974644-3m5l82nq' for key 'PRIMARY' (<Response [409]>)
+Problem at: /faststorage/project/NLPPred/snp-compression/src/fine_tune/fine_tune.py 165 main
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/snp-compression/src/fine_tune/fine_tune.py", line 194, in <module>
+    main()
+  File "/faststorage/project/NLPPred/snp-compression/src/fine_tune/fine_tune.py", line 165, in main
+    wandb.init(
+  File "/home/kce/miniconda3/envs/snpnet/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 775, in init
+    run = wi.init()
+  File "/home/kce/miniconda3/envs/snpnet/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 533, in init
+    raise UsageError(error_message)
+wandb.errors.UsageError: Error communicating with wandb process
+try: wandb.init(settings=wandb.Settings(start_method='fork'))
+or:  wandb.init(settings=wandb.Settings(start_method='thread'))
+For more info see: https://docs.wandb.ai/library/init#init-start-error

@@ -8,5 +8,5 @@
 #SBATCH -A NLPPred
 
 
-echo 'Fine-tunin SNPNet'
+echo 'Fine-tuning SNPNet'
 python src/fine_tune/fine_tune.py

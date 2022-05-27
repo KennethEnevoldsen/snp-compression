@@ -14,10 +14,10 @@ precision:
   default: 16
   type: int
 accumulate_grad_batches:
-  default: 4
+  default: 1
   type: int
 batch_size:
-  default: 8
+  default: 128
   type: int
 num_workers: 
   default: 4
@@ -27,7 +27,7 @@ val_check_interval:
 check_val_every_n_epoch:
   default: 1
 gpus: 
-  default: -1
+  default: 1
   help: The number of GPUs to use, null indicate no GPUs
 profiler: 
   default: null

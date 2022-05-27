@@ -1,2 +1,0 @@
-Saving as xarray: 
-Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.86it/s]Mapping files:  67%|██████▋   | 2/3 [00:00<00:00,  2.13it/s]slurmstepd: error: *** JOB 62746344 ON s21n82 CANCELLED AT 2022-04-02T19:36:07 ***
