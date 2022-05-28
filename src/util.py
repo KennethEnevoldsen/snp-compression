@@ -117,4 +117,5 @@ def config_yaml_to_dict(path: str) -> dict:
         path (str): Path to yaml file containing arguments to parse.
     """
     default_dict = load_yaml_config(path)
-    return {k: args["default"] for k, args in default_dict.items()}
+    clean_dict = {k: args["default"] for k, args in default_dict.items()}
+    return clean_dict

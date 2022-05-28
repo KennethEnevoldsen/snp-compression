@@ -4,7 +4,7 @@ learning_rate:
   default: 0.001
   type: float
 auto_lr_find:
-  default: True
+  default: False
   help: Should the model find the learning rate? Overwrites learning rate
 optimizer: 
   default: "adam"
@@ -17,17 +17,18 @@ accumulate_grad_batches:
   default: 1
   type: int
 batch_size:
-  default: 128
+  default: 1
   type: int
 num_workers: 
-  default: 4
+  default: 0
   type: int
+  help: The number of workers for the preprocessing. Note that num_workers > 0 causes issues with dask. 
 val_check_interval:
   default: 1.0
 check_val_every_n_epoch:
   default: 1
 gpus: 
-  default: 1
+  default: 0
   help: The number of GPUs to use, null indicate no GPUs
 profiler: 
   default: null

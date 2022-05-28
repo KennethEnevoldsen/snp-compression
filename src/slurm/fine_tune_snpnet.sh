@@ -9,4 +9,4 @@
 
 
 echo 'Fine-tuning SNPNet'
-python src/fine_tune/fine_tune.py
+python src/fine_tune/fine_tune.py  --gpus=1 --batch_size=64

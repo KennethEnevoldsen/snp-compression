@@ -10,6 +10,7 @@ import xarray as xr
 import pandas as pd
 import numpy as np
 import dask.array as da
+import torch
 
 from torch.utils.data import DataLoader
 
@@ -25,11 +26,11 @@ sys.path.append("../../.")
 from src.apply.validate import load_model
 from src.data.dataloaders import load_dataset, DaskIterableDataset
 from src.models.classifier import OneHotClassifier
-from src.fine_tune.baselines import phenotypes, pheno_path
+from src.fine_tune.baselines import pheno_path
 from src.util import create_argparser, config_yaml_to_dict
 
 
-def load_encoders():
+def load_encoders(config):
     models = {
         6: {"name": "rich-thunder-72"},
         2: {"name": "clear-oath-74"},
@@ -38,7 +39,8 @@ def load_encoders():
     for chrom in models:
         print("Loading Model")
         mdl = load_model(models[chrom]["name"], config={"chromosome": chrom})
-        # mdl.to(device=torch.device("cuda"))
+        if not (config.gpus == 0 or config.gpus == "0"):
+            mdl.to(device=torch.device("cuda"))
         models[chrom]["model"] = mdl.model.encoder
     return models
 
@@ -83,7 +85,9 @@ def create_datasets(phenotype, chrom=[1, 2, 6]):
     geno = load_geno()
     dask_geno = load_dask_geno()
 
-    X, y, meta = load_pheno(pheno_path / phenotype, geno, dask_geno, split="train")
+    X, y, meta = load_pheno(
+        pheno_path / phenotype, geno=geno, dask_geno=dask_geno, split="train"
+    )
     train = DaskIterableDataset(
         X[:-20_000], y[:-20_000]
     )  # TODO: fix this to a random mask
@@ -91,6 +95,7 @@ def create_datasets(phenotype, chrom=[1, 2, 6]):
     X_test, y_test, meta_test = load_pheno(
         pheno_path / phenotype, geno, dask_geno, split="test"
     )
+
     test = DaskIterableDataset(X_test, y_test)
 
     metadata = {c: (meta.chrom == str(c)).sum().compute() for c in chrom}
@@ -98,6 +103,7 @@ def create_datasets(phenotype, chrom=[1, 2, 6]):
 
 
 def create_dataloaders(config) -> Tuple[DataLoader, DataLoader]:
+    print("Start setting up data loaders")
     train, val, test, metadata = create_datasets(config.phenotype)
     train_loader = DataLoader(
         train,
@@ -108,10 +114,13 @@ def create_dataloaders(config) -> Tuple[DataLoader, DataLoader]:
     val_loader = DataLoader(
         val, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers
     )
+    print("Finished setting up data loaders")
     return train_loader, val_loader, metadata
 
 
 def create_model(metadata, train, val, config):
+    print("Loading model")
+
     i = 0
     chrom_to_snp_indexes = {}
     for chrom, value in metadata.items():
@@ -120,17 +129,20 @@ def create_model(metadata, train, val, config):
         i += value
 
     clf = OneHotClassifier(
-        encoders=load_encoders(),
+        encoders=load_encoders(config),
         chrom_to_snp_indexes=chrom_to_snp_indexes,
         learning_rate=config.learning_rate,
         optimizer=config.optimizer,
         train_loader=train,
         val_loader=val,
     )
+    print("Model loaded")
     return clf
 
 
 def create_trainer(config) -> Trainer:
+    print("Setting up trainer")
+
     wandb_logger = WandbLogger()
     callbacks = [ModelCheckpoint(monitor="val_loss", mode="min")]
     if config.patience:
@@ -144,7 +156,7 @@ def create_trainer(config) -> Trainer:
         log_every_n_steps=config.log_step,
         val_check_interval=config.val_check_interval,
         callbacks=callbacks,
-        gpus=config.gpus,
+        gpus=int(config.gpus),
         profiler=config.profiler,
         max_epochs=config.max_epochs,
         default_root_dir=config.default_root_dir,
@@ -153,6 +165,7 @@ def create_trainer(config) -> Trainer:
         auto_lr_find=config.auto_lr_find,
         check_val_every_n_epoch=config.check_val_every_n_epoch,
     )
+    print("Finished setting up trainer")
     return trainer
 
 
@@ -162,6 +175,7 @@ def main():
     parser = create_argparser(yml_path)
 
     arguments = parser.parse_args()
+
     wandb.init(
         config=arguments,
         project=f"snp-classifiers-{arguments.phenotype}",
@@ -178,15 +192,28 @@ def main():
 
     # Create model, dataset, trainer
     train_loader, val_loader, metadata = create_dataloaders(config)
+
     model = create_model(metadata, train_loader, val_loader, config=config)
+    print("device", model.device)
     trainer = create_trainer(config)
 
+    print("config.gpus:", config.gpus)
+    print("trainer.gpus:", trainer.gpus)
+    print(config.auto_lr_find)
+    print(type(config.auto_lr_find))
+
     # Train
-    if config.auto_lr_find:
+    if config.auto_lr_find is True or (
+        isinstance(config.auto_lr_find, str) and config.auto_lr_find.lower() == "true"
+    ):
+        print("Searching for ideal learning rate")
         lr_finder = trainer.tuner.lr_find(model)
         config.update({"learning_rate": lr_finder.suggestion()}, allow_val_change=True)
         fig = lr_finder.plot(suggest=True)
         wandb.log({"lr_finder.plot": fig})
+        print("Finished fininding learning rate")
+
+    print("Started model fitting")
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
 

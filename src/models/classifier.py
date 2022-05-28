@@ -34,7 +34,7 @@ class OneHotClassifier(pl.LightningModule):
         """
         super().__init__()
         self.encoders = nn.ModuleDict(
-            {str(chrom): model["model"] for chrom, model in encoders.items()}
+            {str(chrom): model["model"].to(self.device) for chrom, model in encoders.items()}
         )
         self.chrom_to_snp_indexes = chrom_to_snp_indexes
         self.input_snps = sum(i[1] - i[0] for i in chrom_to_snp_indexes.values())
@@ -44,6 +44,8 @@ class OneHotClassifier(pl.LightningModule):
         self.train_loader = train_loader
         self.val_loader = val_loader
 
+        print(f"On Device: {self.device}")
+
         # dummy forward pass to determine shape
         X = torch.randint(0, 3, size=(1, self.input_snps))
         encoded = self.encode(X)
@@ -51,13 +53,14 @@ class OneHotClassifier(pl.LightningModule):
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
         assert x.shape[1] == self.input_snps
+        # x = x.type(torch.float32)
         x = x.to(self.device)
 
         encoded = []
         for chrom, chrom_encoder in self.encoders.items():
             lower, upper = self.chrom_to_snp_indexes[int(chrom)]
             chrom_snps = x[:, lower:upper]
-            encoded_chrom = chrom_encoder(chrom_snps)
+            encoded_chrom = chrom_encoder(chrom_snps.to(self.device))
             encoded_chrom = encoded_chrom.squeeze(-1).squeeze(1)
             encoded.append(encoded_chrom)
         return torch.concat(encoded, dim=1)
@@ -81,10 +84,11 @@ class OneHotClassifier(pl.LightningModule):
         s = time.time()
         x, y = train_batch
         # x.shape should be (batch, sequence length)
+        x = x.float().to(self.device)
+        y = y.float().to(self.device)
 
         x = torch.nan_to_num(x, nan=3)
         y_hat = self.forward(x)
-        # x.shape should be (batch, genotype/snp=4, sequence length)
 
         # calculate metrics
         loss = self.loss(y_hat, y)
@@ -96,13 +100,15 @@ class OneHotClassifier(pl.LightningModule):
     def validation_step(self, val_batch, batch_idx):
         s = time.time()
         x, y = val_batch
+        # y = y.type(torch.float32)
+        x = x.float().to(self.device)
+        y = y.float().to(self.device)
 
         x = torch.nan_to_num(x, nan=3)
         y_hat = self.forward(x)
         # x.shape should be (batch, genotype/snp=4, sequence length)
 
         # calculate metrics
-        x = x.type(torch.LongTensor).to(self.device)
         loss = self.loss(y_hat, y)
 
         self.log("val_loss", loss)
